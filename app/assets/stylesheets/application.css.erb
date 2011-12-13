@@ -1,0 +1,718 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+*/
+
+.container {
+  width: 900px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.shadow {
+    background-color: #fff; /* Needed for IEs */
+-moz-box-shadow: 5px 5px 15px #222;
+-webkit-box-shadow: 5px 5px 15px #222;
+box-shadow: 5px 5px 15px #222;
+filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,ShadowOpacity=0.10);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,ShadowOpacity=0.10)";
+        zoom: 1;
+}
+.shadow .content {
+  position: relative; /* This protects the inner element from being blurred */
+  background-color: #fff;
+}
+
+.shadowlight {
+    background-color: #fff; /* Needed for IEs */
+-moz-box-shadow: 5px 5px 15px #ccc;
+-webkit-box-shadow: 5px 5px 15px #ccc;
+box-shadow: 5px 5px 15px #ccc;
+filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,ShadowOpacity=0.10);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,ShadowOpacity=0.10)";
+        zoom: 1;
+}
+.shadowlight .content {
+        position: relative; /* This protects the inner element from being blurred */
+        background-color: #fff;
+}
+
+.smallshadow {
+-moz-box-shadow: 0px 10px 10px -3px #ccc;
+-webkit-box-shadow: 0px 10px 10px -3px #ccc;
+}
+
+body {
+  background-image:url('bluebg.png');
+}
+
+section {
+  margin-top: 1em;
+  font-size: 120%;
+  background: #fff;
+}
+
+section h1 {
+  font-size: 200%;
+}
+
+div.flash_container {
+  padding-left:  30px;
+  padding-right: 30px;
+}
+
+/* Round corners */
+
+.round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+
+.round_bottom {
+  -moz-border-bottom-left-radius:     10px;
+  -moz-border-bottom-right-radius:    10px;
+  -webkit-border-bottom-left-radius:  10px;
+  -webkit-border-bottom-right-radius: 10px;
+  border-bottom-left-radius:          10px;
+  border-bottom-right-radius:         10px;
+}
+
+.round_top {
+  -moz-border-top-left-radius:     10px;
+  -moz-border-top-right-radius:    10px;
+  -webkit-border-top-left-radius:  10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-left-radius:          10px;
+  border-top-right-radius:         10px;
+}
+
+/* Header */
+
+div.header {
+  padding-top:   10px;
+  padding-right: 20px;
+  padding-left:  20px;
+  margin-bottom: -15px;
+}
+
+td.header_logo {
+  margin-bottom: 30px;
+}
+
+td.header_tagline {
+  font-family: "American Typewriter", "Lucida Sans Typewriter", "Courier New", Courier, monospace;
+  text-align: right;
+  font-size: 12pt;
+}
+
+div.breadcrumbs {
+  color: #999;
+  font-size: 75%;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+/* Navigation */
+
+nav {
+  float: right;
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+nav ul li a {
+  padding: 0 10px;
+  color: black;
+}
+
+nav ul li a:visited {
+  color: black;
+}
+
+nav ul li a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+/* Footer */
+
+div.footer {
+  text-align: center;
+  padding-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+}
+
+div.footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+div.footer ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+/* General Formatting */
+
+input.form_button {
+  display: block;
+  text-align: center;
+  width: 180px;
+  height: 24px;
+  color: #fff;
+/*  background: #000 url(/images/1x29orangefade.png) top center repeat-x;*/
+  background: #0088ce;
+  font-size: 80%;
+  font-weight: normal;
+  padding: 3px;
+  margin-top: 15px;
+}
+
+div.padding_20px {
+  padding: 20px;
+}
+
+div.gray_border {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #eee;
+  padding: 5px 0px 0px 5px;
+}
+
+span.em {
+/*  color: #10ae11; #0088ce*/
+  font-weight: bold;
+  font-size: 110%;
+}
+
+span.de-em {
+  color: #555;
+}
+
+div.de-em {
+  color: #555;
+  font-style: italic;
+}
+
+.text-75 {
+  font-size: 75%;
+}
+
+.text-1_25 {
+  font-size: 125%;
+}
+
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+div.disclaimer {
+  font-size: 75%;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+td.top_right {
+  vertical-align: top;
+  text-align: right;
+}
+
+.greyfade {
+  background: #000 url(/images/1x400greyfade.png) top center repeat;
+}
+
+.greyfadeup {
+  background: #000 url(/images/1x250greyfadeup.png) bottom center repeat;
+}
+
+.bluefade {
+  background: #000 url(/images/1x407bluefade.png) top center repeat;
+}
+
+.bluefadeup {
+  background: #000 url(/images/1x240bluefadeup.png) bottom center repeat;
+}
+
+div.ie_align_top {
+  line-height: 1em;
+}
+
+.hidden { display: none; }
+.unhidden { display: block; }
+
+/* Highchart */
+
+div.hc {
+  height:225px;
+  width: 100%;
+  clear:both;
+  font-size: 150%;
+}
+
+/* Above the Fold */
+
+div.above_the_fold {
+  width: 90%;
+  padding: 20px;
+}
+
+td.atf_left {
+  width: 60%;
+  text-align:right;
+  vertical-align:center;
+  margin-left: 30px;
+}
+
+/* Stk Main Table */
+
+table.stk_table {
+  padding: 10px 20px 30px 20px;
+}
+
+td.above_the_fold {
+  width: 90%;
+/*  padding-top: 20px; Screws up IE shadow */
+  border: none;
+  border-width: 1px;
+  border-color: #eee;
+  vertical-align: top;
+}
+
+td.stk_col_right {
+  width: 40%;
+  border-left: none;
+  border-width: 1px;
+  border-color: #0088ce;
+  padding-left: 30px;
+  vertical-align: top;
+}
+
+div.stk_col_right_section {
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-bottom: 20px;
+  border: none;
+  border-width: 1px;
+  border-color: #eee;
+}
+
+div.stk_col_right_header {
+  color: #666;
+  font-weight: bold;
+  font-size: 125%;
+  border-bottom: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #666;
+  margin-bottom: 10px;
+}
+
+div.float_top {
+  height: 100%;
+  position: relative;
+}
+
+div.float_top div {
+  position: absolute;
+  top: 0;
+}
+
+/* Share Stack */
+
+div.share_stack {
+  font-size: 75%;
+  padding: 10px;
+  padding-bottom: 10px;
+  border: solid;
+  border-width: 1px;
+  border-color: #eee;
+  text-align: center;
+}
+
+div.share_stack_header {
+  color: #666;
+  font-weight: bold;
+  font-size: 125%;
+  margin-bottom: 10px;
+}
+
+div.share_button_box {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+div.tip_progress {
+/*  border-style: none;
+  border-width: 1px;
+  border-color: black;
+  margin: 0px 20px -150px 0px;
+  display: inline-block;
+  float: right;
+  z-index: 1;
+  position: relative;*/
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  width: 70%;
+}
+
+div.tip_progress_header {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+div.tip_progress_bar_border {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  width: 90%;
+  border: solid;
+  border-width: 1px;
+  background: #eee;
+}
+
+div.tip_progress_bar_fill {
+  background: #0088ce;
+  padding-left: 3px;
+}
+
+tr.boldrow {
+  font-weight: bold;
+  font-size: 110%;
+}
+
+table.comparison_box {
+  margin-bottom: 0px;
+}
+
+div.comparison-1 {
+  font-size: 75%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+/*  background: #000 url(/images/1x400greyfade.png) top center repeat;*/
+}
+
+div.comparison-2 {
+  font-size: 75%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+  margin-bottom: 5px;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+/*  background: #000 url(/images/1x400greyfade.png) top center repeat;*/
+}
+
+td.hys_icon img {
+  width: 15px;
+  margin-right: -3px;
+}
+
+/* Legend */
+
+div.legend {
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 75%;
+}
+
+table.legend {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+td.legend_header {
+  vertical-align: top;
+  font-weight: bold;
+}
+
+td.legend_series {
+}
+
+td.legend_all {
+  background-color: #999;
+  border: 7px solid white;
+}
+
+td.legend_lowest {
+  background-color: #8cb941;
+  border: 7px solid white;
+}
+
+table.legend_td {
+  margin-bottom: 5px;
+}
+
+/* Below the Fold */
+
+table.below_the_fold {
+}
+
+/* Action Steps */
+
+div.action_steps {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  width: 90%;
+  background: #000 url(/images/1x151bluefade.png) top center repeat-x;
+  padding: 10px 10px 1px 10px;
+}
+
+table.action_steps {
+  margin-bottom: 10px;
+}
+
+td.action_steps {
+  color: #fff;
+  font-weight: bold;
+  font-size: 125%;
+  border-right-style: solid;
+  border-right-color: white;
+  border-right-width: 1px;
+  text-align: right;
+  line-height: 1em;
+}
+
+td.action_links {
+}
+
+/* Responses */
+
+div.new_response_img {
+  display: inline-block;
+}
+
+div.new_response_form {
+  width: 650px;			/* Same width as .mad-libs */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+div.new_response_question {
+  font-size: 150%;
+  margin-bottom: 20px;
+}
+
+div.responses {
+  padding: 0px 30px 10px 30px;
+  font-size: 75%;
+}
+
+td.response_header {
+  font-weight: bold;
+}
+
+/* Topics */
+
+div.new_topic_form {
+  margin-left: 20px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+ul.stack_list {
+  margin: 0;
+  padding: 0;
+}
+
+ul.stack_list li {
+  list-style-type: none;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+/* Suggestion Form */
+
+div.suggestion_form {
+  padding-left: 30px;
+  padding-bottom: 20px;
+}
+
+div.suggestions {
+  font-size: 75%;
+}
+
+textarea.suggestion_topics {
+  height: 30px;
+  width: 90%;
+}
+
+textarea.stack_request {
+  height: 60px;
+  width: 90%;
+}
+
+input.suggestion_email {
+  width: 90%;
+  color: lightgray;
+}
+
+a.unanswered_topic {
+  font-weight: bold;
+}
+
+a.unanswered_topic:hover {
+  font-weight: bold;
+}
+
+a.unanswered_topic:visited {
+  font-weight: bold;
+}
+
+/* Email Preview */
+
+div.facebox_button {
+  margin-top:	 20px;
+}
+
+div.facebox_button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+div.facebox_button a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+div.facebox_button a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+div.email_preview {
+  padding: 30px;
+}
+
+div.inactive {
+  color: #999;
+}
+
+/* Stack Buttons */
+
+div.stk_buttons {
+  padding-top: 20px;
+  white-space: nowrap;
+}
+
+div.stk_buttons ul {
+  margin: 0;
+  padding: 0;
+}
+
+div.stk_buttons ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 10px;
+}
+
+/* Links */
+
+a {
+  color: #0088ce;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #0088ce;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #0088ce;
+}
+
+table.action_steps a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+table.action_steps a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+table.action_steps a:visited {
+  color: #fff;
+}
+
+/* Errors */
+
+/*.field_with_errors {
+  margin-top: 10px;
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.field_with_errors label {
+  color: #fff;
+}
+*/
+#error_explanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}

@@ -1,4 +1,28 @@
 Mvpv2::Application.routes.draw do
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
+  resources :users
+  resources :stacks
+  resources :responses
+  resources :comments, :only => [:new, :create, :destroy]
+  resources :sessions, :only => [:new, :create, :destroy]
+
+  match '/response',  :to => 'responses#new'
+  match '/stkresponses',       :to => 'responses#stkresponses'
+
+  get "mvp/home"
+  get "mvp/contact"
+
+  match '/email_preview',       :to => 'mvp#email_preview'
+  match '/share_with_neighbor', :to => 'mvp#share_with_neighbor'
+  match '/send_feedback',       :to => 'mvp#send_feedback'
+  match '/send_comment',        :to => 'mvp#send_comment'
+  match '/stack_request',       :to => 'mvp#stack_request'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +72,7 @@ Mvpv2::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => "sessions#create"
 
   # See how all your routes lay out with "rake routes"
 

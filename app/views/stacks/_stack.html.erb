@@ -1,0 +1,10 @@
+<% if stack != omit_stack %>
+<li>
+<% if stack.answered?(current_user) %>
+<% css_class = "answered_topic" %>
+<% else %>
+<% css_class = "unanswered_topic" %>
+<% end %>
+<%= link_to stack.question, stack_path(stack.id), :class => css_class %>
+</li>
+<% end %>

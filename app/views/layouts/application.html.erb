@@ -1,14 +1,28 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
 <html>
 <head>
-  <title>Mvpv2</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <title>Purposeful Comparisons | StkUp</title>
+  <link rel="shortcut icon" href="/favicon.ico" >
+  <%= render 'layouts/js' %>
+  <%= csrf_meta_tag %>
+  <%= render 'layouts/stylesheets' %>
+
+  <!-- Google Analytics -->
+  <!-- TODO: Add Google Analytics with MVPv2 snippet -->
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container round shadow">
+	<!--[if IE]><div class="content round"><![endif]-->
+	<section class="round">
+      <%= render 'shared/header' %>
+	  <% flash.each do |key, value| %>
+	    <div class="flash <%= key %>"><%= value %></div>
+	  <% end %>
+	  <%= yield %>
+	</section>
+	<!--[if IE]></div><![endif]-->
+  </div>
+  <%= debug(params) if Rails.env.development? %>
+  <%= session.inspect if Rails.env.development? %>
 </body>
 </html>

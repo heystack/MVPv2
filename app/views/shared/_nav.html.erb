@@ -1,0 +1,20 @@
+<nav class="round">
+<ul>
+  <li><%= link_to image_tag("nav_about.png", :name => "about"), "#about",
+							:rel => "facebox",
+							:onmouseover => "document.about.src='" + image_path('nav_about_hover.png') + "';",						
+							:onmouseout => "document.about.src='" + image_path('nav_about.png') + "';"%></li>
+  <li><%= link_to image_tag("nav_stacks.png", :name => "stacks"), "#stacks",
+							:rel => "facebox",
+							:onmouseover => "document.stacks.src='" + image_path('nav_stacks_hover.png') + "';",						
+							:onmouseout => "document.stacks.src='" + image_path('nav_stacks.png') + "';"%></li>
+  <li><%= link_to image_tag("nav_comments.png", :name => "comments"), "#comments",
+							:rel => "facebox",
+							:onmouseover => "document.comments.src='" + image_path('nav_comments_hover.png') + "';",						
+							:onmouseout => "document.comments.src='" + image_path('nav_comments.png') + "';"%></li>
+</ul>
+</nav>
+
+<div id="coming_soon" style="display:none;">
+Coming soon!
+</div>

@@ -1,0 +1,24 @@
+<div class="email_preview">
+<%= form_tag "/send_comment" do -%>
+<table>
+  <tr class="plain">
+	<td class="plain" style="text-align: right;"><label for="contact_email">Your&nbsp;Email:</label></td>
+	<td class="plain">
+		<%= text_field "contact", "from_email", :size => "50", :style => "color:lightgray",
+		:value => session[:email],
+		:onfocus => "this.style.color = 'black'" %></td>
+  </tr>
+  <tr class="plain">
+	<td class="plain top_right"><label for="comment_body">Comment:</label></td>
+	<td class="plain"><%= text_area "contact", "comment" %>
+	</td>
+  </tr>
+  <tr class="plain">
+	<td class="plain"></td>
+	<td class="plain text-1_25"><br/><input type="submit" value="Send Comment" class="form_button round" /></td>
+  </tr>
+</table>
+
+<% end -%>
+
+</div>
