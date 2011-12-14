@@ -5,7 +5,10 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# Rails 3.1.1 asset pipeline requires Heroku cedar, which only runs postgres
+group :development do
+  gem 'sqlite3'
+end
 
 gem 'json'
 
