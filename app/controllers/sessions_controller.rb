@@ -8,19 +8,26 @@ class SessionsController < ApplicationController
   end
   
   def create
-    if existing_user?
-      if Stack.count > 0
-        session[:stack] ||= Stack.find_by_sotd('1')
-        redirect_to new_stack_response_path(session[:stack])
-      else
-        redirect_to new_stack_path
-      end
-    else
+    user = current_user
+    if user.nil?
       @user = User.new
       if @user.save
         sign_in @user
-        redirect_to @user
       end
+    else
+      sign_in user
+    end
+    if Stack.count > 0
+      session[:stack] ||= Stack.find_by_sotd("1").id
+      session[:stack] ||= Stack.first
+      @stack = Stack.find_by_id(session[:stack])
+      if @stack.answered?(current_user)
+        redirect_to edit_stack_response_path(@stack, @stack.answered?(current_user))
+      else
+        redirect_to new_stack_response_path(session[:stack])
+      end
+    else
+      redirect_to new_stack_path
     end
   end
     

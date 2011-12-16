@@ -1,12 +1,18 @@
 Mvpv2::Application.routes.draw do
   get "sessions/new"
-
   get "sessions/create"
-
   get "sessions/destroy"
 
   resources :users
+  resources :users do
+    resources :responses
+    resources :comments
+  end
   resources :stacks
+  resources :stacks do
+    resources :responses
+    resources :comments
+  end
   resources :responses
   resources :comments, :only => [:new, :create, :destroy]
   resources :sessions, :only => [:new, :create, :destroy]

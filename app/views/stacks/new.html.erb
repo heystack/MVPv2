@@ -2,7 +2,7 @@
 <h1><%= @title %></h1>
 
 <%= form_for(@stack) do |f| %>
-  <%= render 'new_stack_form', :f => f %>
+  <%= render 'stack_form', :f => f %>
   <div class="actions">
     <%= f.submit "Create Stack" %>
   </div>

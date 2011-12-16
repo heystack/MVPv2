@@ -1,0 +1,41 @@
+<div class="mad-libs">
+<%= form_for(@response) do |f| %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+<table class="mad_libs_table">
+  <tr>
+    <td style="vertical-align:top"><div class="begin-quote">&#8220;</div></td>
+    <td class="madlibs-content round greyfade">
+    <%=raw @stack.madlibs_intro %>
+    <label>
+		<%= f.text_field :value, :size => 2, :value => "#{@response_value}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
+		<span><%= @stack.madlibs_label %></span>
+    </label>
+    <%= @stack.madlibs_units %>
+	<% if @ask_location %>
+	, and I live in zip code&nbsp;
+    <label>
+		<%= fields_for(:user) do |u| %>
+		<%= u.hidden_field :email, :value => @email %>
+		<%= u.text_field :zipcode, :size => 5, :value => "#{@zipcode}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
+		<% end %>
+		<span>zip code</span>
+    </label>
+	<% end %>
+	.
+    </td>
+    <td style="vertical-align:bottom"><div class="end-quote">&#8221;</div></td>
+  </tr>
+</table>
+<%= f.submit "Stack Me Up", :class => "submit_button round" %>
+<br/>
+<% if @ask_location %>
+<div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is StkUp available for my community?</a></div>
+<% end %>
+
+<div id="not_alexandria" style="display:none;">
+StkUp is currently available for Alexandria, Virginia<br/>
+only. If you'd like us to expand, send us a comment!
+</div>
+
+</div>
+<% end %>
