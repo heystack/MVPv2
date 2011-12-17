@@ -3,4 +3,9 @@ class Response < ActiveRecord::Base
 
   belongs_to :stack
   belongs_to :user
+  
+  def all_neighbors
+    Response.average(:value)
+  end
+  
 end

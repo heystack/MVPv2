@@ -1,4 +1,5 @@
 class ResponsesController < ApplicationController
+
   def new
     if !session[:stack]
       @stack = Stack.first
@@ -32,12 +33,13 @@ class ResponsesController < ApplicationController
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
     if @response.save
-      @user.update_attributes(:zipcode => @response.zipcode)
-      flash[:success] = "Response saved: " + @response.value.to_s + " user.id=" + @user.id
+      @zipcode = params[:user][:zipcode]
+      @user.update_attributes(:zipcode => @zipcode)
+      # flash[:success] = "Response saved: " + @response.value.to_s + " user.id=" + @user.id.to_s
       session[:you] = @response.value
-      session[:email] = @response.email
+      session[:email] = params[:user][:email]
       session[:response_id] = @response.id
-      session[:zipcode] = @response.zipcode
+      session[:zipcode] = @zipcode
       
       if @stack.name == "Babysitters"
         session[:babysitters] = session[:you]
@@ -101,7 +103,7 @@ class ResponsesController < ApplicationController
       session[:zipcode] = @zipcode
 
       if @stack.name == "Babysitters"
-        session[:babysitter_pay_rate] = session[:you]
+        session[:babysitters] = session[:you]
         session[:babysitter_id] = @response.id
       elsif @stack.name == "Mobilizers"
         session[:mobilizers] = session[:you]
@@ -114,6 +116,69 @@ class ResponsesController < ApplicationController
     else
       flash[:error] = "Please enter a valid response."
       redirect_to edit_response_path(@response.id)
+    end
+  end
+
+  def index
+    # Create new response from URL-based GET form submission
+    if !params[:response]
+      redirect_to root_path and return
+    end
+    @stack = Stack.find_by_id(params[:stack_id])
+    if @stack.answered?(current_user)
+      flash[:notice] = "Stack already answered by " + params[:response][:email]
+      @response = @stack.responses.find_by_user_id(current_user.id)
+      @save_response = @response.update_attributes(params[:response])
+    else
+      flash[:notice] = "New stack response"
+      @response = @stack.responses.build(params[:response])
+      @save_response = @response.save
+    end
+    if @save_response
+      # flash[:success] = "Your response, " + @response.value.to_s + ", has been added to the stack!"
+      session[:you] = @response.value
+      session[:email] = @response.email
+      session[:response_id] = @response.id
+      session[:zipcode] = ""
+      
+      if @stack.name == "Babysitters"
+        session[:babysitters] = session[:you]
+        session[:babysitter_id] = @response.id
+      elsif @stack.name == "Mobilizers"
+        session[:mobilizers] = session[:you]
+        session[:mobilizers_id] = @response.id
+      elsif @stack.name == "Homework"
+        session[:homework] = session[:you]
+        session[:homework_id] = @response.id
+      end
+
+      # Session vars must be set since we might be coming from an email form submission
+      session[:stack] = @stack.id
+      if session[:stack]
+        redirect_to edit_response_path(@response.id)
+      else
+        redirect_to root_path
+      end
+    else
+      render 'new'
+    end
+  end
+
+  def destroy
+    @response = Response.find(params[:id])
+    flash[:notice] = "Response \##{@response.id} deleted."
+    @response.destroy
+    redirect_to root_path
+  end
+
+  def stkresponses
+    if current_user.admin?
+      @responses = Response.all(:order => 'id DESC')
+      @count = Response.count
+      @stacks = Stack.select("id, name").group('id', 'name')
+    else
+      flash[:error] = "You do not have permission."
+      redirect_to root_path
     end
   end
 

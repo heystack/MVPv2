@@ -1,0 +1,16 @@
+<div class="tip_progress round">
+<% if @stack.tipped? %>
+  <div class="de-em text-75" style="margin-top:-10px">More than <%= (@count.to_i / 10) * 10 %> neighbors have contributed!</div>
+<% else %>
+  <div class="tip_progress_bar_border">
+	<div class="tip_progress_bar_fill text-75" style="width:<%= @tipping_point_progress %>;color:#ccc"><%= @tipping_point_progress %></div>
+  </div>
+  <div class="de-em text-75 centered"><%= TIPPING_POINT - @count %> more needed to <a href="#tip_info" rel="facebox">tip the stack</a>.</div>
+<% end %>
+</div>
+
+<div id="tip_info" style="display:none;">
+Stacks reach the "tipping point" when they get a<br/>
+meaningful number of responses. So share the Stack<br/>
+with as many neighbors as you can!
+</div>

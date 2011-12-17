@@ -1,0 +1,15 @@
+<% stack = Stack.find_by_id(response.stack_id) %>
+<% user = User.find_by_id(response.user_id) %>
+<tr>
+  <td><%= response.id %></td>
+  <td><%= user.id %></td>
+  <td><%= stack.nil? ? "" : stack.name %></td>
+  <td><%= response.value %></td>
+  <td><%= user.zipcode %></td>
+  <td><%= response.qualifier1 %></td>
+  <td><%= time_ago_in_words(response.created_at) %> ago</td>
+  <td><%= time_ago_in_words(response.updated_at) %> ago</td>
+  <td>
+	<%= button_to "Delete", response_path(response), :method => :delete, :confirm => "You sure?", :title => "Delete response \##{response.id}" %>
+  </td>
+</tr>

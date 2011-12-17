@@ -27,4 +27,17 @@ Mvpv2::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # Action Mailer settings for StkUp
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'mail.stkup.com',
+    :user_name            => 'feedback@stkup.com',
+    :password             => 'may18stkup',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
+  config.action_mailer.asset_host = "stkup.com"
+
 end

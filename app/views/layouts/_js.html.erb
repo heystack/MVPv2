@@ -40,3 +40,33 @@ $(document).ready(
     });
 </script>
 
+<script type="text/javascript">
+// validates that the field value string has one or more characters in it
+function isNotEmpty(elem) {
+  var str = elem.value;
+    var re = /.+/;
+    if(!str.match(re)) {
+        alert(elem.name + " cannot be blank.");
+        setTimeout("focusElement('" + elem.form.name + "', '" + elem.name + "')", 0);
+        return false;
+    } else {
+        return true;
+    }
+}
+
+// batch validation router
+function validateForm(form) {
+    if (isNotEmpty(form.suggestion_topic)) {
+		return true;
+    }
+    return false;
+}
+
+function unhide(divID) {
+	var item = document.getElementById(divID);
+	if (item) {
+		item.className='unhidden';
+	}
+}
+</script>
+

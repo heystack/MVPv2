@@ -15,4 +15,13 @@ class Stack < ActiveRecord::Base
     self.responses.find_by_user_id(user.id)
   end
 
+  def tipped?
+    count = self.responses.count
+    (count / TIPPING_POINT ) >= 1
+  end
+
+  def comments?
+    self.comments.count > 0
+  end
+
 end

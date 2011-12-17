@@ -1,0 +1,27 @@
+<% if @from_name != "" %>
+<%= @from_name %>
+<%- end -%>
+<%- if @user_email != "" -%>
+(<%= @user_email %>)
+<% end %>
+has shared a local resource with you:<br/>
+<br/>
+<%=raw @contact[:message].gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %>
+<br/>
+<br/>
+<div class="new_response_question"><%= @topic.question %></div>
+<div>Choose the closest <strong>
+<% if @topic.name == "Babysitter Pay Rate" %>
+hourly rate
+<% elsif @topic.name == "Mobilizers" %>
+age
+<% elsif @topic.name == "Homework" %>
+number of hours
+<% end %>
+</strong>
+<% if !@form_capable %>
+or answer the question on the <a href="<%= @base_url + '/new' %>">StkUp.com</a> website.
+<% end %>
+</div>
+
+<%= render 'layouts/stk_buttons' %>

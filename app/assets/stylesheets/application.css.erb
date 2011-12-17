@@ -41,8 +41,11 @@ filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,Sha
 }
 
 .smallshadow {
--moz-box-shadow: 0px 10px 10px -3px #ccc;
--webkit-box-shadow: 0px 10px 10px -3px #ccc;
+-moz-box-shadow: 2px 2px 3px #ccc;
+-webkit-box-shadow: 2px 2px 3px #ccc;
+border-style: solid;
+border-width: 1px;
+border-color: #eee;
 }
 
 body {
@@ -210,6 +213,7 @@ span.em {
 
 span.de-em {
   color: #555;
+  font-style: italic;
 }
 
 div.de-em {
@@ -278,13 +282,14 @@ div.hc {
 
 div.above_the_fold {
   width: 90%;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 td.atf_left {
   width: 60%;
-  text-align:right;
-  vertical-align:center;
+  text-align: left;
+  vertical-align: top;
   margin-left: 30px;
 }
 
@@ -323,8 +328,8 @@ div.stk_col_right_section {
 
 div.stk_col_right_header {
   color: #666;
-  font-weight: bold;
-  font-size: 125%;
+  font-weight: normal;
+  font-size: 110%;
   border-bottom: solid;
   border-bottom-width: 1px;
   border-bottom-color: #666;
@@ -415,14 +420,16 @@ table.comparison_box {
 
 div.comparison-1 {
   font-size: 75%;
-  border-style: solid;
+/*  border-style: none;
   border-width: 1px;
   border-color: #ccc;
-  padding: 5px;
-  margin-bottom: 10px;
-  width: 100%;
+*/  padding: 5px;
+  width: 90%;
   text-align: center;
-/*  background: #000 url(/images/1x400greyfade.png) top center repeat;*/
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+  background: #fff;
 }
 
 div.comparison-2 {
@@ -562,6 +569,18 @@ ul.stack_list li {
   list-style-type: none;
   margin: 0;
   padding-bottom: 10px;
+}
+
+/* Comments */
+
+div.comment {
+  width: 100%;
+}
+
+textarea.comment_content {
+  height: 20px;
+  width: 90%;
+  border-color: #ccc;
 }
 
 /* Suggestion Form */

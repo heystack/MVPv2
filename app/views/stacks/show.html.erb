@@ -1,3 +1,44 @@
-<h1><%= @title %></h1>
+<%= render 'layouts/hc_script' %>
 
-current_user = <%= current_user.inspect %>
+<%= render 'shared/breadcrumbs' %>
+
+<div class="above_the_fold">
+<table>
+  <tr>
+	<td class="atf_left">
+	  <div class="comparison-1" style="margin-left:auto;margin-right:auto;"><%=raw @comparison_text %></div>
+	  <div id="hc" class="hc"></div>
+	</td>
+	<td style="text-align:center;vertical-align:center;">
+	  <%= image_tag("big_red_share.png", :name => "about") %><%= render 'layouts/tip_progress'  %>
+	</td>
+  </tr>
+  <!-- <tr><td colspan="2"><div class="comparison-1" style="width:80%;margin-left:auto;margin-right:auto;"><%=raw @comparison_text %></div></td></tr> -->
+  <!-- <tr>
+  <td>
+	<div id="legend" class="legend"><%= render 'layouts/legend' %></div>
+  </td>
+  <td>
+  </td>
+  </tr> -->
+  <tr>
+	<td class="atf_left">
+	  <div class="stk_col_right_section">
+	  <div class="stk_col_right_header">Comments</div>
+	  <% if @stack.comments? %>
+		<%= render @comments %>
+	  <% end %>
+	  <div id="add_comment">
+	  <%= form_for(@comment) do |f| %>
+		<%= render 'comments/comments_form', :f => f %>
+	  <% end %>
+	  </div>
+	</td>
+ 	<td style="vertical-align:center;">
+	  <div class="stk_col_right_section"><%= render 'shared/view_stacks' %></div>
+	  <div class="stk_col_right_section"><%= render 'layouts/feedback' %></div>
+	</td>
+  </tr>
+</table>
+</div>
+

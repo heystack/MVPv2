@@ -1,0 +1,12 @@
+<% @user = User.find_by_id(comment.user_id) %>
+<div class="smallshadow round" style="padding: 5px 10px 5px 10px; font-size: 90%">
+<%= comment.content %><br/>
+<span class="de-em text-75">Added <%= time_ago_in_words(comment.created_at) %> ago.</span>
+<span class="de-em">
+  <% if current_user.admin? || comment.created_by?(current_user) %>
+    <%= link_to "delete", comment, :class => "text-75", :method => :delete, :confirm => "You sure?",
+                                	:title => "Delete comment?" %>
+  <% end %>
+</span>
+</div>
+<br/>

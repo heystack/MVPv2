@@ -1,0 +1,114 @@
+<% @point1_color = @you_color %>
+<% @point2_color = @lowest_color %>
+<% @point3_color = @all_neighbors_color %>
+<% @point4_color = @biggest_color %>
+
+<% @point1_value = session[:you] %>
+<% @point2_value = @lowest_amt %>
+<% @point3_value = @all_neighbors %>
+<% @point4_value = @biggest_amt %>
+
+<script type="text/javascript">
+var chart;
+jQuery(document).ready(function() {
+	chart = new Highcharts.Chart({
+	   chart: {
+	      renderTo: 'hc',
+	      defaultSeriesType: 'bar',
+		  marginRight: 20
+	   },
+	   title: {
+	      text: null
+	   },
+	   subtitle: {
+	      text: null
+	   },
+	   xAxis: {
+		  <% if @user_rank == "lowest" %>
+	      categories: ['YOU', '<%= @stack.attr_lowest_desc %>', 'All Neighbors', '<%= @stack.attr_biggest_desc %>'],
+		  <% elsif @user_rank == "average" %>
+		  <%   @point1_color = @lowest_color %>
+		  <%   @point2_color = @you_color %>
+		  <%   @point1_value = @lowest_amt %>
+		  <%   @point2_value = session[:you] %>
+	      categories: ['<%= @stack.attr_lowest_desc %>', 'YOU', 'All Neighbors', '<%= @stack.attr_biggest_desc %>'],
+		  <% elsif @user_rank == "more than most"  %>
+		  <%   @point1_color = @lowest_color %>
+		  <%   @point2_color = @all_neighbors_color %>
+		  <%   @point3_color = @you_color %>
+		  <%   @point1_value = @lowest_amt %>
+		  <%   @point2_value = @all_neighbors %>
+		  <%   @point3_value = session[:you] %>
+	      categories: ['<%= @stack.attr_lowest_desc %>', 'All Neighbors', 'YOU', '<%= @stack.attr_biggest_desc %>'],
+		  <% elsif @user_rank == "biggest"  %>
+		  <%   @point1_color = @lowest_color %>
+		  <%   @point2_color = @all_neighbors_color %>
+		  <%   @point3_color = @biggest_color %>
+		  <%   @point4_color = @you_color %>
+		  <%   @point1_value = @lowest_amt %>
+		  <%   @point2_value = @all_neighbors %>
+		  <%   @point3_value = @biggest_amt %>
+		  <%   @point4_value = session[:you] %>
+	      categories: ['<%= @stack.attr_lowest_desc %>', 'All Neighbors', '<%= @stack.attr_biggest_desc %>', 'YOU'],
+		  <% end %>
+	      title: {
+	         text: null
+	      },
+		  tickLength: 0
+	   },
+	   yAxis: {
+	      min: 0,
+	      title: null,
+          labels: {
+            enabled: false
+          },
+		  gridLineColor: '#fff'
+	   },
+	   tooltip: {
+	      formatter: function() {
+	         return <%=raw @hc_tooltip %>;
+	      }
+	   },
+	   plotOptions: {
+	      bar: {
+	         dataLabels: {
+	            enabled: true,
+		        formatter: function() {
+		          return <%=raw @hc_dataLabel %>;
+		        }
+	         },
+	         pointPadding: 0,
+			 groupPadding: 0.15
+	      }
+	   },
+       legend: {
+	      enabled: false
+       },
+	   credits: {
+	      enabled: false
+	   },
+	   colors: [
+		  '#80699B'
+	   ],
+	   series: [{
+	      data: [{
+			name: 'Point 1',
+			color: '<%= @point1_color %>',
+			y: <%= @point1_value %>
+		  }, {
+			name: 'Point 2',
+			color: '<%= @point2_color %>',
+			y: <%= @point2_value %>
+		  }, {
+			name: 'Point 3',
+			color: '<%= @point3_color %>',
+			y: <%= @point3_value %>
+		  }, {
+			name: 'Point 4',
+			color: '<%= @point4_color %>',
+			y: <%= @point4_value %>
+		  }]
+	   }]
+	});
+});
+ </script>

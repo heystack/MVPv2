@@ -1,0 +1,29 @@
+<table class="legend">
+  <tr>
+	<td class="legend_header">WHO&nbsp;ARE&nbsp;YOUR "NEIGHBORS"?</td>
+	<td>
+	<table class="legend_td">
+	  <tr class="">
+		<td class="legend_all"></td>
+		<td class="legend_series">ALL&nbsp;NEIGHBORS</td>
+	  </tr>
+	  <tr class="">
+		<td class=""></td>
+		<td class="legend_def">Parents in your zip code <%= current_user.zipcode %>.</td>
+	  </tr>
+	</table>
+	</td>
+	<td>
+	<table class="legend_td">
+	  <tr class="">
+		<td class="legend_lowest"></td>
+		<td class="legend_series"><%= @stack.attr_lowest_desc.upcase %></td>
+	  </tr>
+	  <tr class="">
+		<td class=""></td>
+		<td class="legend_def"><%=raw @stack.attr_lowest_legend %></td>
+	  </tr>
+	</table>
+	</td>
+  </tr>
+</table>
