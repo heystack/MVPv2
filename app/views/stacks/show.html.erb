@@ -1,6 +1,9 @@
 <%= render 'layouts/hc_script' %>
 
 <%= render 'shared/breadcrumbs' %>
+<% if current_user.admin? || @stack.created_by?(current_user) %>
+  (<%= link_to "edit", edit_stack_path(@stack) %>)
+<% end %>
 
 <div class="above_the_fold">
 <table>

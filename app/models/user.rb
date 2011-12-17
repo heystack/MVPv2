@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
   end
+  
+  def make_admin
+    self.admin = true unless !current_user.admin?
+  end
 
   private
   

@@ -24,6 +24,8 @@ Mvpv2::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   match '/signedout', :to => 'mvp#signedout'
 
+  match '/toggle_admin', :to => 'users#toggle_admin'
+
   get "mvp/home"
   get "mvp/contact"
 

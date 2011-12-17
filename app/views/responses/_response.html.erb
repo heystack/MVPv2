@@ -3,7 +3,7 @@
 <tr>
   <td><%= response.id %></td>
   <td><%= user.id %></td>
-  <td><%= stack.nil? ? "" : stack.name %></td>
+  <td><%= stack.nil? ? "" : link_to( stack.name, stack_path(stack.id) ) %></td>
   <td><%= response.value %></td>
   <td><%= user.zipcode %></td>
   <td><%= response.qualifier1 %></td>

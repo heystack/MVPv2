@@ -1,12 +1,6 @@
 <div class="padding_20px">
-<h1>User <%= @user.id %></h1>
-<% if @responses.empty? %>
-  <% if Stack.count == 0 %>
-	<br/><h3>Wow! No Stacks!<br/>Do you want to <%= link_to "create the first Stack?", new_stack_path %></h3>
-  <% else %>
-	No Answers.
-  <% end %>
-<% else %>
+<h1>Edit User  <%= @user.id %></h1>
+<%= pluralize(current_user.responses.count, "response") %>
 <table>
   <tr>
 	<td class="response_header">Rid</td>
@@ -20,5 +14,10 @@
 	<td class="response_header"></td>
   <%= render @responses %>
 </table>
+<%= form_for(@user) do |f| %>
+  <%= render 'user_form', :f => f %>
+  <div class="actions">
+	<%= f.submit "Update" %>
+  </div>
 <% end %>
 </div>

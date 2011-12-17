@@ -1,0 +1,22 @@
+<li>
+  <%= link_to user.id, user %>
+  <% if current_user.admin? || current_user.id == 1  %>
+    | <%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{user.name}" %>
+    | <%= link_to "edit", edit_user_path(user) %>
+  <% end %>
+  <span id="toggle_admin<%= user.id %>" class="toggle_admin">
+  <% if user.admin? %>
+    | <img src="http://icons.iconarchive.com/icons/iconshock/real-vista-development/256/admin-privilege-icon.png" height="25">
+  <% else %>
+  <% end %>
+  </span>
+  <!-- Ajax version not working - removed , :remote => true do |f|-->
+  <!-- <%= form_for user, :html => { :method => :toggle_admin } do |f| %>
+    <%= f.submit "Toggle Admin", :class => "toggle_admin_button" %>
+  <% end %> -->
+  <%= form_for user, :html => { :method => :toggle_admin } do |f| %>
+    <%= f.submit "Toggle Admin", :class => "toggle_admin_button" %>
+  <% end %>
+</li>
+

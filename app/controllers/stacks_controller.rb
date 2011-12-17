@@ -17,7 +17,6 @@ class StacksController < ApplicationController
   def create
     if signed_in?
       @stack = Stack.new(params[:stack])
-      @stack.created_by = current_user.id
       if @stack.save
         flash[:success] = "Stack Created!"
         redirect_to @stack
@@ -183,4 +182,19 @@ class StacksController < ApplicationController
       @hc_dataLabel = "''+ this.y.toFixed(1).gsub(\".0\", \"\")"
     end
   end
+
+  def edit
+    @stack = Stack.find(params[:id])
+  end
+  
+  def update
+    @stack = Stack.find(params[:id])
+    if @stack.update_attributes(params[:stack])
+      flash[:success] = "Stack updated."
+      redirect_to @stack
+    else
+      render 'edit'
+    end
+  end
+
 end
