@@ -18,9 +18,9 @@ class SessionsController < ApplicationController
       sign_in user
     end
     if Stack.count > 0
-      session[:stack] ||= Stack.find_by_sotd("1").id
-      session[:stack] ||= Stack.first
-      @stack = Stack.find_by_id(session[:stack])
+      @stack ||= Stack.find_by_sotd("1")
+      @stack ||= Stack.first
+      session[:stack] = @stack.id
       if @stack.answered?(current_user)
         redirect_to edit_stack_response_path(@stack, @stack.answered?(current_user))
       else
@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
     
   def destroy
     sign_out
-    redirect_to root_path
+    redirect_to signed_out_path
   end
   
 end

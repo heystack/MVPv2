@@ -1,0 +1,43 @@
+Babysitters
+How much do you pay your babysitter?
+How much
+I pay my babysitter <span class=\"dollar_sign\">$</span>
+hourly rate
+ per hour
+Biggest Spenders
+Lowest Spenders
+The&nbsp;lowest&nbsp;spending&nbsp;20% from&nbsp;ALL&nbsp;NEIGHBORS.
+You spend 
+hourly rate
+
+I thought you'd be interested in this local resource for gathering helpful info for parents. Simple idea - quickly compare yourself against the rest of the community in topics that matter to you.\n
+I just tried it out on how much we pay our babysitter. If you\'re interested to see how you stack up, it\'s easy to participate - just give your info below, then get back an immediate web comparison against other neighbors. The more who answer, the better the comparison.
+
+<ul>
+  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
+	<%=raw link_to '<img alt="8" src="http://stkup.com.com/images/buttons/nbr_8.png">'.html_safe,
+		(@base_url + "?response[email]=" + @email + "&response[value]=8").html_safe %></li>
+  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
+	<%=raw link_to '<img alt="9" src="http://stkup.com.com/images/buttons/nbr_9.png">'.html_safe,
+		(@base_url + "?response[email]=" + @email + "&response[value]=9").html_safe %></li>
+  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
+	<%=raw link_to '<img alt="10" src="http://stkup.com.com/images/buttons/nbr_10.png">'.html_safe,
+		(@base_url + "?response[email]=" + @email + "&response[value]=10").html_safe %></li>
+  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
+	<%=raw link_to '<img alt="11" src="http://stkup.com.com/images/buttons/nbr_11.png">'.html_safe,
+		(@base_url + "?response[email]=" + @email + "&response[value]=11").html_safe %></li>
+</ul>
+<ul>
+  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
+	<%=raw link_to '<img alt="12" src="http://stkup.com.com/images/buttons/nbr_12.png">'.html_safe,
+		(@base_url + "?response[email]=" + @email + "&response[value]=12").html_safe %></li>
+  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
+	<%=raw link_to '<img alt="13" src="http://stkup.com.com/images/buttons/nbr_13.png">'.html_safe,
+		(@base_url + "?response[email]=" + @email + "&response[value]=13").html_safe %></li>
+  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
+	<%=raw link_to '<img alt="14" src="http://stkup.com.com/images/buttons/nbr_14.png">'.html_safe,
+		(@base_url + "?response[email]=" + @email + "&response[value]=14").html_safe %></li>
+  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
+	<%=raw link_to '<img alt="15" src="http://stkup.com.com/images/buttons/nbr_15.png">'.html_safe,
+		(@base_url + "?response[email]=" + @email + "&response[value]=15").html_safe %></li>
+</ul>

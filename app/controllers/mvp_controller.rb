@@ -26,4 +26,7 @@ class MvpController < ApplicationController
     redirect_to root_path
   end
 
+  def signedout
+  end
+  
 end

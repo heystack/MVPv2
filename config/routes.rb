@@ -17,8 +17,12 @@ Mvpv2::Application.routes.draw do
   resources :comments, :only => [:new, :create, :destroy]
   resources :sessions, :only => [:new, :create, :destroy]
 
-  match '/response',  :to => 'responses#new'
-  match '/stkresponses',       :to => 'responses#stkresponses'
+  match '/response',     :to => 'responses#new'
+  match '/stkresponses', :to => 'responses#stkresponses'
+
+  match '/signin',  :to => 'sessions#create'
+  match '/signout', :to => 'sessions#destroy'
+  match '/signedout', :to => 'mvp#signedout'
 
   get "mvp/home"
   get "mvp/contact"

@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(:version => 20111212022155) do
   create_table "stacks", :force => true do |t|
     t.string   "attr_biggest_desc"
     t.string   "attr_comparison_text"
-    t.string   "attr_email_buttons"
+    t.string   "attr_email_buttons",   :limit => 2000
     t.string   "attr_email_units"
+    t.string   "attr_email_message",   :limit => 2000
     t.string   "attr_lowest_desc"
     t.string   "attr_lowest_legend"
     t.integer  "created_by"
