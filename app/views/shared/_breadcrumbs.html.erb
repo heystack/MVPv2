@@ -1,3 +1,7 @@
 <div class="breadcrumbs">
 <%= link_to "Stacks", "#stacks", :rel => "facebox" %> > <%= @stack.question %>
+<% if current_user.admin? || @stack.created_by?(current_user) %>
+  (<%= link_to "edit", edit_stack_path(@stack) %>)
+<% end %>
+
 </div>
