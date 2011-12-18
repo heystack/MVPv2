@@ -118,7 +118,7 @@ class StacksController < ApplicationController
         @mult_diff = ("%.f" % @mult).to_s + " times"
       end
 
-      # Generate topic-specific text for display
+      # Generate stack-specific text for display
       if @stack.name == "Babysitters"
         if @user_rank == "lowest"
           @diff_amt = (( @lowest_amt - session[:you] ) * 240).round
@@ -138,13 +138,15 @@ class StacksController < ApplicationController
         @hc_tooltip = "this.x +': $'+ this.y.toFixed(2).gsub(\".00\", \"\") +'/hr'"
         @hc_dataLabel = "'$'+ this.y.toFixed(2).gsub(\".00\", \"\")"
 
-      elsif @topic.name == "Mobilizers"
+      elsif @stack.name == "Mobilizers"
         if @user_rank == "lowest"
           @diff_amt = ( @lowest_amt - session[:you] ).round
-          @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " earlier"
+          # @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " earlier"
+          @diff_text = "TBD"
         else
           @diff_amt = ( session[:you] - @lowest_amt ).round
-          @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " later"
+          # @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " later"
+          @diff_text = "TBD"
         end
         if @diff_amt == 0
           @comparison_text = "You gave your child a mobile phone <span class='em'>" + "at the same age" + "</span> as your earliest mobilizing neighbors"
@@ -156,7 +158,7 @@ class StacksController < ApplicationController
         @hc_tooltip = "this.x +': '+ this.y.toFixed(1).gsub(\".0\", \"\") +' yrs old'"
         @hc_dataLabel = "''+ this.y.toFixed(1).gsub(\".0\", \"\")"
 
-      elsif @topic.name == "Homework"
+      elsif @stack.name == "Homework"
         if @user_rank == "lowest"
           @diff_amt = (( @lowest_amt - session[:you] ) * 21).round
           @diff_text = "&nbsp;less"

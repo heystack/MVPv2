@@ -14,6 +14,7 @@ class ResponsesController < ApplicationController
     @form_capable = true
     if session[:you]
       @ask_location = false
+      @zipcode = current_user.zipcode
     else
       @ask_location = true
     end
@@ -33,11 +34,11 @@ class ResponsesController < ApplicationController
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
     if @response.save
-      if params[:user][:zipcode]
+      if (params[:user][:zipcode]).nil?
+        @zipcode = @user.zipcode
+      else
         @zipcode = params[:user][:zipcode]
         @user.update_attributes(:zipcode => @zipcode)
-      else
-        @zipcode = @user.zipcode
       end
       # flash[:success] = "Response saved: " + @response.value.to_s + " user.id=" + @user.id.to_s
       session[:you] = @response.value
