@@ -33,8 +33,10 @@ class ResponsesController < ApplicationController
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
     if @response.save
-      @zipcode = params[:user][:zipcode]
-      @user.update_attributes(:zipcode => @zipcode)
+      if params[:user][:zipcode]
+        @zipcode = params[:user][:zipcode]
+        @user.update_attributes(:zipcode => @zipcode)
+      end
       # flash[:success] = "Response saved: " + @response.value.to_s + " user.id=" + @user.id.to_s
       session[:you] = @response.value
       session[:email] = params[:user][:email]
