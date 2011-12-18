@@ -6,7 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require prototype
 //= require highcharts.src
 //= require excanvas.compiled
 //= require facebox/facebox
