@@ -6,5 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require highcharts.src
 //= require facebox/facebox
 //= require_tree .
