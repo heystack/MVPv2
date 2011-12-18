@@ -36,6 +36,8 @@ class ResponsesController < ApplicationController
       if params[:user][:zipcode]
         @zipcode = params[:user][:zipcode]
         @user.update_attributes(:zipcode => @zipcode)
+      else
+        @zipcode = @user.zipcode
       end
       # flash[:success] = "Response saved: " + @response.value.to_s + " user.id=" + @user.id.to_s
       session[:you] = @response.value
