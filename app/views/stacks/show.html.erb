@@ -6,11 +6,13 @@
 <table>
   <tr>
 	<td class="atf_left">
-	  <%= render 'layouts/comparison' %>
 	  <div id="hc" class="hc"></div>
+	  <%= render 'layouts/comparison' %>
 	</td>
 	<td style="text-align:center;vertical-align:center;">
-	  <%= image_tag("big_red_share.png", :name => "about") %><%= render 'layouts/tip_progress'  %>
+	  <%= image_tag("share.png", :name => "about") %><%= render 'layouts/tip_progress'  %><br/>
+	  <%= image_tag("signup.png", :name => "signup") %>
+	  <div class="de-em">Get notified of new Stacks!</div>
 	</td>
   </tr>
   <!-- <tr><td colspan="2"><div class="comparison-1" style="width:80%;margin-left:auto;margin-right:auto;"><%=raw @comparison_text %></div></td></tr> -->
@@ -23,18 +25,9 @@
   </tr> -->
   <tr>
 	<td class="atf_left">
-	  <div class="stk_col_right_section">
-	  <div class="stk_col_right_header">Comments</div>
-	  <% if @stack.comments? %>
-		<%= render @comments %>
-	  <% end %>
-	  <div id="add_comment">
-	  <%= form_for(@comment) do |f| %>
-		<%= render 'comments/comments_form', :f => f %>
-	  <% end %>
-	  </div>
+	  <div class="stk_col_right_section"><%= render 'comments/comments_section' %></div>	  
 	</td>
- 	<td style="vertical-align:center;">
+ 	<td class="stk_col_right">
 	  <div class="stk_col_right_section"><%= render 'shared/view_stacks' %></div>
 	  <div class="stk_col_right_section"><%= render 'layouts/feedback' %></div>
 	</td>

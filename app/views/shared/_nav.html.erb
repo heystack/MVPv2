@@ -12,12 +12,6 @@
 							:rel => "facebox",
 							:onmouseover => "document.comments.src='" + image_path('nav_comments_hover.png') + "';",						
 							:onmouseout => "document.comments.src='" + image_path('nav_comments.png') + "';"%></li>
-  <% if signed_in? %>
-  <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-  <% else %>
-  <li><%= link_to "Sign in", signin_path %></li>
-  <% end %>
-  </li>
 </ul>
 </nav>
 

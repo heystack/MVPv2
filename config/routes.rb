@@ -8,6 +8,8 @@ Mvpv2::Application.routes.draw do
     resources :responses
     resources :comments
   end
+  match 'users/:id' => 'users#toggle_admin'
+  
   resources :stacks
   resources :stacks do
     resources :responses

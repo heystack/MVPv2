@@ -141,12 +141,10 @@ class StacksController < ApplicationController
       elsif @stack.name == "Mobilizers"
         if @user_rank == "lowest"
           @diff_amt = ( @lowest_amt - session[:you] ).round
-          # @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " earlier"
-          @diff_text = "TBD"
+          @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " earlier"
         else
           @diff_amt = ( session[:you] - @lowest_amt ).round
-          # @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " later"
-          @diff_text = "TBD"
+          @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " later"
         end
         if @diff_amt == 0
           @comparison_text = "You gave your child a mobile phone <span class='em'>" + "at the same age" + "</span> as your earliest mobilizing neighbors"

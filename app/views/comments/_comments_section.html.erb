@@ -1,0 +1,9 @@
+<div class="stk_col_right_header">Talk of the Town</div>
+<div class="comment">
+<%= form_for(@comment) do |f| %>
+	<%= render 'comments/comments_form', :f => f %>
+<% end %>
+</div>
+<% if @stack.comments? %>
+	<%= render @comments %>
+<% end %>

@@ -70,10 +70,11 @@ div.flash_container {
 /* Round corners */
 
 .round {
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
 }
+
 
 .round_bottom {
   -moz-border-bottom-left-radius:     10px;
@@ -324,11 +325,12 @@ div.stk_col_right_section {
   border: none;
   border-width: 1px;
   border-color: #eee;
+  vertical-align: top;
 }
 
 div.stk_col_right_header {
   color: #666;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 110%;
   border-bottom: solid;
   border-bottom-width: 1px;
@@ -574,20 +576,23 @@ ul.stack_list li {
 /* Comments */
 
 div.comment {
-  width: 90%;
-  padding: 5px 10px 5px 10px;
-  font-size: 80%;
-  -moz-box-shadow: 2px 2px 3px #ccc;
-  -webkit-box-shadow: 2px 2px 3px #ccc;
+  padding: 0px 10px 10px 10px;
+  width: 95%;
   border-style: solid;
   border-width: 1px;
-  border-color: #ccc;
   border-color: #eee;
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
+}
+
+div.comment_content {
+  font-size: 80%;
 }
 
 textarea.comment_content {
   height: 20px;
-  width: 90%;
+  width: 95%;
   border-color: #ccc;
 }
 
