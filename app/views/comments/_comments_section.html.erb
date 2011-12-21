@@ -1,4 +1,4 @@
-<div class="stk_section_header">Talk of the Town</div>
+<div class="stk_section_header">Discussion</div>
 <div class="comment">
 <%= form_for(@comment) do |f| %>
 	<%= render 'comments/comments_form', :f => f %>
@@ -7,3 +7,4 @@
 <% if @stack.comments? %>
 	<%= render @comments %>
 <% end %>
+<%= image_tag "comment_callout.png" %>

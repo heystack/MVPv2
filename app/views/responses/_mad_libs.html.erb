@@ -4,7 +4,7 @@
 <table class="mad_libs_table">
   <tr>
     <td style="vertical-align:top"><div class="begin-quote">&#8220;</div></td>
-    <td class="madlibs-content round greyfade">
+    <td class="madlibs-content round15px greyfade">
     <%=raw @stack.madlibs_intro %>
     <label>
 		<%= f.text_field :value, :size => 2, :value => "#{@response_value}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
