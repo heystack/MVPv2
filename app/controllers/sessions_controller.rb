@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       @stack ||= Stack.first
       session[:stack] = @stack.id
       if @stack.answered?(current_user)
-        redirect_to edit_stack_response_path(@stack, @stack.answered?(current_user))
+        redirect_to stack_path(@stack)
       else
         redirect_to new_stack_response_path(session[:stack])
       end

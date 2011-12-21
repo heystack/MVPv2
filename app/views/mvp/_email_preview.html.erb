@@ -19,13 +19,13 @@ I just tried it out on how much homework our kids have each night. If you\'re in
 <table>
   <tr>
 	<td style="text-align: right;"><label for="contact_from_name">Your&nbsp;Name:</label></td>
-	<td><%= text_field "contact", "from_name", :size => "40" %> via StkUp
+	<td><%= text_field "contact", "from_name", :size => "40", :value => current_user.name.blank? ? '' : current_user.name %> via StkUp
 	</td>
   </tr>
   <tr>
 	<td style="text-align: right;"><label for="contact_user_email">Your&nbsp;Email:</label></td>
 	<td><%= text_field "contact", "user_email", :size => "50", :style => "color:lightgray",
-		:value => 'you@example.com',
+		:value => current_user.email.blank? ? 'you@example.com' : current_user.email,
 		:onfocus => "this.style.color = 'black'" %>
 	</td>
   </tr>

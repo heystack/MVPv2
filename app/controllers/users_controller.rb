@@ -17,14 +17,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @responses = @user.responses.all  
+    @user.update_attributes(params[:user])
+    redirect_to root_path
   end
   
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated."
-      redirect_to users_path
+      flash[:success] = "Thank you for signing up!"
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -47,6 +48,11 @@ class UsersController < ApplicationController
     #   format.html { redirect_to "www.google.com" }
     #   format.js
     # end
+  end
+  
+  def signup
+    @user = User.find(params[:id])
+    @user.update_attributes(:email => params[:user][:email])
   end
   
   private

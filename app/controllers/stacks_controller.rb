@@ -52,6 +52,8 @@ class StacksController < ApplicationController
     if session[:you] < 0.0001
       redirect_to new_stack_response_path(@stack)
     end
+    
+    @user = current_user
 
     @lowest_color = LOWEST_COLOR
     @all_neighbors_color = ALL_NEIGHBORS_COLOR

@@ -1,35 +1,32 @@
 <%= render 'layouts/hc_script' %>
 
+<div class="above_the_fold medshadow round">
+
 <%= render 'shared/breadcrumbs' %>
 
-<div class="above_the_fold">
 <table>
   <tr>
-	<td class="atf_left">
+	<td class="stk_col_left">
 	  <div id="hc" class="hc"></div>
 	  <%= render 'layouts/comparison' %>
 	</td>
-	<td style="text-align:center;vertical-align:center;">
-	  <%= image_tag("share.png", :name => "about") %><%= render 'layouts/tip_progress'  %><br/>
-	  <%= image_tag("signup.png", :name => "signup") %>
-	  <div class="de-em">Get notified of new Stacks!</div>
+	<td class="atf_right">
+	  <%= render 'layouts/share'  %><br/>
+	  <%= render 'layouts/signup_form' %>
 	</td>
   </tr>
-  <!-- <tr><td colspan="2"><div class="comparison-1" style="width:80%;margin-left:auto;margin-right:auto;"><%=raw @comparison_text %></div></td></tr> -->
-  <!-- <tr>
-  <td>
-	<div id="legend" class="legend"><%= render 'layouts/legend' %></div>
-  </td>
-  <td>
-  </td>
-  </tr> -->
+</table>
+</div>
+
+<div class="below_the_fold">
+<table>
   <tr>
-	<td class="atf_left">
-	  <div class="stk_col_right_section"><%= render 'comments/comments_section' %></div>	  
+	<td class="stk_col_left">
+	  <div class="stk_section"><%= render 'comments/comments_section' %></div>	  
 	</td>
  	<td class="stk_col_right">
-	  <div class="stk_col_right_section"><%= render 'shared/view_stacks' %></div>
-	  <div class="stk_col_right_section"><%= render 'layouts/feedback' %></div>
+	  <div class="stk_section"><%= render 'shared/view_stacks' %></div>
+	  <div class="stk_section"><%= render 'layouts/feedback' %></div>
 	</td>
   </tr>
 </table>

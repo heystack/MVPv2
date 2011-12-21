@@ -48,6 +48,14 @@ border-width: 1px;
 border-color: #eee;
 }
 
+.medshadow {
+-moz-box-shadow: 3px 3px 7px #ccc;
+-webkit-box-shadow: 3px 3px 7px #ccc;
+border-style: solid;
+border-width: 1px;
+border-color: #eee;
+}
+
 body {
   background-image:url('bluebg.png');
 }
@@ -114,9 +122,9 @@ td.header_tagline {
 }
 
 div.breadcrumbs {
-  color: #999;
+  color: #666;
   font-size: 110%;
-  margin-left: 25px;
+  margin-top: 10px;
   margin-bottom: 5px;
 }
 
@@ -283,30 +291,30 @@ div.hc {
 
 div.above_the_fold {
   width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-td.atf_left {
+div.below_the_fold {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td.stk_col_left {
   width: 60%;
   text-align: left;
   vertical-align: top;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 
-/* Stk Main Table */
-
-table.stk_table {
-  padding: 10px 20px 30px 20px;
-}
-
-td.above_the_fold {
-  width: 90%;
-/*  padding-top: 20px; Screws up IE shadow */
-  border: none;
-  border-width: 1px;
-  border-color: #eee;
-  vertical-align: top;
+td.atf_right {
+  width: 40%;
+  text-align: center;
+  vertical-align: center;
 }
 
 td.stk_col_right {
@@ -314,11 +322,11 @@ td.stk_col_right {
   border-left: none;
   border-width: 1px;
   border-color: #0088ce;
-  padding-left: 30px;
+  padding-left: 20px;
   vertical-align: top;
 }
 
-div.stk_col_right_section {
+div.stk_section {
   margin-bottom: 10px;
   padding: 10px;
   padding-bottom: 20px;
@@ -328,7 +336,7 @@ div.stk_col_right_section {
   vertical-align: top;
 }
 
-div.stk_col_right_header {
+div.stk_section_header {
   color: #666;
   font-weight: bold;
   font-size: 110%;
@@ -346,6 +354,21 @@ div.float_top {
 div.float_top div {
   position: absolute;
   top: 0;
+}
+
+/* Sign Up Form */
+
+div.signup_form {
+  font-size: 110%;
+}
+
+input.signup_text {
+  font-size: 110%;
+  text-align: center;
+  width: 250px;
+  padding: 5px;
+  border-color: #ccc;
+  color: #eee;
 }
 
 /* Share Stack */
@@ -609,12 +632,12 @@ div.suggestions {
 
 textarea.suggestion_topics {
   height: 30px;
-  width: 90%;
+  width: 100%;
 }
 
 textarea.stack_request {
   height: 60px;
-  width: 90%;
+  width: 95%;
 }
 
 input.suggestion_email {

@@ -22,6 +22,7 @@ Mvpv2::Application.routes.draw do
   match '/response',     :to => 'responses#new'
   match '/stkresponses', :to => 'responses#stkresponses'
 
+  match '/signup',  :to => 'users#signup'
   match '/signin',  :to => 'sessions#create'
   match '/signout', :to => 'sessions#destroy'
   match '/signedout', :to => 'mvp#signedout'
