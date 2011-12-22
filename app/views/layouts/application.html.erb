@@ -22,11 +22,7 @@
 	</section>
 	<!--[if IE]></div><![endif]-->
   </div>
-  <% if signed_in? && current_user.admin? %>
   <%= link_to "Sign out", signout_path, :method => :delete %>
-  <% else %>
-  <%= link_to "Sign in", signin_path %>
-  <% end %>
   <%= debug(params) if Rails.env.development? %>
   <%= session.inspect if Rails.env.development? %>
   <%= current_user.inspect if Rails.env.development? %>
