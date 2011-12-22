@@ -1,8 +1,10 @@
 <div class="stk_section_header">Suggest a Stack</div>
 
 <%= form_tag "/stack_request" do -%>
+<%= hidden_field :request, :from_id, :value => current_user.id %>
+<%= hidden_field :request, :from_email, :value => current_user.email %>
 <%= text_area "request", "message",
-	:class => "stack_request",
+	:class => "stack_request round",
 	:style => "color:lightgray",
 	:value => "List topics you'd like to see comparisons on (how much..., how many..., at what age...)",
 	:onfocus => "if (this.value.substring(0, 11) == 'List topics') {this.value='';this.style.color = 'black'}; unhide('submit_div')" %>

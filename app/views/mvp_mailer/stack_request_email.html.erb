@@ -6,9 +6,8 @@
   <body>
     <h1>Stack Request!</h1>
     <p>
-      From: <%= @request[:from_email] %><br/>
+      From: <%= @request[:from_id] %> <%= @request[:from_email] %><br/>
 	  Request: <%=raw @request[:message].gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %><br/>
-	  Opt-in: <%= @request[:opt_in] %>
     </p>
     <p><%= Time.now %></p>
   </body>
