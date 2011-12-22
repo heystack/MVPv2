@@ -48,8 +48,8 @@ How many
 'My child in the <label class="label_select"><select name="response[qualifier1]" style="font-size: 110%"><option value="3rd grade">3rd grade</option><option value="4th grade">4th grade</option><option value="5th grade">5th grade</option><option value="6th grade" selected="selected">6th grade</option><option value="7th grade">7th grade</option><option value="8th grade">8th grade</option><option value="9th grade">9th grade</option><option value="10th grade">10th grade</option><option value="11th grade">11th grade</option><option value="12th grade">12th grade</option></select></label> gets '.html_safe
 hours
  hours of homework per weeknight
-Most Loaded
-Least Loaded
+Heaviest Load
+Lightest Load
 The&nbsp;least&nbsp;loaded&nbsp;20% from&nbsp;ALL&nbsp;NEIGHBORS.
 Your child's homework load is 
 hours of homework per weeknight
