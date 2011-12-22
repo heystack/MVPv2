@@ -3,7 +3,8 @@
 <ul class="stack_list">
 <%= render Stack.all, :omit_stack => @stack %>
 </ul>
-<% else %>
+<% end %>
+<% if current_user.admin? %>
 <%= link_to "Add a New Stack", new_stack_path %><br/>
 <% end %>
 <div class="de-em text-75" style="line-height:1em;margin-top:-5px"><br/>And more coming...</div>

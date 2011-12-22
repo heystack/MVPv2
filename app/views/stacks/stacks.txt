@@ -41,3 +41,15 @@ I just tried it out on how much we pay our babysitter. If you\'re interested to 
 	<%=raw link_to '<img alt="15" src="http://stkup.com.com/images/buttons/nbr_15.png">'.html_safe,
 		(@base_url + "?response[email]=" + @email + "&response[value]=15").html_safe %></li>
 </ul>
+
+Homework
+How many hours of nightly homework for your child?
+How many
+'My child in the <label class="label_select"><select name="response[qualifier1]" style="font-size: 110%"><option value="3rd grade">3rd grade</option><option value="4th grade">4th grade</option><option value="5th grade">5th grade</option><option value="6th grade" selected="selected">6th grade</option><option value="7th grade">7th grade</option><option value="8th grade">8th grade</option><option value="9th grade">9th grade</option><option value="10th grade">10th grade</option><option value="11th grade">11th grade</option><option value="12th grade">12th grade</option></select></label> gets '.html_safe
+hours
+ hours of homework per weeknight
+Most Loaded
+Least Loaded
+The&nbsp;least&nbsp;loaded&nbsp;20% from&nbsp;ALL&nbsp;NEIGHBORS.
+Your child's homework load is 
+hours of homework per weeknight
