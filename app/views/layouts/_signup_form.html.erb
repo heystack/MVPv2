@@ -3,7 +3,6 @@
 <%= form_for @user do |u| %>
 <%= u.text_field :email, :value => "Your Email Address", :class => "signup_text round", :onfocus => "this.style.color = 'black'; this.style.borderColor = 'black'; if (this.value == 'Your Email Address') {this.value='';}; unhide('submit_div')" %>
 <%= image_submit_tag("signup.png", :name => "signup") %>
-<div class="de-em">Get notified of new Stacks!</div>
 <% end %>
 </div>
 <% end %>
