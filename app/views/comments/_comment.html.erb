@@ -1,6 +1,5 @@
 <% @user = User.find_by_id(comment.user_id) %>
 <div class="comment">
-<%= image_tag "comment_callout.png" %>
 <div class="comment_content">
 <%= comment.content %><br/>
 <span class="de-em text-75">Added <%= time_ago_in_words(comment.created_at) %> ago<%= @user.name.blank? ? "" : " by <strong>".html_safe + @user.name + "</strong>".html_safe -%>.</span>
@@ -12,3 +11,4 @@
   <% end %>
 </div>
 </div>
+<div class="comment_callout"><%= image_tag "comment_callout.png" %></div>

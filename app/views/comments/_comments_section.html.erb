@@ -4,7 +4,7 @@
 	<%= render 'comments/comments_form', :f => f %>
 <% end %>
 </div>
+<div class="comment_callout"><%= image_tag "comment_callout.png" %></div>
 <% if @stack.comments? %>
 	<%= render @comments %>
 <% end %>
-<%= image_tag "comment_callout.png" %>
