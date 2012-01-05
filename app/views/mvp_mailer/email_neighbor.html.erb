@@ -9,6 +9,6 @@ has shared a local resource with you:<br/>
 <%=raw @contact[:message].gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %>
 <br/>
 <br/>
-<div style="font-size:150%"><%= @stack.question %></div>
+<div style="font-size:150%; font-weight:bold;"><%= @stack.question %></div>
 
 <%= render 'layouts/stk_buttons' %>
