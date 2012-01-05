@@ -15,6 +15,9 @@ Mvpv2::Application.routes.draw do
     resources :responses
     resources :comments
   end
+
+  match '/create_stack', :to => 'stacks#create_stack'
+
   resources :responses
   resources :comments, :only => [:new, :create, :destroy]
   resources :sessions, :only => [:new, :create, :destroy]

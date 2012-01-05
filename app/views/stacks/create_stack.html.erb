@@ -1,0 +1,19 @@
+<div class="padding_30px">
+<h1><%= @title %></h1>
+
+<%= form_for(@stack) do |f| %>
+<%= render 'shared/error_messages', :object => @stack %>
+<div class="field">
+  <%= f.hidden_field :created_by, :value => current_user.id %>
+  <%= f.label "Question" %><br />
+  <%= f.text_field :question, :size => "100" %><br/>
+  <%= f.label "Stem" %><br />
+  <%= f.text_field :stem, :size => "100" %><br/>
+</div>
+  <div class="actions"><br/><strong>Not Working Yet!</strong> Need input on what this page should look like. Here's what LinkedIn's "Create a Poll" screen looks like:<br/><br/>
+	<%= image_tag "linkedin_poll.png", :width => '775px' %>
+    <!-- <%= f.submit "Create Stack" %> -->
+  </div>
+<% end %>
+
+</div>
