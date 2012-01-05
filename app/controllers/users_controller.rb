@@ -24,8 +24,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:success] = "Thank you for signing up!"
-      redirect_to root_path
+      flash[:notice] = "Ok, you're all set to receive a new stack question each week sent to #{params[:user][:email]}!"
+      @stack = Stack.find_by_id(session[:stack])
+      redirect_to @stack
     else
       render 'edit'
     end

@@ -32,8 +32,8 @@ Mvpv2::Application.routes.draw do
   get "mvp/home"
   get "mvp/contact"
 
-  match '/email_preview',       :to => 'mvp#email_preview'
-  match '/share_with_neighbor', :to => 'mvp#share_with_neighbor'
+  match '/share',               :to => 'mvp#share_form'
+  match '/share_via_email',     :to => 'mvp#share_via_email'
   match '/send_feedback',       :to => 'mvp#send_feedback'
   match '/send_comment',        :to => 'mvp#send_comment'
   match '/stack_request',       :to => 'mvp#stack_request'

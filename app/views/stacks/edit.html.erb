@@ -1,0 +1,11 @@
+<div class="padding_30px">
+<h1><%= @title %></h1>
+
+<%= form_for(@stack) do |f| %>
+  <%= render 'stack_form', :f => f %>
+  <div class="actions">
+    <%= f.submit "Save Stack Changes" %>
+  </div>
+<% end %>
+
+</div>

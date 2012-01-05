@@ -10,8 +10,9 @@ class MvpMailer < ActionMailer::Base
     @email = @contact[:email]
     @user_email = user_email
     @form_capable = false
-    @host_url = "http://stkup.com"
+    # @host_url = "http://stkup.com"
     # @host_url = "http://localhost:3000"
+    @host_url = "http://stkupmvpv2.herokuapp.com"
     @base_url = @host_url + "/stacks/" + @stack.id.to_s + "/responses"
     # Validate reply-to email address
     email_regex = /\A([\w\.\-\+]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i

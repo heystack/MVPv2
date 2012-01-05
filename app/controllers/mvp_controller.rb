@@ -16,13 +16,17 @@ class MvpController < ApplicationController
     redirect_to root_path
   end
 
-  def share_with_neighbor
+  def share_form
+    @stack = Stack.find_by_id(session[:stack])
+  end
+
+  def share_via_email
     @contact = params[:contact]
     @stack = Stack.find_by_id(session[:stack])
     @from_name = @contact[:from_name]
     @user_email = @contact[:user_email]
     MvpMailer.email_neighbor(@stack, @contact, @from_name, @user_email).deliver
-    flash[:success] = "Thanks for sharing with #{@contact[:email]}. Feel free to share with as many people as you\'d like!"
+    flash.keep[:success] = "Thanks for sharing with #{@contact[:email]}. Feel free to share with as many people as you\'d like!"
     redirect_to root_path
   end
 

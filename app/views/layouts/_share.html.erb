@@ -1,4 +1,7 @@
+<div class="share_button">
+<!-- <%= link_to image_tag("share.png", :name => "share"), share_path %> -->
 <%= link_to image_tag("share.png", :name => "share"), "#share_form", :rel => "facebox" %>
-<%= render 'layouts/tip_progress'  %>
+<!-- <%= render 'layouts/tip_progress'  %> -->
+</div>
 
-<div id="share_form" style="display:none;"><%= render 'mvp/email_preview' %></div>
+<div id="share_form" style="display:none;"><%= render 'mvp/share_form' %></div>

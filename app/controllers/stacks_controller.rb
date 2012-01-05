@@ -186,6 +186,7 @@ class StacksController < ApplicationController
   end
 
   def edit
+    @title = "Edit Stack"
     @stack = Stack.find(params[:id])
   end
   

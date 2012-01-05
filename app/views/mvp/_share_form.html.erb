@@ -1,0 +1,51 @@
+<% @message = "I thought you'd be interested in this local resource for gathering helpful info for parents. Simple idea - quickly compare yourself against the rest of the community in topics that matter to you.\n
+If you\'re interested to see how you stack up, it\'s easy to participate - just give your info below, then get back an immediate web comparison against other neighbors. The more who answer, the better the comparison." %>
+
+<% @email_subject = @stack.question %>
+
+<div class="share_form">
+<%= form_tag "/share_via_email" do -%>
+<table>
+  <tr>
+	<td style="text-align: right;"><label for="contact_from_name">Your&nbsp;Name:</label></td>
+	<td><%= text_field "contact", "from_name", :size => "40", :value => current_user.name.blank? ? '' : current_user.name %> via StkUp
+	</td>
+  </tr>
+  <tr>
+	<td style="text-align: right;"><label for="contact_user_email">Your&nbsp;Email:</label></td>
+	<td><%= text_field "contact", "user_email", :size => "50",
+		:style => current_user.email.blank? ? 'color:lightgray' : 'color:black',
+		:value => current_user.email.blank? ? 'you@example.com' : current_user.email,
+		:onfocus => "this.style.color = 'black'" %>
+	</td>
+  </tr>
+  <tr>
+	<td style="text-align: right;"><label for="contact_email">To:</label></td>
+	<td>
+		<%= text_field "contact", "email", :size => "50", :style => "color:lightgray",
+		:value => "neighbor@example.com", :id => "prefill",
+		:onfocus => "if (this.value == 'neighbor@example.com') {this.value='';this.style.color = 'black'}" %>
+	</td>
+  </tr>
+  <tr>
+	<td style="text-align: right;"><label for="contact_subject">Subject:</label></td>
+	<td><%= text_field "contact", "email_subject", :size => "50", :value => @email_subject %></td>
+  </tr>
+	<tr>
+	<td class="top_right"><label for="comment_body">Message:</label></td>
+	<td><%= text_area "contact", "message", :size => "30x8", :class => "share_form_message", :value => @message %>
+		<div class="inactive text-75">followed by the question:</div>
+		<div class="field">
+		<label for="response_value"><%= @stack.question %></label>
+		</div>
+	</td>
+  </tr>
+  <tr>
+	<td></td>
+	<td class="text-1_25"><input type="submit" value="Share with Neighbor" class="form_button round" /></td>
+  </tr>
+</table>
+
+<% end -%>
+
+</div>

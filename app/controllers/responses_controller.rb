@@ -86,12 +86,14 @@ class ResponsesController < ApplicationController
     @email = session[:email]
     @host_url = request.host_with_port
     @base_url = "/stacks/" + @stack.id.to_s + "/responses"
-    if @stack.name == "Babysitters"
+    if @stack.name == "Babysitters" && @response.value
       @response_value = ("%.2f" % @response.value).to_s.gsub(/\.00/,"")
-    elsif @stack.name == "Mobilizers"
+    elsif @stack.name == "Mobilizers" && @response.value
       @response_value = ("%.1f" % @response.value).to_s.gsub(/\.0/,"")
-    elsif @stack.name == "Homework"
+    elsif @stack.name == "Homework" && @response.value
       @response_value = ("%.1f" % @response.value).to_s.gsub(/\.0/,"")
+    else
+      @response_value = ""
     end
   end
 
@@ -129,23 +131,33 @@ class ResponsesController < ApplicationController
     if !params[:response]
       redirect_to root_path and return
     end
+    user = current_user
+    if user.nil?
+      @user = User.new
+      if @user.save
+        sign_in @user
+      end
+    else
+      sign_in user
+    end
     @stack = Stack.find_by_id(params[:stack_id])
+    # Session vars must be set since we might be coming from an email form submission
+    session[:stack] = @stack.id
     if @stack.answered?(current_user)
-      flash[:notice] = "Stack already answered by " + params[:response][:email]
+      # flash[:notice] = "Stack already answered by " + params[:email]
       @response = @stack.responses.find_by_user_id(current_user.id)
       @save_response = @response.update_attributes(params[:response])
     else
-      flash[:notice] = "New stack response"
-      @response = @stack.responses.build(params[:response])
-      @save_response = @response.save
+      # flash[:notice] = "New stack response"
+      redirect_to new_response_path and return
     end
     if @save_response
       # flash[:success] = "Your response, " + @response.value.to_s + ", has been added to the stack!"
       session[:you] = @response.value
-      session[:email] = @response.email
+      session[:email] = params[:email]
       session[:response_id] = @response.id
       session[:zipcode] = ""
-      
+
       if @stack.name == "Babysitters"
         session[:babysitters] = session[:you]
         session[:babysitter_id] = @response.id
@@ -157,15 +169,13 @@ class ResponsesController < ApplicationController
         session[:homework_id] = @response.id
       end
 
-      # Session vars must be set since we might be coming from an email form submission
-      session[:stack] = @stack.id
       if session[:stack]
         redirect_to edit_response_path(@response.id)
       else
         redirect_to root_path
       end
     else
-      render 'new'
+      redirect_to new_response_path
     end
   end
 
