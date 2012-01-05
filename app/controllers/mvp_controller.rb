@@ -26,8 +26,8 @@ class MvpController < ApplicationController
     @from_name = @contact[:from_name]
     @user_email = @contact[:user_email]
     MvpMailer.email_neighbor(@stack, @contact, @from_name, @user_email).deliver
-    flash.keep[:success] = "Thanks for sharing with #{@contact[:email]}. Feel free to share with as many people as you\'d like!"
-    redirect_to root_path
+    flash[:success] = "Thanks for sharing with #{@contact[:email]}. Feel free to share with as many people as you\'d like!"
+    redirect_to @stack
   end
 
   def signedout
