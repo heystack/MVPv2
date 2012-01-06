@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all(:order => 'id DESC')
   end
 
   def show
     @user = User.find(params[:id])
-    @responses = @user.responses.all
+    @responses = @user.responses.all(:order => 'id DESC')
   end
 
   def edit
