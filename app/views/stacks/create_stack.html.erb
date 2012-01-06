@@ -4,14 +4,39 @@
 <%= form_for(@stack) do |f| %>
 <%= render 'shared/error_messages', :object => @stack %>
 <div class="field">
+Here are all of the fields that need to be customized for a stack currently:<br/>
   <%= f.hidden_field :created_by, :value => current_user.id %>
   <%= f.label "Question" %><br />
   <%= f.text_field :question, :size => "100" %><br/>
   <%= f.label "Stem" %><br />
   <%= f.text_field :stem, :size => "100" %><br/>
+  <%= f.label "Stack of the Day" %><br />
+  <%= f.text_field :sotd, :size => "100" %><br/>
+  <%= f.label "Madlibs Intro" %><br />
+  <%= f.text_field :madlibs_intro, :size => "100" %><br/>
+  <%= f.label "Madlibs Label" %><br />
+  <%= f.text_field :madlibs_label, :size => "100" %><br/>
+  <%= f.label "Madlibs Units" %><br />
+  <%= f.text_field :madlibs_units, :size => "100" %><br/>
+  <%= f.label "Biggest Description" %><br />
+  <%= f.text_field :attr_biggest_desc, :size => "100" %><br/>
+  <%= f.label "Lowest Description" %><br />
+  <%= f.text_field :attr_lowest_desc, :size => "100" %><br/>
+  <%= f.label "Lowest Legend" %><br />
+  <%= f.text_field :attr_lowest_legend, :size => "100" %><br/>
+  <%= f.label "Comparison Text" %><br />
+  <%= f.text_field :attr_comparison_text, :size => "100" %><br/>
+  <%= f.label "Email Units" %><br />
+  <%= f.text_field :attr_email_units, :size => "100" %><br/>
+  <%= f.label "Email Message" %><br />
+  <%= f.text_area :attr_email_message, :value => "This has now been made generic" %><br />
+  <%= f.label "Email Buttons" %><br />
+  <%= f.text_area :attr_email_buttons, :value => "This has now been made just a single, generic button" %><br/>
 </div>
   <div class="actions"><br/><strong>Not Working Yet!</strong> Need input on what this page should look like. Here's what LinkedIn's "Create a Poll" screen looks like:<br/><br/>
-	<%= image_tag "linkedin_poll.png", :width => '775px' %>
+	<%= image_tag "linkedin_poll.png", :width => '775px' %><br/></br/>
+...and Facebook Poll...<br/><br/>
+<%= image_tag "fb_poll.png" %><br/></br/>
     <!-- <%= f.submit "Create Stack" %> -->
   </div>
 <% end %>

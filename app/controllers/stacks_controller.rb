@@ -37,8 +37,8 @@ class StacksController < ApplicationController
       redirect_to new_stack_path
     end
     
-    @stacks = Stack.all
     session[:stack] = @stack.id
+    @stacks = Stack.all
 
     if @stack.answered?(current_user)
       session[:you] = Response.find_by_stack_id_and_user_id(@stack.id, current_user.id).value
@@ -62,7 +62,7 @@ class StacksController < ApplicationController
 
     @count = @stack.responses.count
 
-    @tipping_point_progress = ("%.0f" % ((@count.to_f / TIPPING_POINT) * 100)).to_s + "%"
+    # @tipping_point_progress = ("%.0f" % ((@count.to_f / TIPPING_POINT) * 100)).to_s + "%"
     
     if @count > 0
       # Calculate all_neighbors
@@ -114,9 +114,14 @@ class StacksController < ApplicationController
         else
           @mult = ( @lowest_amt / session[:you] ).round
         end
-        @mult_diff = ("%.f" % @mult).to_s + " times"
       else
         @mult = ( session[:you] / @lowest_amt ).round
+      end
+      if @mult == 0.5
+        @mult_diff = "half"
+      elsif @mult == 2
+        @mult_diff = "twice"
+      else
         @mult_diff = ("%.f" % @mult).to_s + " times"
       end
 
