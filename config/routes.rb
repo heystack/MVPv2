@@ -28,7 +28,6 @@ Mvpv2::Application.routes.draw do
   match '/signup',  :to => 'users#signup'
   match '/signin',  :to => 'sessions#create'
   match '/signout', :to => 'sessions#destroy'
-  match '/signedout', :to => 'mvp#signedout'
 
   match '/toggle_admin', :to => 'users#toggle_admin'
 

@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
     
   def destroy
     sign_out
-    redirect_to '/signedout'
+    redirect_to 'http://www.stkup.com'
   end
   
 end
