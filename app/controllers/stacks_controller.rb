@@ -41,7 +41,8 @@ class StacksController < ApplicationController
     @stacks = Stack.all
 
     if @stack.answered?(current_user)
-      session[:you] = Response.find_by_stack_id_and_user_id(@stack.id, current_user.id).value
+      @response = Response.find_by_stack_id_and_user_id(@stack.id, current_user.id)
+      session[:you] = @response.value
       @comments = @stack.comments.all
       @comment = Comment.new
     else

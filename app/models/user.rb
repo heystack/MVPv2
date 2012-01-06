@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :name, :email, :password, :zipcode
+  attr_accessible :name, :email, :password, :zipcode, :subscribed
 
   has_many :responses # No :dependent => :destroy (Responses survive user destroy)
   has_many :comments, :dependent => :destroy

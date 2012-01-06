@@ -7,8 +7,7 @@ class ResponsesController < ApplicationController
     else
       @stack = Stack.find_by_id(session[:stack])
     end
-    session[:email] ||= "feedback@stkup.com"
-    @email = session[:email]
+    @email = current_user.email ? current_user.email : "feedback@stkup.com"
     @response = @stack.responses.new
     @title = "New Response"
     @form_capable = true
@@ -20,12 +19,17 @@ class ResponsesController < ApplicationController
     end
     @host_url = request.host_with_port
     @base_url = "/stacks/" + @stack.id.to_s + "/responses"
-    if @stack.name == "Babysitters"
-      @response_value = session[:babysitters] ? ("%.2f" % session[:babysitters]).to_s.to_s.gsub(/.00/,"") : ""
-    elsif @stack.name == "Mobilizers"
-      @response_value = session[:mobilizers] ? ("%.f" % session[:mobilizers]).to_s.gsub(/.0/,"") : ""
-    elsif @stack.name == "Homework"
-      @response_value = session[:homework] ? ("%.1f" % session[:homework]).to_s.gsub(/.0/,"") : ""
+    @previous_response = Response.find_by_stack_id_and_user_id(@stack.id, current_user.id)
+    if @previous_response
+      if @stack.stem == "How much"
+        @response_value = ("%.2f" % @previous_response).to_s.gsub(/.00/,"")
+      elsif @stack.stem == "At what age"
+        @response_value = ("%.f" % @previous_response).to_s.gsub(/.0/,"")
+      elsif @stack.stem == "How many"
+        @response_value = ("%.1f" % @previous_response).to_s.gsub(/.0/,"")
+      end
+    else
+      @response_value = ""
     end
   end
 
@@ -42,21 +46,7 @@ class ResponsesController < ApplicationController
       end
       # flash[:success] = "Response saved: " + @response.value.to_s + " user.id=" + @user.id.to_s
       session[:you] = @response.value
-      session[:email] = params[:user][:email]
-      session[:response_id] = @response.id
-      session[:zipcode] = @zipcode
       
-      if @stack.name == "Babysitters"
-        session[:babysitters] = session[:you]
-        session[:babysitter_id] = @response.id
-      elsif @stack.name == "Mobilizers"
-        session[:mobilizers] = session[:you]
-        session[:mobilizers_id] = @response.id
-      elsif @stack.name == "Homework"
-        session[:homework] = session[:you]
-        session[:homework_id] = @response.id
-      end
-
       # Session vars must be set since we might be coming from an external form submission
       session[:stack] = @stack.id
       if session[:stack]
@@ -83,14 +73,14 @@ class ResponsesController < ApplicationController
     @form_capable = true
     @ask_location = true
     @zipcode = current_user.zipcode
-    @email = session[:email]
+    @email = current_user.email
     @host_url = request.host_with_port
     @base_url = "/stacks/" + @stack.id.to_s + "/responses"
-    if @stack.name == "Babysitters" && @response.value
+    if @stack.stem == "How much"
       @response_value = ("%.2f" % @response.value).to_s.gsub(/\.00/,"")
-    elsif @stack.name == "Mobilizers" && @response.value
+    elsif @stack.stem == "At what age"
       @response_value = ("%.1f" % @response.value).to_s.gsub(/\.0/,"")
-    elsif @stack.name == "Homework" && @response.value
+    elsif @stack.stem == "How many"
       @response_value = ("%.1f" % @response.value).to_s.gsub(/\.0/,"")
     else
       @response_value = ""
@@ -105,20 +95,6 @@ class ResponsesController < ApplicationController
       @zipcode = params[:user][:zipcode]
       current_user.update_attributes(:zipcode => @zipcode)
       session[:you] = @response.value
-      session[:email] = params[:user][:email]
-      session[:response_id] = @response.id
-      session[:zipcode] = @zipcode
-
-      if @stack.name == "Babysitters"
-        session[:babysitters] = session[:you]
-        session[:babysitter_id] = @response.id
-      elsif @stack.name == "Mobilizers"
-        session[:mobilizers] = session[:you]
-        session[:mobilizers_id] = @response.id
-      elsif @stack.name == "Homework"
-        session[:homework] = session[:you]
-        session[:homework_id] = @response.id
-      end
       redirect_to @stack
     else
       flash[:error] = "Please enter a valid response."
@@ -140,6 +116,9 @@ class ResponsesController < ApplicationController
     else
       sign_in user
     end
+    if params[:email]
+      current_user.update_attributes(:email => params[:email])
+    end
     @stack = Stack.find_by_id(params[:stack_id])
     # Session vars must be set since we might be coming from an email form submission
     session[:stack] = @stack.id
@@ -154,23 +133,9 @@ class ResponsesController < ApplicationController
     if @save_response
       # flash[:success] = "Your response, " + @response.value.to_s + ", has been added to the stack!"
       session[:you] = @response.value
-      session[:email] = params[:email]
-      session[:response_id] = @response.id
-      session[:zipcode] = ""
-
-      if @stack.name == "Babysitters"
-        session[:babysitters] = session[:you]
-        session[:babysitter_id] = @response.id
-      elsif @stack.name == "Mobilizers"
-        session[:mobilizers] = session[:you]
-        session[:mobilizers_id] = @response.id
-      elsif @stack.name == "Homework"
-        session[:homework] = session[:you]
-        session[:homework_id] = @response.id
-      end
 
       if session[:stack]
-        redirect_to edit_response_path(@response.id)
+        redirect_to edit_response_path(@response)
       else
         redirect_to root_path
       end

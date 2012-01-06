@@ -4,8 +4,9 @@
   <tr>
 	<td style="text-align: right;"><label for="contact_email">Your&nbsp;Email:</label></td>
 	<td>
-		<%= text_field "contact", "from_email", :size => "50", :style => "color:lightgray",
-		:value => current_user.email.blank? ? session[:email] : current_user.email,
+		<%= text_field "contact", "from_email", :size => "50",
+		:style => current_user.email.blank? ? "color:lightgray" : "color:black",
+		:value => current_user.email.blank? ? "feedback@stkup.com" : current_user.email,
 		:onfocus => "this.style.color = 'black'" %></td>
   </tr>
   <tr>
