@@ -6,11 +6,6 @@
   <td><%= user.subscribed %></td>
   <td><%= link_to user.responses.count, user %></td>
   <td>
-  <span id="toggle_admin<%= user.id %>" class="toggle_admin">
-  <% if user.admin? %>
-    <img src="http://icons.iconarchive.com/icons/iconshock/real-vista-development/256/admin-privilege-icon.png" height="25">
-  <% end %>
-  </span>
   <!-- Ajax version not working - removed , :remote => true do |f|-->
   <!-- <%= form_for user, :html => { :method => :toggle_admin } do |f| %>
     <%= f.submit "Toggle Admin", :class => "toggle_admin_button" %>
@@ -18,6 +13,11 @@
   <%= form_for user, :html => { :method => :toggle_admin } do |f| %>
     <%= f.submit "Toggle Admin", :class => "toggle_admin_button" %>
   <% end %>
+  <span id="toggle_admin<%= user.id %>" class="toggle_admin">
+  <% if user.admin? %>
+    <img src="http://images-1.findicons.com/files/icons/2118/nuvola/128/personal.png" height="20">
+  <% end %>
+  </span>
   </td>
   <td>
 	<% if current_user.admin? || current_user.id == 1  %>
