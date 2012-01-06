@@ -15,7 +15,7 @@
 	<%= fields_for(:user) do |u| %>
 	<%= u.label :name %> <%= u.text_field :name, :value => current_user.name %> <span class="de-em text-75">optional</span>
 	<% end %>
-	<%= f.submit "Add Comment", :class => "form_button round" %><br/>
+	<%= f.submit "Add Comment", :class => "form_button round" %>
 	</div>
   </div>
 </div>
