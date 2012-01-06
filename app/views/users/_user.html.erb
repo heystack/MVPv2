@@ -1,13 +1,14 @@
-<li>
-  <%= link_to user.id, user %>
-  <% if current_user.admin? || current_user.id == 1  %>
-    | <%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
-                                :title => "Delete #{user.name}" %>
-    | <%= link_to "edit", edit_user_path(user) %>
-  <% end %>
+<tr>
+  <td><%= link_to user.id, user %></td>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.zipcode %></td>
+  <td><%= user.subscribed %></td>
+  <td><%= link_to user.responses.count, user %></td>
+  <td>
   <span id="toggle_admin<%= user.id %>" class="toggle_admin">
   <% if user.admin? %>
-    | <img src="http://icons.iconarchive.com/icons/iconshock/real-vista-development/256/admin-privilege-icon.png" height="25">
+    <img src="http://icons.iconarchive.com/icons/iconshock/real-vista-development/256/admin-privilege-icon.png" height="25">
   <% end %>
   </span>
   <!-- Ajax version not working - removed , :remote => true do |f|-->
@@ -17,6 +18,14 @@
   <%= form_for user, :html => { :method => :toggle_admin } do |f| %>
     <%= f.submit "Toggle Admin", :class => "toggle_admin_button" %>
   <% end %>
+  </td>
+  <td>
+	<% if current_user.admin? || current_user.id == 1  %>
+      <%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{user.name}" %>
+      | <%= link_to "edit", edit_user_path(user) %>
+  <% end %>
   <% if user == current_user %>- You<% end %>
-</li>
+  </td>
+</tr>
 

@@ -90,7 +90,6 @@ class ResponsesController < ApplicationController
   def update
     @response = Response.find(params[:id])
     @stack = Stack.find(@response.stack_id)
-    session[:response_id] = @response.id
     if @response.update_attributes(params[:response])
       @zipcode = params[:user][:zipcode]
       current_user.update_attributes(:zipcode => @zipcode)

@@ -5,7 +5,6 @@
   <td><%= user.id %></td>
   <td><%= stack.nil? ? "" : link_to( stack.name, stack_path(stack.id) ) %></td>
   <td><%= response.value %></td>
-  <td><%= user.zipcode %></td>
   <td><%= response.qualifier1 %></td>
   <td><%= time_ago_in_words(response.created_at) %> ago</td>
   <td><%= time_ago_in_words(response.updated_at) %> ago</td>
