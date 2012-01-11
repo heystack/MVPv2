@@ -119,11 +119,17 @@ class StacksController < ApplicationController
         @mult = ( session[:you] / @lowest_amt ).round
       end
       if @mult == 0.5
-        @mult_diff = "half"
+        @mult_diff = "half as much"
+      elsif @mult > 0.5 && @mult < 1.75
+        @mult_diff = "slightly more"
+      elsif @mult >= 1.75 && @mult < 2
+        @mult_diff = "almost twice as much"
       elsif @mult == 2
-        @mult_diff = "twice"
+        @mult_diff = "twice as much"
+      elsif @mult < 3
+        @mult_diff = "more than twice as much"
       else
-        @mult_diff = ("%.f" % @mult).to_s + " times"
+        @mult_diff = "at least " + ("%.f" % @mult).to_s + " times"
       end
 
       # Generate stack-specific text for display
