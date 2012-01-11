@@ -11,11 +11,12 @@
     <%= f.submit "Toggle Admin", :class => "toggle_admin_button" %>
   <% end %> -->
   <%= form_for user, :html => { :method => :toggle_admin } do |f| %>
-    <%= f.submit "Toggle Admin", :class => "toggle_admin_button" %>
-  <% end %>
   <span id="toggle_admin<%= user.id %>" class="toggle_admin">
   <% if user.admin? %>
-    <img src="http://images-1.findicons.com/files/icons/2118/nuvola/128/personal.png" height="20">
+	<%= image_submit_tag("toggle_yes.png", :name => "yes", :height => "18px") %>
+  <% else %>
+	<%= image_submit_tag("toggle_no.png", :name => "no", :height => "18px") %>
+  <% end %>
   <% end %>
   </span>
   </td>

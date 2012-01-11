@@ -6,7 +6,8 @@
   <body>
     <h1>Stack Request!</h1>
     <p>
-      From: <%= @request[:from_id] %> <%= @request[:from_email] %><br/>
+      From: <%= @request[:from_email] %> (<%= @request[:from_id] %>)<br/>
+      Stem: <%= @request[:stem] %><br/>
 	  Request: <%=raw @request[:message].gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %><br/>
     </p>
     <p><%= Time.now %></p>
