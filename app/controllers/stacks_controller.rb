@@ -121,7 +121,7 @@ class StacksController < ApplicationController
       if @mult == 0.5
         @mult_diff = "half as much"
       elsif @mult > 0.5 && @mult < 1.75
-        @mult_diff = "slightly more"
+        @mult_diff = "slightly"
       elsif @mult >= 1.75 && @mult < 2
         @mult_diff = "almost twice as much"
       elsif @mult == 2
@@ -133,26 +133,24 @@ class StacksController < ApplicationController
       end
 
       # Generate stack-specific text for display
-      if @stack.name == "Babysitters"
+      if @stack.stem == "How much"
         if @user_rank == "lowest"
-          @diff_amt = (( @lowest_amt - session[:you] ) * 240).round
+          # @diff_amt = (( @lowest_amt - session[:you] ) * 240).round
           @diff_text = "&nbsp;less"
         else
-          @diff_amt = (( session[:you] - @lowest_amt ) * 240).round
+          # @diff_amt = (( session[:you] - @lowest_amt ) * 240).round
           @diff_text = "&nbsp;more"
         end
         if @diff_amt == 0
-          @comparison_text = "You spend <span class='em'>" + "the same as" + "</span> your lowest spending neighbors."
-          @diff_text = ""
+          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>the same as</span> " + @stack.attr_comparison_2
+          # @diff_text = ""
         else
           @diff_amt = number_to_currency(@diff_amt, :strip_insignificant_zeros => true)
-          @comparison_text = "You spend <span class='em'>" + @percent_diff + @diff_text + "</span> than your lowest spending neighbors."
-          @diff_text = "With four 5 hours sits per month, you spend <span class='em'>" + @diff_amt.to_s + @diff_text + " per year</span> than your lowest spending neighbors."
+          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @percent_diff + @diff_text + "</span> " + @stack.attr_comparison_2
+          # @diff_text = "With four 5 hours sits per month, you spend <span class='em'>" + @diff_amt.to_s + @diff_text + " per year</span> than your lowest spending neighbors."
         end
-        @hc_tooltip = "this.x +': $'+ this.y.toFixed(2).gsub(\".00\", \"\") +'/hr'"
-        @hc_dataLabel = "'$'+ this.y.toFixed(2).gsub(\".00\", \"\")"
 
-      elsif @stack.name == "Mobilizers"
+      elsif @stack.stem == "At what age"
         if @user_rank == "lowest"
           @diff_amt = ( @lowest_amt - session[:you] ).round
           @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " earlier"
@@ -161,33 +159,40 @@ class StacksController < ApplicationController
           @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " later"
         end
         if @diff_amt == 0
-          @comparison_text = "You gave your child a mobile phone <span class='em'>" + "at the same age" + "</span> as your earliest mobilizing neighbors"
-          @diff_text = ""
+          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>at the same age</span> " + @stack.attr_comparison_2
+          # @diff_text = ""
         else
-          @comparison_text = "You gave your child a mobile phone <span class='em'>" + @diff_text + "</span> than your earliest mobilizing neighbors."
-          @diff_text = "Based on an average child's cell phone use, your child may spend up to <span class='em'>" + "6 hours per week" + "</span> on their cell phone."
+          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @diff_text + "</span> " + @stack.attr_comparison_2
+          # @diff_text = "Based on an average child's cell phone use, your child may spend up to <span class='em'>" + "6 hours per week" + "</span> on their cell phone."
         end
-        @hc_tooltip = "this.x +': '+ this.y.toFixed(1).gsub(\".0\", \"\") +' yrs old'"
-        @hc_dataLabel = "''+ this.y.toFixed(1).gsub(\".0\", \"\")"
 
-      elsif @stack.name == "Homework"
+      elsif @stack.stem == "How many"
         if @user_rank == "lowest"
-          @diff_amt = (( @lowest_amt - session[:you] ) * 21).round
+          # @diff_amt = (( @lowest_amt - session[:you] ) * 21).round
           @diff_text = "&nbsp;less"
         else
-          @diff_amt = (( session[:you] - @lowest_amt ) * 21).round
+          # @diff_amt = (( session[:you] - @lowest_amt ) * 21).round
           @diff_text = "&nbsp;more"
         end
         if @diff_amt == 0
-          @comparison_text = "Your child's homework load is <span class='em'>" + "the same as" + "</span> as their least loaded peers."
-          @diff_text = ""
+          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>the same as</span> " + @stack.attr_comparison_2
+          # @diff_text = ""
         else
-          @comparison_text = "Your child's homework load is <span class='em'>" + @mult_diff + @diff_text + "</span> than their least loaded peers."
-          @diff_text = "In a typical month, your child may spend up to <span class='em'>" + @diff_amt.to_s + @diff_text + "</span> hours on homework than their least loaded peers."
+          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @mult_diff + @diff_text + "</span> " + @stack.attr_comparison_2
+          # @diff_text = "In a typical month, your child may spend up to <span class='em'>" + @diff_amt.to_s + @diff_text + "</span> hours on homework than their least loaded peers."
         end
-        @hc_tooltip = "this.x +': '+ this.y.toFixed(1).gsub(\".0\", \"\") +' hours'"
-        @hc_dataLabel = "''+ this.y.toFixed(1).gsub(\".0\", \"\")"
 
+      end
+
+      if @stack.attr_rounding == ".0"
+        @hc_tooltip = "this.x + ': " + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(1).gsub(\"" + @stack.attr_rounding + "\", \"\") +'" + @stack.attr_tooltip_units + "'"
+        @hc_dataLabel = "'" + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(1).gsub(\"" + @stack.attr_rounding + "\", \"\")"
+      elsif @stack.attr_rounding == ".00"
+        @hc_tooltip = "this.x + ': " + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(2).gsub(\"" + @stack.attr_rounding + "\", \"\") +'" + @stack.attr_tooltip_units + "'"
+        @hc_dataLabel = "'" + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(2).gsub(\"" + @stack.attr_rounding + "\", \"\")"
+      else
+        @hc_tooltip = "this.x + ': " + @stack.attr_tooltip_prefix + "'+ this.y +'" + @stack.attr_tooltip_units + "'"
+        @hc_dataLabel = "'" + @stack.attr_tooltip_prefix + "'+ this.y'"
       end
 
     else

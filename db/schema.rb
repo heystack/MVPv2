@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106045431) do
+ActiveRecord::Schema.define(:version => 20120112162717) do
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -48,6 +48,30 @@ ActiveRecord::Schema.define(:version => 20120106045431) do
     t.string   "stem"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "attr_type"
+    t.string   "attr_tooltip_prefix"
+    t.string   "attr_tooltip_units"
+    t.string   "attr_rounding"
+    t.string   "attr_comparison_1"
+    t.string   "attr_comparison_2"
+    t.string   "madlibs_1"
+    t.string   "madlibs_1_type"
+    t.string   "madlibs_1_label"
+    t.string   "madlibs_1_option_1"
+    t.string   "madlibs_1_option_2"
+    t.string   "madlibs_1_option_3"
+    t.string   "madlibs_1_option_4"
+    t.string   "madlibs_1_option_5"
+    t.string   "madlibs_1_option_6"
+    t.string   "madlibs_1_option_7"
+    t.string   "madlibs_1_option_8"
+    t.string   "madlibs_1_option_9"
+    t.string   "madlibs_1_option_10"
+    t.string   "madlibs_1_option_11"
+    t.string   "madlibs_1_option_12"
+    t.string   "madlibs_2"
+    t.string   "madlibs_2_label"
+    t.string   "madlibs_3"
   end
 
   create_table "users", :force => true do |t|

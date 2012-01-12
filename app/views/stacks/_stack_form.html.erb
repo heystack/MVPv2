@@ -1,32 +1,42 @@
 <%= render 'shared/error_messages', :object => f.object %>
 <div class="field">
   <%= f.hidden_field :created_by, :value => current_user.id %>
-  <%= f.label "Name" %><br/>
-  <%= f.text_field :name, :size => "100" %><br/>
-  <%= f.label "Question" %><br />
-  <%= f.text_field :question, :size => "100" %><br/>
-  <%= f.label "Stem" %><br />
-  <%= f.text_field :stem, :size => "100" %><br/>
-  <%= f.label "Stack of the Day" %><br />
-  <%= f.text_field :sotd, :size => "100" %><br/>
-  <%= f.label "Madlibs Intro" %><br />
-  <%= f.text_field :madlibs_intro, :size => "100" %><br/>
-  <%= f.label "Madlibs Label" %><br />
-  <%= f.text_field :madlibs_label, :size => "100" %><br/>
-  <%= f.label "Madlibs Units" %><br />
-  <%= f.text_field :madlibs_units, :size => "100" %><br/>
-  <%= f.label "Biggest Description" %><br />
-  <%= f.text_field :attr_biggest_desc, :size => "100" %><br/>
-  <%= f.label "Lowest Description" %><br />
-  <%= f.text_field :attr_lowest_desc, :size => "100" %><br/>
-  <%= f.label "Lowest Legend" %><br />
-  <%= f.text_field :attr_lowest_legend, :size => "100" %><br/>
-  <%= f.label "Comparison Text" %><br />
-  <%= f.text_field :attr_comparison_text, :size => "100" %><br/>
-  <%= f.label "Email Units" %><br />
+  <%= f.label "Name" %>: <%= f.text_field :name, :size => "100" %><br/>
+  <%= f.label "Question" %>: <%= f.text_field :question, :size => "100" %><br/>
+  <%= f.label "Stem" %>: <%= f.select :stem, [["How much"], ["How many"], ["At what age"]] %><br/>
+  <%= f.label "Stack of the Day" %>: <%= f.select :sotd, [[""], ["1"]] %><br/>
+  <%= f.label "Type" %>: <%= f.select :attr_type, [["Dollars"], ["Age"], ["Hours"]] %><br/>
+  <%= f.label "Tooltip Prefix" %>: <%= f.select :attr_tooltip_prefix, [[""], ["$"]] %><br/>
+  <%= f.label "Tooltip Units" %>: <%= f.select :attr_tooltip_units, [[""], [" /hr"], [" yrs old"], [" hours"]] %><br/>
+  <%= f.label "Rounding" %>: <%= f.select :attr_rounding, [["."], [".0"], [".00"]] %><br/>
+  <%= f.label "Madlibs 1" %>: <%= f.text_field :madlibs_1, :size => "100" %><br/>
+  <%= f.label "Madlibs 1 Type" %>: <%= f.select :madlibs_1_type, [["Numeric"], ["Picklist"]] %><br/>
+  <%= f.label "Madlibs 1 Label" %>: <%= f.select :madlibs_1_label, [[""], ["age"], ["hourly rate"], ["hours"]] %><br/>
+  <%= f.label "Madlibs 2" %>: <%= f.text_field :madlibs_2, :size => "100" %><br/>
+  <%= f.label "Madlibs 2 Label" %>: <%= f.select :madlibs_2_label, [[""], ["age"], ["hourly rate"], ["hours"]] %><br/>
+  <%= f.label "Madlibs 3" %>: <%= f.text_field :madlibs_3, :size => "100" %><br/>
+  <%= f.label "Biggest Description" %>: <%= f.text_field :attr_biggest_desc, :size => "100" %><br/>
+  <%= f.label "Lowest Description" %>: <%= f.text_field :attr_lowest_desc, :size => "100" %><br/>
+  <!-- <%= f.label "Lowest Legend" %><br />
+  <%= f.text_field :attr_lowest_legend, :size => "100" %><br/> -->
+  <%= f.label "Comparison Text 1" %>: <%= f.text_field :attr_comparison_1, :size => "100" %><br/>
+  <%= f.label "Comparison Text 2" %>: <%= f.text_field :attr_comparison_2, :size => "100" %><br/>
+  <!-- <%= f.label "Email Units" %><br />
   <%= f.text_field :attr_email_units, :size => "100" %><br/>
   <%= f.label "Email Message" %><br />
   <%= f.text_area :attr_email_message %><br />
   <%= f.label "Email Buttons" %><br />
-  <%= f.text_area :attr_email_buttons %><br/>
+  <%= f.text_area :attr_email_buttons %><br/> -->
+  <%= f.label "Madlibs 1 Option 1" %>: <%= f.text_field :madlibs_1_option_1, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 2" %>: <%= f.text_field :madlibs_1_option_2, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 3" %>: <%= f.text_field :madlibs_1_option_3, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 4" %>: <%= f.text_field :madlibs_1_option_4, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 5" %>: <%= f.text_field :madlibs_1_option_5, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 6" %>: <%= f.text_field :madlibs_1_option_6, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 7" %>: <%= f.text_field :madlibs_1_option_7, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 8" %>: <%= f.text_field :madlibs_1_option_8, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 9" %>: <%= f.text_field :madlibs_1_option_9, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 10" %>: <%= f.text_field :madlibs_1_option_10, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 11" %>: <%= f.text_field :madlibs_1_option_11, :size => "50" %><br/>
+  <%= f.label "Madlibs 1 Option 12" %>: <%= f.text_field :madlibs_1_option_12, :size => "50" %><br/>
 </div>

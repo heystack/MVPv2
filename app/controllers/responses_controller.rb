@@ -76,11 +76,9 @@ class ResponsesController < ApplicationController
     @email = current_user.email
     @host_url = request.host_with_port
     @base_url = "/stacks/" + @stack.id.to_s + "/responses"
-    if @stack.stem == "How much"
+    if @stack.attr_rounding == ".00"
       @response_value = ("%.2f" % @response.value).to_s.gsub(/\.00/,"")
-    elsif @stack.stem == "At what age"
-      @response_value = ("%.1f" % @response.value).to_s.gsub(/\.0/,"")
-    elsif @stack.stem == "How many"
+    elsif @stack.attr_rounding == ".0"
       @response_value = ("%.1f" % @response.value).to_s.gsub(/\.0/,"")
     else
       @response_value = ""
