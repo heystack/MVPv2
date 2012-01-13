@@ -11,7 +11,7 @@
   <%= f.label "Rounding" %>: <%= f.select :attr_rounding, [["."], [".0"], [".00"]] %><br/>
   <%= f.label "Madlibs 1" %>: <%= f.text_field :madlibs_1, :size => "100" %><br/>
   <%= f.label "Madlibs 1 Type" %>: <%= f.select :madlibs_1_type, [["Numeric"], ["Picklist"]] %><br/>
-  <%= f.label "Madlibs 1 Label" %>: <%= f.select :madlibs_1_label, [[""], ["age"], ["hourly rate"], ["hours"]] %><br/>
+  <%= f.label "Madlibs 1 Label" %>: <%= f.select :madlibs_1_label, [[""], ["age"], ["hourly rate"], ["hours"]] %> (if type is "Picklist")<br/>
   <%= f.label "Madlibs 2" %>: <%= f.text_field :madlibs_2, :size => "100" %><br/>
   <%= f.label "Madlibs 2 Label" %>: <%= f.select :madlibs_2_label, [[""], ["age"], ["hourly rate"], ["hours"]] %><br/>
   <%= f.label "Madlibs 3" %>: <%= f.text_field :madlibs_3, :size => "100" %><br/>

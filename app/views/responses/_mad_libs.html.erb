@@ -23,19 +23,19 @@
 	  <%= @stack.madlibs_3 %>
 	<% end %>
 	<% if @ask_location %>
-	and I live in zip code&nbsp;
-    <label>
+	  and I live in zip code&nbsp;
+	  <label>
 		<%= fields_for(:user) do |u| %>
 		<%= u.hidden_field :email, :value => @email %>
 		<%= u.text_field :zipcode, :size => 5, :value => "#{@zipcode}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
 		<% end %>
 		<span>zip code</span>
-    </label>
+	  </label>
 	<% else %>
-		<%= fields_for(:user) do |u| %>
-		<%= u.hidden_field :email, :value => @email %>
-		<%= u.hidden_field :zipcode, :value => @zipcode %>
-		<% end %>
+	  <%= fields_for(:user) do |u| %>
+	  <%= u.hidden_field :email, :value => @email %>
+	  <%= u.hidden_field :zipcode, :value => @zipcode %>
+	  <% end %>
 	<% end %>
 	.
     </td>

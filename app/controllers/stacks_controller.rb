@@ -168,10 +168,10 @@ class StacksController < ApplicationController
 
       elsif @stack.stem == "How many"
         if @user_rank == "lowest"
-          # @diff_amt = (( @lowest_amt - session[:you] ) * 21).round
+          @diff_amt = (( @lowest_amt - session[:you] ) * 21).round
           @diff_text = "&nbsp;less"
         else
-          # @diff_amt = (( session[:you] - @lowest_amt ) * 21).round
+          @diff_amt = (( session[:you] - @lowest_amt ) * 21).round
           @diff_text = "&nbsp;more"
         end
         if @diff_amt == 0
