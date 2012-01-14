@@ -21,12 +21,12 @@ class ResponsesController < ApplicationController
     @base_url = "/stacks/" + @stack.id.to_s + "/responses"
     @previous_response = Response.find_by_stack_id_and_user_id(@stack.id, current_user.id)
     if @previous_response
-      if @stack.stem == "How much"
+      if @stack.attr_rounding == ".00"
         @response_value = ("%.2f" % @previous_response).to_s.gsub(/.00/,"")
-      elsif @stack.stem == "At what age"
-        @response_value = ("%.f" % @previous_response).to_s.gsub(/.0/,"")
-      elsif @stack.stem == "How many"
+      elsif @stack.attr_rounding == ".0"
         @response_value = ("%.1f" % @previous_response).to_s.gsub(/.0/,"")
+      elsif @stack.attr_rounding == "."
+        @response_value = ("%.f" % @previous_response).to_s.gsub(/.0/,"")
       end
     else
       @response_value = ""
@@ -44,16 +44,8 @@ class ResponsesController < ApplicationController
         @zipcode = params[:user][:zipcode]
         @user.update_attributes(:zipcode => @zipcode)
       end
-      # flash[:success] = "Response saved: " + @response.value.to_s + " user.id=" + @user.id.to_s
       session[:you] = @response.value
-      
-      # Session vars must be set since we might be coming from an external form submission
-      session[:stack] = @stack.id
-      if session[:stack]
-        redirect_to @stack
-      else
-        redirect_to root_path
-      end
+      redirect_to @stack
     else
       flash[:error] = "You first need to enter a response!"
       redirect_to new_stack_response_path(@stack.id)

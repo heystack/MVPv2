@@ -19,8 +19,8 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment
       @stack = Stack.find_by_id(@comment.stack_id)
-      flash[:notice] = "Comment deleted."
       @comment.destroy
+      flash[:notice] = "Comment deleted."
       redirect_to @stack
     else
       redirect_to root_path

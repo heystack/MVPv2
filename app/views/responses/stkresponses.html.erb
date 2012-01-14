@@ -1,15 +1,21 @@
 <div class="responses">
 <table style="width:250px">
-<tr><td class="response_header">Stack</td><td class="response_header" style="text-align:right">Count</td></tr>
+<tr>
+  <td class="response_header">Stack</td>
+  <td class="response_header" style="text-align:right">Count</td>
+  <td class="response_header">Last Response</td>
+</tr>
 <% @stacks.map do |stk| %>
-<tr class="plain">
-  <td class="plain"><%= stk.name + " " %></td>
-  <td class="plain" style="text-align:right"><%= Response.count('stack_id', :conditions => "stack_id = #{stk.id}").to_s %></td>
+<tr>
+  <td><%= stk.name + " " %></td>
+  <td style="text-align:right"><%= Response.count('stack_id', :conditions => "stack_id = #{stk.id}").to_s %></td>
+  <td><span class="de-em text-75"><%= time_ago_in_words(stk.responses.last.updated_at) %> ago</span></td>
 </tr>
 <% end %>
 <tr>
   <td class="response_header">Total</td>
   <td class="response_header" style="text-align:right"><%= @count %></td>
+  <td></td>
 </tr>
 </table>
 
