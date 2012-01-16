@@ -22,11 +22,11 @@ class ResponsesController < ApplicationController
     @previous_response = Response.find_by_stack_id_and_user_id(@stack.id, current_user.id)
     if @previous_response
       if @stack.attr_rounding == ".00"
-        @response_value = ("%.2f" % @previous_response).to_s.gsub(/.00/,"")
+        @response_value = ("%.2f" % @previous_response.value).to_s.gsub(/.00/,"")
       elsif @stack.attr_rounding == ".0"
-        @response_value = ("%.1f" % @previous_response).to_s.gsub(/.0/,"")
+        @response_value = ("%.1f" % @previous_response.value).to_s.gsub(/.0/,"")
       elsif @stack.attr_rounding == "."
-        @response_value = ("%.f" % @previous_response).to_s.gsub(/.0/,"")
+        @response_value = ("%.f" % @previous_response.value).to_s.gsub(/.0/,"")
       end
     else
       @response_value = ""
