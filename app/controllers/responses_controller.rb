@@ -72,6 +72,8 @@ class ResponsesController < ApplicationController
       @response_value = ("%.2f" % @response.value).to_s.gsub(/\.00/,"")
     elsif @stack.attr_rounding == ".0"
       @response_value = ("%.1f" % @response.value).to_s.gsub(/\.0/,"")
+    elsif @stack.attr_rounding == "."
+      @response_value = ("%.f" % @response.value).to_s.gsub(/.0/,"")
     else
       @response_value = ""
     end
@@ -96,6 +98,7 @@ class ResponsesController < ApplicationController
     if !params[:response]
       redirect_to root_path and return
     end
+    # Replication of first part of Sessions#Create - probably a better way to do this
     user = current_user
     if user.nil?
       @user = User.new
@@ -105,6 +108,7 @@ class ResponsesController < ApplicationController
     else
       sign_in user
     end
+    # end Sessions#Create snippet
     if params[:email]
       current_user.update_attributes(:email => params[:email])
     end
@@ -112,17 +116,13 @@ class ResponsesController < ApplicationController
     # Session vars must be set since we might be coming from an email form submission
     session[:stack] = @stack.id
     if @stack.answered?(current_user)
-      # flash[:notice] = "Stack already answered by " + params[:email]
       @response = @stack.responses.find_by_user_id(current_user.id)
       @save_response = @response.update_attributes(params[:response])
     else
-      # flash[:notice] = "New stack response"
       redirect_to new_response_path and return
     end
     if @save_response
-      # flash[:success] = "Your response, " + @response.value.to_s + ", has been added to the stack!"
       session[:you] = @response.value
-
       if session[:stack]
         redirect_to edit_response_path(@response)
       else
