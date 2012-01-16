@@ -3,6 +3,8 @@
 <tr>
   <td><%= response.id %></td>
   <td><%= user.id %></td>
+  <td><%= user.email %></td>
+  <td><%= user.name %></td>
   <td><%= stack.nil? ? "" : link_to( stack.name, stack_path(stack.id) ) %></td>
   <td><%= response.value %></td>
   <td><%= response.qualifier1 %></td>
