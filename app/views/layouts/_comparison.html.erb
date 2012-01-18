@@ -1,7 +1,6 @@
-<div class="comparison-1 grey">
+<div class="chart_footer grey">
 <!-- <%= link_to (raw @comparison_text), "#interesting_fact", :rel => "facebox" %>  -->
 <%=raw @comparison_text %><br/>
-<span class="de-em"><%= pluralize(@count < 10 ? "a few" : @count, "response") %> &bullet; most recent <%= time_ago_in_words(@stack.responses.last.updated_at) %> ago &bullet; <%= link_to "refine&nbsp;my&nbsp;answer".html_safe, edit_response_path(@response) %></span>
 </div>
 
 <div id="interesting_fact" style="display:none;"><br/><%=raw @diff_text %></div>

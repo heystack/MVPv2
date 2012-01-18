@@ -149,6 +149,8 @@ class StacksController < ApplicationController
           @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @percent_diff + @diff_text + "</span> " + @stack.attr_comparison_2
           # @diff_text = "With four 5 hours sits per month, you spend <span class='em'>" + @diff_amt.to_s + @diff_text + " per year</span> than your lowest spending neighbors."
         end
+        @lowest_desc = "Least"
+        @highest_desc = "Highest"
 
       elsif @stack.stem == "At what age"
         if @user_rank == "lowest"
@@ -165,6 +167,8 @@ class StacksController < ApplicationController
           @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @diff_text + "</span> " + @stack.attr_comparison_2
           # @diff_text = "Based on an average child's cell phone use, your child may spend up to <span class='em'>" + "6 hours per week" + "</span> on their cell phone."
         end
+        @lowest_desc = "Youngest"
+        @highest_desc = "Oldest"
 
       elsif @stack.stem == "How many"
         if @user_rank == "lowest"
@@ -181,6 +185,8 @@ class StacksController < ApplicationController
           @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @mult_diff + @diff_text + "</span> " + @stack.attr_comparison_2
           # @diff_text = "In a typical month, your child may spend up to <span class='em'>" + @diff_amt.to_s + @diff_text + "</span> hours on homework than their least loaded peers."
         end
+        @lowest_desc = "Least"
+        @highest_desc = "Highest"
 
       end
 

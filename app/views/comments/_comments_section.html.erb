@@ -1,6 +1,8 @@
 <div class="stk_section_header">Comments</div>
 <div class="comment">
-<%= form_for(@comment) do |f| %>
+<%= form_for @comment,
+	:html => { :name => "new_comment",
+	:onsubmit => "return validateNameInComments(new_comment)"} do |f| %>
 	<%= render 'comments/comments_form', :f => f %>
 <% end %>
 </div>

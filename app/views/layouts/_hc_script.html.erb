@@ -25,13 +25,13 @@ jQuery(document).ready(function() {
 	   },
 	   xAxis: {
 		  <% if @user_rank == "lowest" %>
-	      categories: ['YOU', '<%= @stack.attr_lowest_desc %>', 'All Neighbors', '<%= @stack.attr_biggest_desc %>'],
+	      categories: ['YOU', '<%= @lowest_desc %>', 'All Neighbors', '<%= @highest_desc %>'],
 		  <% elsif @user_rank == "average" %>
 		  <%   @point1_color = @lowest_color %>
 		  <%   @point2_color = @you_color %>
 		  <%   @point1_value = @lowest_amt %>
 		  <%   @point2_value = session[:you] %>
-	      categories: ['<%= @stack.attr_lowest_desc %>', 'YOU', 'All Neighbors', '<%= @stack.attr_biggest_desc %>'],
+	      categories: ['<%= @lowest_desc %>', 'YOU', 'All Neighbors', '<%= @highest_desc %>'],
 		  <% elsif @user_rank == "more than most"  %>
 		  <%   @point1_color = @lowest_color %>
 		  <%   @point2_color = @all_neighbors_color %>
@@ -39,7 +39,7 @@ jQuery(document).ready(function() {
 		  <%   @point1_value = @lowest_amt %>
 		  <%   @point2_value = @all_neighbors %>
 		  <%   @point3_value = session[:you] %>
-	      categories: ['<%= @stack.attr_lowest_desc %>', 'All Neighbors', 'YOU', '<%= @stack.attr_biggest_desc %>'],
+	      categories: ['<%= @lowest_desc %>', 'All Neighbors', 'YOU', '<%= @highest_desc %>'],
 		  <% elsif @user_rank == "biggest"  %>
 		  <%   @point1_color = @lowest_color %>
 		  <%   @point2_color = @all_neighbors_color %>
@@ -49,7 +49,7 @@ jQuery(document).ready(function() {
 		  <%   @point2_value = @all_neighbors %>
 		  <%   @point3_value = @biggest_amt %>
 		  <%   @point4_value = session[:you] %>
-	      categories: ['<%= @stack.attr_lowest_desc %>', 'All Neighbors', '<%= @stack.attr_biggest_desc %>', 'YOU'],
+	      categories: ['<%= @lowest_desc %>', 'All Neighbors', '<%= @highest_desc %>', 'YOU'],
 		  <% end %>
 	      title: {
 	         text: null
