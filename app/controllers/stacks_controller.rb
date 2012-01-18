@@ -185,7 +185,7 @@ class StacksController < ApplicationController
           @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @mult_diff + @diff_text + "</span> " + @stack.attr_comparison_2
           # @diff_text = "In a typical month, your child may spend up to <span class='em'>" + @diff_amt.to_s + @diff_text + "</span> hours on homework than their least loaded peers."
         end
-        @lowest_desc = "Least"
+        @lowest_desc = "Lowest"
         @highest_desc = "Highest"
 
       end
