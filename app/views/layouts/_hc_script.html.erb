@@ -8,6 +8,11 @@
 <% @point3_value = @all_neighbors %>
 <% @point4_value = @biggest_amt %>
 
+<% @point1_name = "" %>
+<% @point2_name = " 20% Avg" %>
+<% @point3_name = "" %>
+<% @point4_name = " 20% Avg" %>
+
 <script type="text/javascript">
 var chart;
 jQuery(document).ready(function() {
@@ -31,6 +36,8 @@ jQuery(document).ready(function() {
 		  <%   @point2_color = @you_color %>
 		  <%   @point1_value = @lowest_amt %>
 		  <%   @point2_value = session[:you] %>
+		  <%   @point1_name  = " 20% Avg" %>
+		  <%   @point2_name  = "" %>
 	      categories: ['<%= @lowest_desc %>', 'YOU', 'All Neighbors', '<%= @highest_desc %>'],
 		  <% elsif @user_rank == "more than most"  %>
 		  <%   @point1_color = @lowest_color %>
@@ -39,6 +46,8 @@ jQuery(document).ready(function() {
 		  <%   @point1_value = @lowest_amt %>
 		  <%   @point2_value = @all_neighbors %>
 		  <%   @point3_value = session[:you] %>
+		  <%   @point1_name  = " 20% Avg" %>
+		  <%   @point2_name  = "" %>
 	      categories: ['<%= @lowest_desc %>', 'All Neighbors', 'YOU', '<%= @highest_desc %>'],
 		  <% elsif @user_rank == "biggest"  %>
 		  <%   @point1_color = @lowest_color %>
@@ -49,6 +58,10 @@ jQuery(document).ready(function() {
 		  <%   @point2_value = @all_neighbors %>
 		  <%   @point3_value = @biggest_amt %>
 		  <%   @point4_value = session[:you] %>
+		  <%   @point1_name  = " 20% Avg" %>
+		  <%   @point2_name  = "" %>
+		  <%   @point3_name  = " 20% Avg" %>
+		  <%   @point4_name  = "" %>
 	      categories: ['<%= @lowest_desc %>', 'All Neighbors', '<%= @highest_desc %>', 'YOU'],
 		  <% end %>
 	      title: {
@@ -92,19 +105,19 @@ jQuery(document).ready(function() {
 	   ],
 	   series: [{
 	      data: [{
-			name: 'Point 1',
+			name: '<%= @point1_name %>',
 			color: '<%= @point1_color %>',
 			y: <%= @point1_value %>
 		  }, {
-			name: 'Point 2',
+			name: '<%= @point2_name %>',
 			color: '<%= @point2_color %>',
 			y: <%= @point2_value %>
 		  }, {
-			name: 'Point 3',
+			name: '<%= @point3_name %>',
 			color: '<%= @point3_color %>',
 			y: <%= @point3_value %>
 		  }, {
-			name: 'Point 4',
+			name: '<%= @point4_name %>',
 			color: '<%= @point4_color %>',
 			y: <%= @point4_value %>
 		  }]

@@ -191,13 +191,13 @@ class StacksController < ApplicationController
       end
 
       if @stack.attr_rounding == ".0"
-        @hc_tooltip = "this.x + ': " + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(1).gsub(\"" + @stack.attr_rounding + "\", \"\") +'" + @stack.attr_tooltip_units + "'"
+        @hc_tooltip = "this.x + this.point.name + ': " + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(1).gsub(\"" + @stack.attr_rounding + "\", \"\") +'" + @stack.attr_tooltip_units + "'"
         @hc_dataLabel = "'" + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(1).gsub(\"" + @stack.attr_rounding + "\", \"\")"
       elsif @stack.attr_rounding == ".00"
-        @hc_tooltip = "this.x + ': " + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(2).gsub(\"" + @stack.attr_rounding + "\", \"\") +'" + @stack.attr_tooltip_units + "'"
+        @hc_tooltip = "this.x + this.point.name + ': " + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(2).gsub(\"" + @stack.attr_rounding + "\", \"\") +'" + @stack.attr_tooltip_units + "'"
         @hc_dataLabel = "'" + @stack.attr_tooltip_prefix + "'+ this.y.toFixed(2).gsub(\"" + @stack.attr_rounding + "\", \"\")"
       else
-        @hc_tooltip = "this.x + ': " + @stack.attr_tooltip_prefix + "'+ this.y +'" + @stack.attr_tooltip_units + "'"
+        @hc_tooltip = "this.x + this.point.name + ': " + @stack.attr_tooltip_prefix + "'+ this.y +'" + @stack.attr_tooltip_units + "'"
         @hc_dataLabel = "'" + @stack.attr_tooltip_prefix + "'+ this.y'"
       end
 
