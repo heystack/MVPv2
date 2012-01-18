@@ -11,6 +11,8 @@
 		<%= render 'shared/error_messages', :object => @stack %>
 		<div class="field">
 		  <%= hidden_field "request", "from_id", :value => current_user.id %>
+		  <div class="stk_section_header">1. Choose Your Stack Type</div>
+		  <div class="de-em text-75">We're all about numbers-based comparison here at StkUp, so tell us which kind of number question you want to ask.</div>
 		  <%= select_tag "request[stem]", options_for_select([
 			['Choose a stack type (how much, how many, etc.)'],
 			['How much...'],
@@ -19,22 +21,27 @@
 			['When...'],
 			['At what age...']
 			]) %><br/>
-		  <div class="de-em text-75">We're all about numbers-based comparison here at StkUp, so tell us which kind of number question you want to ask.</div><br/>
+		  <br/>
+		  <div class="stk_section_header">2. Enter Your Question</div>
+		  <div class="de-em text-75">Type in your specific stack question just as you'd ask it to a neighbor.</div>
 		  <%= text_area "request", "message",
 			:class => "create_stack round",
 			:style => "color:lightgray",
 			:value => "Type your full stack question here...",
 			:onfocus => "if (this.value.substring(0,4) == 'Type') {this.value='';this.style.color = 'black';this.style.height = '50px';}; unhide('submit_comment_div')"
 		  %>
-		  <%= label_tag :email %> <%= text_field "request", "from_email", :value => current_user.email %>
+		  <br/>
+		  <div class="stk_section_header">3. Enter Your Email</div>
+		  <div class="de-em text-75">We'll send you an alert when your stack is approved along with some handy instructions for sharing with your friends.</div>
+		  <%= text_field "request", "from_email", :value => current_user.email, :size => 50 %>
 		  <%= submit_tag "Submit Stack Request", :class => "form_button round" %>
 		  <br/>
-		  <div class="de-em text-75">We'll send you an alert when your stack is approved along with some handy instructions for sharing with your friends.</div>
 		</div>
 		<% end %>
 	</td>
-	<td>
-	  <%= render 'shared/view_stacks' %>
+	<td style="text-align:center;">
+	  <%= link_to image_tag("sample_questions.png", :name => "sample_questions"), "#stacks",
+								:rel => "facebox" %>
 	</td>
   </tr>
 </table>

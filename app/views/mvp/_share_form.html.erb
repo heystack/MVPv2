@@ -1,5 +1,5 @@
-<% @message = "I thought you'd be interested in this local resource for gathering helpful info for parents. Simple idea - quickly compare yourself against the rest of the community in topics that matter to you.\n
-If you\'re interested to see how you stack up, it\'s easy to participate - just give your info below, then get back an immediate web comparison against other neighbors. The more who answer, the better the comparison." %>
+<% @message = "I thought you\'d be interested in this simple, quick way to compare yourself against others in the community on questions like this one.\n
+Seeing how you stack up is easy, just give your answer at the link below, then get back an immediate web comparison against other neighbors. The more who answer, the better the comparison for all." %>
 
 <% @email_subject = @stack.question %>
 
@@ -29,15 +29,15 @@ If you\'re interested to see how you stack up, it\'s easy to participate - just 
   </tr>
   <tr>
 	<td style="text-align: right;"><label for="contact_subject">Subject:</label></td>
-	<td><%= text_field "contact", "email_subject", :size => "50", :value => @email_subject %></td>
+	<td><%= text_field "contact", "email_subject", :size => "75", :value => @email_subject %></td>
   </tr>
 	<tr>
 	<td class="top_right"><label for="comment_body">Message:</label></td>
 	<td><%= text_area "contact", "message", :size => "30x8", :class => "share_form_message", :value => @message %>
-		<div class="inactive text-75">followed by the question:</div>
+		<!-- <div class="inactive text-75">followed by the question:</div>
 		<div class="field">
 		<label for="response_value"><%= @stack.question %></label>
-		</div>
+		</div> -->
 	</td>
   </tr>
   <tr>
