@@ -1,9 +1,10 @@
 <tr <% if user == current_user %>style="background-color:#ffc;"<% end %>>
-  <td><%= link_to user.id, user %></td>
-  <td><%= user.name %></td>
+  <td><%= user.id %></td>
+  <td><%= user.name.blank? ? "" : link_to( user.name, user ) %></td>
   <td><%= user.email %></td>
   <td><%= user.zipcode %></td>
   <td style="text-align:center"><%= user.subscribed? ? image_tag("icon_checkbox.jpg", :height => "18px") : "" %></td>
+  <td><%= user.created_at.to_formatted_s(:short) %></td>
   <td><%= link_to user.responses.count, user %></td>
   <td>
   <!-- Ajax version not working - removed , :remote => true do |f|-->
