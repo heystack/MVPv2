@@ -1,6 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
-<html>
-<head>
+<html xmlns:fb="https://www.facebook.com/2008/fbml">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# ogstkup: http://ogp.me/ns/fb/ogstkup#">
+  <meta property="fb:app_id"      content="370570312958945" /> 
+  <meta property="og:type"        content="ogstkup:stack" /> 
+  <meta property="og:image"       content="http://parenting-mvp.heroku.com/favicon.png" />
+
   <title>Purposeful Comparisons | StkUp</title>
   <link rel="shortcut icon" href="/favicon.ico" >
   <%= render 'layouts/js' %>
@@ -11,6 +15,49 @@
   <!-- TODO: Add Google Analytics with MVPv2 snippet -->
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '370570312958945', // App ID
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+      });
+    };
+
+    // Load the SDK Asynchronously
+    (function(d){
+      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+      js = d.createElement('script'); js.id = id; js.async = true;
+      js.src = "//connect.facebook.net/en_US/all.js";
+      d.getElementsByTagName('head')[0].appendChild(js);
+    }(document));
+  </script>
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=370570312958945";
+	fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <script type="text/javascript">
+  function likeStack()
+  {
+      FB.api('/me/ogstkup:like' + '?stack=http://samples.ogp.me/370585046290805','post',
+                  function(response) {
+          if (!response || response.error) {
+                  alert('Error occured');
+          } else {
+              alert('Post was successful! Action ID: ' + response.id);
+              }
+      });
+  }
+  </script>
+
   <div class="container round shadow">
 	<!--[if IE]><div class="content round"><![endif]-->
 	<section class="round">
