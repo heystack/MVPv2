@@ -8,7 +8,6 @@
   <tr>
 	<td class="create_stack_left">
 		<%= form_tag "/stack_request" do %>
-		<%= render 'shared/error_messages', :object => @stack %>
 		<div class="field">
 		  <%= hidden_field "request", "from_id", :value => current_user.id %>
 		  <div class="step_header">1. Choose Your Stack Type</div>

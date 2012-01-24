@@ -237,7 +237,6 @@ class StacksController < ApplicationController
 
   def create_stack
     @title = "Create New Stack (Work In Progress)"
-    @stack = Stack.new
   end
   
 end
