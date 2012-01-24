@@ -31,9 +31,17 @@ class StacksController < ApplicationController
   end
 
   def show
-    if !signed_in?
-      redirect_to root_path
+    # Replication of first part of Sessions#Create - probably a better way to do this
+    user = current_user
+    if user.nil?
+      @user = User.new
+      if @user.save
+        sign_in @user
+      end
+    else
+      sign_in user
     end
+    # end Sessions#Create snippet
 
     @stack = Stack.find(params[:id])
 
