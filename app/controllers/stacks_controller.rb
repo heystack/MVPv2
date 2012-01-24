@@ -31,6 +31,10 @@ class StacksController < ApplicationController
   end
 
   def show
+    if !signed_in?
+      redirect_to root_path
+    end
+
     @stack = Stack.find(params[:id])
 
     if !@stack
