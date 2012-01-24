@@ -4,9 +4,9 @@
   <meta property="fb:app_id"      content="370570312958945" /> 
   <meta property="og:type"        content="ogstkup:stack" /> 
   <meta property="og:image"       content="http://parenting-mvp.heroku.com/favicon.png" />
-  <meta property="og:url"         content="<%= stack_url(@stack) %>" /> 
-  <meta property="og:title"       content="<%= @stack.name %>" /> 
-  <meta property="og:description" content="<%= @stack.question %>" /> 
+  <meta property="og:url"         content="<%= @stack.nil? ? "" : stack_url(@stack) %>" /> 
+  <meta property="og:title"       content="<%= @stack.nil? ? "" : @stack.name %>" /> 
+  <meta property="og:description" content="<%= @stack.nil? ? "" : @stack.question %>" /> 
 
   <title>Purposeful Comparisons | StkUp</title>
   <link rel="shortcut icon" href="/favicon.ico" >
