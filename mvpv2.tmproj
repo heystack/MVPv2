@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/controllers/responses_controller.rb</string>
+	<string>app/views/layouts/application.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -26,28 +26,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>618</integer>
+				<integer>112</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>217</integer>
-		</dict>
-		<key>app/controllers/responses_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>13</integer>
-				<key>line</key>
-				<integer>135</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>119</integer>
+			<integer>82</integer>
 		</dict>
 		<key>app/views/comments/_comment.html.erb</key>
 		<dict>
@@ -79,27 +65,41 @@
 				<integer>5</integer>
 			</dict>
 		</dict>
-		<key>app/views/responses/stkresponses.html.erb</key>
+		<key>app/views/layouts/application.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>9</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>app/assets/stylesheets/application.css.erb</string>
-		<string>app/controllers/responses_controller.rb</string>
-		<string>app/views/responses/stkresponses.html.erb</string>
-		<string>app/views/comments/_comment.html.erb</string>
+		<string>app/views/layouts/application.html.erb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
