@@ -58,7 +58,7 @@ class ResponsesController < ApplicationController
       session[:you] = @response.value
       redirect_to @stack
     else
-      flash[:error] = "You first need to enter a response!"
+      flash.keep[:error] = "You first need to enter a response!"
       redirect_to new_stack_response_path(@stack.id)
     end
   end
