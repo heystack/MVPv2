@@ -56,10 +56,18 @@ border-width: 1px;
 border-color: #eee;
 }
 
+html {
+}
+
 body {
 /*  background-image:url('bluebg.png');*/
-  background-image:url('bg_hayfield.jpg');
-  background-color: #ffc;
+/*  background-image:url('bg_hayfield.jpg');*/
+/*  background-color: #ffc;*/
+background: url(bg_hayfield.jpg) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
 }
 
 section {
@@ -888,4 +896,12 @@ table.action_steps a:visited {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+/* Footer */
+
+div.footer {
+  min-height: 200px;
+  height: auto !important;
+  height: 200px;
 }
