@@ -4,7 +4,7 @@
 <table class="mad_libs_table">
   <tr>
     <td style="vertical-align:top"><div class="begin-quote">&#8220;</div></td>
-    <td class="madlibs-content round15px greyfade">
+    <td class="madlibs-content round15px heyfade">
     <%=raw @stack.madlibs_1 %>
 	<% if @stack.madlibs_1_type == "Numeric" %>
 	  <label>
@@ -42,14 +42,14 @@
     <td style="vertical-align:bottom"><div class="end-quote">&#8221;</div></td>
   </tr>
 </table>
-<%= f.submit "Stack Me Up", :class => "submit_button round" %>
+<%= f.submit "Hey, Stack Me Up!", :class => "submit_button round" %>
 <br/>
 <% if @ask_location %>
-<div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is StkUp available for my community?</a></div>
+<div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is Heystack available for my community?</a></div>
 <% end %>
 
 <div id="not_alexandria" style="display:none;">
-StkUp is currently available for Alexandria, Virginia<br/>
+Heystack is currently available for Alexandria, Virginia<br/>
 only. If you'd like us to expand, send us a comment!
 </div>
 
