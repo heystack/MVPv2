@@ -73,6 +73,7 @@ class ResponsesController < ApplicationController
       flash[:error] = "You do not have permission."
       redirect_to root_path
     end
+    session[:stack] = @stack.id
     @form_capable = true
     @ask_location = true
     @zipcode = current_user.zipcode
