@@ -31,7 +31,7 @@ class StacksController < ApplicationController
   end
 
   def show
-    @stack = Stack.find(params[:stack_id])
+    @stack = Stack.find(params[:id])
 
     if !@stack
       redirect_to new_stack_path
