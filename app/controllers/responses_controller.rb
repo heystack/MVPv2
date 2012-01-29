@@ -35,7 +35,7 @@ class ResponsesController < ApplicationController
 
   def create
     @stack = Stack.find_by_id(session[:stack])
-    @stack = Stack.find_by_name("Mobilizers")
+    @stack = Stack.find_by_id(2)
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
     if @response.save
