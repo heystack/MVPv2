@@ -1,17 +1,6 @@
 class ResponsesController < ApplicationController
 
   def new
-    # Replication of first part of Sessions#Create - probably a better way to do this
-    user = current_user
-    if user.nil?
-      @user = User.new
-      if @user.save
-        sign_in @user
-      end
-    else
-      sign_in user
-    end
-    # end Sessions#Create snippet
     if !session[:stack]
       @stack = Stack.first
       session[:stack] = @stack.id
