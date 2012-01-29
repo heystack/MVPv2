@@ -34,8 +34,8 @@ class ResponsesController < ApplicationController
   end
 
   def create
-    redirect_to stack_path(1)
     @stack = Stack.find_by_id(session[:stack])
+    @stack = Stack.find_by_name("Mobilizers")
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
     if @response.save

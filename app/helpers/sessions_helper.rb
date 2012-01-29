@@ -10,6 +10,7 @@ module SessionsHelper
   end
 
   def current_user
+    # why? why? why? debug
     if user_from_remember_token
       user_from_remember_token
     elsif @current_user
