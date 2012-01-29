@@ -45,7 +45,9 @@ class ResponsesController < ApplicationController
   end
 
   def create
-    @stack = Stack.find_by_id(2)
+    @stack = Stack.find_by_id(session[:stack])
+    flash[:notice] = "session[:stack] = " + session[:stack].to_s
+    redirect_to users_path
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
     if @response.save
@@ -58,7 +60,7 @@ class ResponsesController < ApplicationController
       session[:you] = @response.value
       redirect_to @stack
     else
-      flash.keep[:error] = "You first need to enter a response!"
+      flash[:error] = "You first need to enter a response!"
       redirect_to new_stack_response_path(@stack.id)
     end
   end
