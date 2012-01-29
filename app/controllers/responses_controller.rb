@@ -35,8 +35,6 @@ class ResponsesController < ApplicationController
 
   def create
     @stack = Stack.find_by_id(session[:stack])
-    flash.now[:notice] = "session[:stack] = " + session[:stack].to_s
-    redirect_to create_stack_path and return
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
     if @response.save
