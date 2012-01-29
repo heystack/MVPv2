@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       @user = User.new
       if @user.save
         sign_in @user
-        session[:debug] = "current user = " + @user.id
+        session[:debug] = "current user = " + @user.id.to_s
       end
     else
       sign_in user
