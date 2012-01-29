@@ -7,30 +7,30 @@ class ResponsesController < ApplicationController
     else
       @stack = Stack.find_by_id(session[:stack])
     end
-    # @email = current_user.email ? current_user.email : "feedback@stkup.com"
+    @email = current_user.email ? current_user.email : "feedback@stkup.com"
     @response = @stack.responses.new
     @title = "New Response"
     @form_capable = true
     if session[:you]
       @ask_location = false
-      # @zipcode = current_user.zipcode
+      @zipcode = current_user.zipcode
     else
       @ask_location = true
     end
     @host_url = request.host_with_port
     @base_url = "/stacks/" + @stack.id.to_s + "/responses"
-    # @previous_response = Response.find_by_stack_id_and_user_id(@stack.id, current_user.id)
-    # if @previous_response
-    #   if @stack.attr_rounding == ".00"
-    #     @response_value = ("%.2f" % @previous_response.value).to_s.gsub(/.00/,"")
-    #   elsif @stack.attr_rounding == ".0"
-    #     @response_value = ("%.1f" % @previous_response.value).to_s.gsub(/.0/,"")
-    #   elsif @stack.attr_rounding == "."
-    #     @response_value = ("%.f" % @previous_response.value).to_s.gsub(/.0/,"")
-    #   end
-    # else
+    @previous_response = Response.find_by_stack_id_and_user_id(@stack.id, current_user.id)
+    if @previous_response
+      if @stack.attr_rounding == ".00"
+        @response_value = ("%.2f" % @previous_response.value).to_s.gsub(/.00/,"")
+      elsif @stack.attr_rounding == ".0"
+        @response_value = ("%.1f" % @previous_response.value).to_s.gsub(/.0/,"")
+      elsif @stack.attr_rounding == "."
+        @response_value = ("%.f" % @previous_response.value).to_s.gsub(/.0/,"")
+      end
+    else
       @response_value = ""
-    # end
+    end
   end
 
   def create
