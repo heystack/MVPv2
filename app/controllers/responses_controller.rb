@@ -4,10 +4,8 @@ class ResponsesController < ApplicationController
     if !session[:stack]
       @stack = Stack.first
       session[:stack] = @stack.id
-      session[:debug] = "responses#new !session[:stack]"
     else
       @stack = Stack.find_by_id(session[:stack])
-      session[:debug] = "responses#new session[:stack] = " + session[:stack].to_s
     end
     @email = current_user.email ? current_user.email : "feedback@stkup.com"
     @response = @stack.responses.new
