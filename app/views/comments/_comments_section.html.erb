@@ -1,10 +1,11 @@
-<!-- <div class="stk_section_header">Community Discussion</div> -->
-<div class="fb-comments" data-href="<%= stack_url(@stack) %>" data-num-posts="10" data-width="470"></div>
+<div class="stk_section_header">Discuss with Neighbors</div>
 <div class="hidden">
-<div class="comment">
+<div class="fb-comments" data-href="<%= stack_url(@stack) %>" data-num-posts="10" data-width="470"></div>
+</div>
+<div class="comment" style="border-top:none;">
 <%= form_for @comment,
 	:html => { :name => "new_comment",
-	:onsubmit => "return validateNameInComments(new_comment)"} do |f| %>
+			   :onsubmit => "return validateNameInComments(new_comment)"} do |f| %>
 	<%= render 'comments/comments_form', :f => f %>
 <% end %>
 </div>
@@ -12,4 +13,3 @@
 <% if @stack.comments? %>
 	<%= render @comments %>
 <% end %>
-</div>

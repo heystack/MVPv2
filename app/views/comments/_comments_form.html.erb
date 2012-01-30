@@ -2,20 +2,20 @@
 <div class="field">
   <%= f.hidden_field :stack_id, :value => @stack.id %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <div class="comment_content">
   <%= f.text_area :content,
 	:class => "comment_content round",
-	:style => "color:lightgray",
+	:style => "color:lightgray;",
 	:value => "Join the discussion...",
 	:onfocus => "if (this.value.substring(0,4) == 'Join') {this.value='';this.style.color = 'black';this.style.height = '50px';}; unhide('submit_comment_div')"
   %>
-  </div>
   <div class="actions">
 	<div id="submit_comment_div" class="hidden">
 	<%= fields_for(:user) do |u| %>
-	<%= u.label :name %> <%= u.text_field :name, :value => current_user.name %> <span class="de-em text-75">optional</span>
+	<%= u.label :name %> <%= u.text_field :name, :value => current_user.name %>
 	<% end %>
-	<%= f.submit "Add Comment", :class => "form_button round" %>
+	<%= f.submit "Add Comment",
+	  :class => "form_button round",
+	  :style => "display:inline; margin-left:20px; width:125px; margin-top:0;" %>
 	<div style="line-height:10px;">&nbsp;</div>
 	</div>
   </div>
