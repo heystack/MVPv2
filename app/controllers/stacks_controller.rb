@@ -45,6 +45,7 @@ class StacksController < ApplicationController
       session[:you] = @response.value
       @comments = @stack.comments.all
       @comment = Comment.new
+      @reply = @comment.replies.build(:user_id => current_user.id)
     else
       redirect_to new_stack_response_path(@stack) and return
     end

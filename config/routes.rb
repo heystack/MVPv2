@@ -15,11 +15,16 @@ Mvpv2::Application.routes.draw do
     resources :responses
     resources :comments
   end
+  resources :comments do
+    resources :replies
+  end
 
   match '/create_stack', :to => 'stacks#create_stack'
+  match '/new_reply',    :to => 'replies#new'
 
   resources :responses
   resources :comments, :only => [:new, :create, :destroy]
+  resources :replies,  :only => [:new, :create, :destroy]
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/response',     :to => 'responses#new'

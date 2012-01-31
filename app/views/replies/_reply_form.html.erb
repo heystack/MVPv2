@@ -1,0 +1,28 @@
+<div class="reply" style="border-top:none;">
+<%= form_for @reply, :html => { :name => "new_reply",
+								:onsubmit => "return validateNameInComments(new_reply)" } do |f| %>
+
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :comment_id, :value => @comment.id %>
+  <%= f.text_area :content,
+	:class => "comment_content round",
+	:style => "color:lightgray;",
+	:value => "Your reply...",
+	:onfocus => "if (this.value.substring(0,4) == 'Your')
+					{this.value='';this.style.color = 'black';this.style.height = '50px';};"
+  %>
+  <div class="actions">
+	<div id="submit_reply_div">
+	<%= fields_for(:user) do |u| %>
+	<%= u.label :name %> <%= u.text_field :name, :value => current_user.name %>
+	<% end %>
+	<%= f.submit "Reply",
+	  :class => "form_button round",
+	  :style => "display:inline; margin-left:20px; width:75px; margin-top:0;" %>
+	<div style="line-height:10px;">&nbsp;</div>
+	</div>
+  </div>
+  </div>
+<% end %>

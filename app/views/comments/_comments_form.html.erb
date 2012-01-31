@@ -6,7 +6,8 @@
 	:class => "comment_content round",
 	:style => "color:lightgray;",
 	:value => "Join the discussion...",
-	:onfocus => "if (this.value.substring(0,4) == 'Join') {this.value='';this.style.color = 'black';this.style.height = '50px';}; unhide('submit_comment_div')"
+	:onfocus => "if (this.value.substring(0,4) == 'Join')
+					{this.value='';this.style.color = 'black';this.style.height = '50px';}; unhide('submit_comment_div')"
   %>
   <div class="actions">
 	<div id="submit_comment_div" class="hidden">
@@ -15,7 +16,7 @@
 	<% end %>
 	<%= f.submit "Add Comment",
 	  :class => "form_button round",
-	  :style => "display:inline; margin-left:20px; width:125px; margin-top:0;" %>
+	  :style => "display:inline; margin-left:20px; width:110px; margin-top:0;" %>
 	<div style="line-height:10px;">&nbsp;</div>
 	</div>
   </div>
