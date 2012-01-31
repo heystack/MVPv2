@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20120131025405) do
 
   create_table "comments", :force => true do |t|
-    t.string   "content"
+    t.string   "content", :limit => 1000
     t.integer  "stack_id"
     t.integer  "user_id"
     t.integer  "votes"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20120131025405) do
   end
 
   create_table "replies", :force => true do |t|
-    t.string   "content"
+    t.string   "content", :limit => 1000
     t.integer  "comment_id"
     t.integer  "user_id"
     t.datetime "created_at"
