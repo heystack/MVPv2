@@ -1,8 +1,8 @@
-<% @user = User.find_by_id(reply.user_id) %>
+<% @reply_user = User.find_by_id(reply.user_id) %>
 <div class="reply">
 <%= reply.content %>
 <div class="comment_timestamp" style="display:inline;">
-<span class="de-em text-75">Added <%= time_ago_in_words(reply.created_at) %> ago<%= @user.name.blank? ? "" : " by <strong>".html_safe + @user.name + "</strong>".html_safe -%>.
+<span class="de-em text-75">Added <%= time_ago_in_words(reply.created_at) %> ago<%= @reply_user.name.blank? ? "" : " by <strong>".html_safe + @reply_user.name + "</strong>".html_safe -%>.
 <% if current_user.admin? || reply.created_by?(current_user) %>
   <span class="de-em">
   <%= link_to "delete", reply, :class => "text-75", :method => :delete, :confirm => "You sure?", :title => "Delete reply?" %>
