@@ -5,7 +5,7 @@
   <tr>
     <td style="vertical-align:top"><div class="begin-quote">&#8220;</div></td>
     <td class="madlibs-content round15px heyfade">
-    <%=raw @stack.madlibs_1 %>
+    <%=raw @stack.madlibs_1 %>&nbsp;
 	<% if @stack.madlibs_1_type == "Numeric" %>
 	  <label>
 		<%= f.text_field :value, :size => 2, :value => "#{@response_value}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
