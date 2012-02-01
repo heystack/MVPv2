@@ -1,6 +1,7 @@
 <%= render 'shared/error_messages', :object => f.object %>
 <div class="field">
   <%= f.hidden_field :created_by, :value => current_user.id %>
+  <%= f.label "Community" %>: <%= f.text_field :community_id, :size => "100" %><br/>
   <%= f.label "Name" %>: <%= f.text_field :name, :size => "100" %><br/>
   <%= f.label "Question" %>: <%= f.text_field :question, :size => "100" %><br/>
   <%= f.label "Stem" %>: <%= f.select :stem, [["How much"], ["How many"], ["At what age"]] %><br/>

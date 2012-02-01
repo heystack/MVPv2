@@ -1,0 +1,32 @@
+<div class="inner_container">
+<div class="breadcrumbs" summary="Communities">
+  <%= link_to "Communities", communities_path %> > <%= link_to @community.name, edit_community_path(@community) %>
+</div>
+
+
+<table class="stacks" summary="Stacks">
+<% if @community.stacks.empty? %>
+  <tr><td span=2>No Stacks.</td></tr>
+<% else %>
+  <tr><td>
+	<div class="community_show_logo"><%= image_tag @community.logo, :height => "50" %></div>
+  </td><td><%= @community.desc %></td><tr>
+  <tr><td></td><td>
+  <ul class="stack_list">
+	<%= render @stacks, :omit_stack => "" %>
+  </ul>
+  </td></tr>
+<% end %>
+</table>
+<% @users = @community.members.all %>
+<% if @users.nil? %>
+No users in this Community.
+<% else %>
+<table class="users text-75">
+  <tr>
+	<td>User ID</td><td>Community</td><td>Name</td><td>Email</td><td>Zipcode</td><td></td><td>Created At</td><td>Responses</td><td>Admin</td><td></td>
+  </tr>
+  <%= render @users %>
+</table>
+<% end %>
+</div>

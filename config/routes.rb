@@ -1,4 +1,5 @@
 Mvpv2::Application.routes.draw do
+
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
@@ -18,6 +19,11 @@ Mvpv2::Application.routes.draw do
   resources :comments do
     resources :replies
   end
+  resources :communities do
+    resources :stacks
+  end
+  resources :communities
+  resources :user_communities
 
   match '/create_stack', :to => 'stacks#create_stack'
   match '/new_reply',    :to => 'replies#new'

@@ -1,0 +1,20 @@
+<div class="padding_30px">
+<div class="stk_section_header"><%= @title %></div>
+
+<div class="add_community text-75">
+    <%= link_to "Add Community", new_community_path %><br />
+</div>
+
+<table class="communities" summary="Heystack Communities">
+  <tr>
+    <td span=2>
+      <% unless @communities.empty? %>
+		<div class="community_list">
+		  <%= render @communities %>
+		</div>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+</div>

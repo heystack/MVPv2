@@ -13,6 +13,9 @@ class SessionsController < ApplicationController
       @user = User.new
       if @user.save
         sign_in @user
+        if UserCommunity.count > 0
+          @user.member_of!(UserCommunity.first.community_id)
+        end
       end
     else
       sign_in user

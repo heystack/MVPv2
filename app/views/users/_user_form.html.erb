@@ -1,13 +1,17 @@
 <%= render 'shared/error_messages', :object => f.object %>
 <div class="field">
-  <%= f.label :name %><br />
-  <%= f.text_field :name %>
+  <%= f.label :name %> <%= f.text_field :name %>
 </div>
 <div class="field">
-  <%= f.label :email %><br />
-  <%= f.text_field :email %>
+  <%= f.label :email %> <%= f.text_field :email %>
 </div>
 <div class="field">
-  <%= f.label :zipcode %><br />
-  <%= f.text_field :zipcode %>
+  <%= f.label :zipcode %> <%= f.text_field :zipcode %>
 </div>
+<div class="field">
+<%= fields_for(:user_community) do |u| %>
+<% @current_community = UserCommunity.find_by_user_id(@user) %>
+<%= u.label :community %> <%= u.text_field :community, :value => @current_community.nil? ? "" : @current_community.community_id %>
+<% end %>
+</div>
+<br/>

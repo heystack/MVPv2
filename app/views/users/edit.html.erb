@@ -1,19 +1,7 @@
 <div class="padding_20px">
-<h1>Edit User  <%= @user.id %></h1>
-<%= pluralize(current_user.responses.count, "response") %>
-<table>
-  <tr>
-	<td class="response_header">Rid</td>
-	<td class="response_header">Uid</td>
-	<td class="response_header">Topic</td>
-	<td class="response_header">Value</td>
-	<td class="response_header">Zipcode</td>
-	<td class="response_header">Qualifier</td>
-	<td class="response_header">Created At</td>
-	<td class="response_header">Modified At</td>
-	<td class="response_header"></td>
-  <%= render @responses %>
-</table>
+<div class="stk_section_header">Edit <%= @user.name.blank? ? "" : @user.name %> #<%= @user.id %>
+(<%= pluralize(@user.responses.count, "response") %>)</div>
+
 <%= form_for(@user) do |f| %>
   <%= render 'user_form', :f => f %>
   <div class="actions">

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   has_many :responses # No :dependent => :destroy (Responses survive user destroy)
   has_many :comments, :dependent => :destroy
+  has_many :user_communities, :dependent => :destroy
+  has_many :communities, :through => :user_communities
   
   before_save :make_salt
 
@@ -19,6 +21,23 @@ class User < ActiveRecord::Base
   
   def make_admin
     self.admin = true unless !current_user.admin?
+  end
+
+  # communities through the user_communities association
+  def member_of_any_community?
+    self.user_communities.count > 0
+  end
+
+  def member_of?(community)
+    self.user_communities.find_by_community_id(community)
+  end
+
+  def member_of!(community)
+    self.user_communities.create!(:community_id => community)
+  end
+  
+  def not_member_of!(community)
+    self.user_communities.find_by_community_id(community).destroy
   end
 
   private

@@ -1,0 +1,11 @@
+<div class="padding_30px">
+<div class="stk_section_header"><%= @title %></div>
+
+<%= form_for(@community) do |f| %>
+  <%= render 'community_form', :f => f %><br/>
+  <div class="actions">
+    <%= f.submit "Create Community" %>
+  </div>
+<% end %>
+
+</div>

@@ -1,5 +1,6 @@
 <tr <% if user == current_user %>style="background-color:#ffc;"<% end %>>
   <td><%= user.id %></td>
+  <td><%= user.member_of_any_community? ? user.communities.first.name : "" %></td>
   <td><%= user.name.blank? ? "" : link_to( user.name, user ) %></td>
   <td><%= user.email %></td>
   <td><%= user.zipcode %></td>

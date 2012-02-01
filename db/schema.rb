@@ -10,10 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131025405) do
+ActiveRecord::Schema.define(:version => 20120201043623) do
 
   create_table "comments", :force => true do |t|
-    t.string   "content", :limit => 2000
+    t.string   "content"
     t.integer  "stack_id"
     t.integer  "user_id"
     t.integer  "votes"
@@ -21,8 +21,18 @@ ActiveRecord::Schema.define(:version => 20120131025405) do
     t.datetime "updated_at"
   end
 
+  create_table "communities", :force => true do |t|
+    t.integer  "community_id"
+    t.string   "name"
+    t.string   "desc"
+    t.string   "type"
+    t.string   "logo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "replies", :force => true do |t|
-    t.string   "content", :limit => 2000
+    t.string   "content"
     t.integer  "comment_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -90,6 +100,14 @@ ActiveRecord::Schema.define(:version => 20120131025405) do
     t.string   "madlibs_2"
     t.string   "madlibs_2_label"
     t.string   "madlibs_3"
+    t.integer  "community_id"
+  end
+
+  create_table "user_communities", :force => true do |t|
+    t.integer  "community_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

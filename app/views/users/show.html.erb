@@ -1,5 +1,5 @@
 <div class="padding_20px">
-<h1>User <%= @user.id %></h1>
+<div class="stk_section_header"><%= @user.name.blank? ? "" : @user.name %> #<%= @user.id %> (<%= link_to "edit", edit_user_path(@user) %>)</div>
 <% if @responses.empty? %>
   <% if Stack.count == 0 %>
 	<br/><h3>Wow! No Stacks!<br/>Do you want to <%= link_to "create the first Stack?", new_stack_path %></h3>
@@ -7,12 +7,15 @@
 	No Answers.
   <% end %>
 <% else %>
-<table>
+<table class="text-75">
   <tr>
 	<td class="response_header">Rid</td>
 	<td class="response_header">Uid</td>
-	<td class="response_header">Topic</td>
+	<td class="response_header">Name</td>
+	<td class="response_header">Email</td>
+	<td class="response_header">Stack</td>
 	<td class="response_header">Value</td>
+	<td class="response_header">Zipcode</td>
 	<td class="response_header">Qualifier</td>
 	<td class="response_header">Created At</td>
 	<td class="response_header">Modified At</td>
