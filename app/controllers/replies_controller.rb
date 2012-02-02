@@ -12,7 +12,6 @@ class RepliesController < ApplicationController
   def create
     @comment = Comment.find_by_id(params[:reply][:comment_id])
     @reply = @comment.replies.build(params[:reply])
-    flash[:notice] = "params[:reply][:user_id] = " + params[:reply][:user_id].to_s
     if @reply.save
       if !params[:user][:name].nil?
         @user = User.find_by_id(params[:reply][:user_id])
