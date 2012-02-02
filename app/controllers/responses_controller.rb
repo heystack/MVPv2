@@ -107,8 +107,8 @@ class ResponsesController < ApplicationController
     #   redirect_to root_path and return
     # end
     # Replication of first part of Sessions#Create - probably a better way to do this
-    user = current_user
-    if user.nil?
+    @user = current_user
+    if @user.nil?
       @user = User.new
       if @user.save
         sign_in @user
@@ -123,15 +123,15 @@ class ResponsesController < ApplicationController
         end
       end
     else
-      sign_in user
+      sign_in @user
       if params[:community]
         session[:community] = params[:community]
         if !@user.member_of?(session[:community])
           @user.member_of!(session[:community])
         end
       else
-        if user.member_of_any_community?
-          session[:community] = user.most_recent_community.community_id
+        if @user.member_of_any_community?
+          session[:community] = @user.most_recent_community.community_id
         elsif UserCommunity.count > 0
           session[:community] = UserCommunity.first.community_id
           @user.member_of!(session[:community])
