@@ -126,6 +126,9 @@ class ResponsesController < ApplicationController
       sign_in user
       if params[:community]
         session[:community] = params[:community]
+        if !@user.member_of?(session[:community])
+          @user.member_of!(session[:community])
+        end
       else
         if user.member_of_any_community?
           session[:community] = user.most_recent_community.community_id
