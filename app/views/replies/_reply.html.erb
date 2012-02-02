@@ -1,6 +1,6 @@
 <% @reply_user = User.find_by_id(reply.user_id) %>
 <div class="reply">
-<div class="reply_name"><%= @user.name.blank? ? "" : @user.name %></div>
+<div class="reply_name"><%= @reply_user.name.blank? ? "" : @reply_user.name %></div>
 <div class="reply_content round">
 <%= auto_link( reply.content ) %>
 </div>
