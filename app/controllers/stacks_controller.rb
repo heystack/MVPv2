@@ -142,14 +142,14 @@ class StacksController < ApplicationController
           # @diff_amt = (( session[:you] - @lowest_amt ) * 240).round
           @diff_text = "&nbsp;more"
         end
-        if @diff_amt == 0
-          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>the same as</span> " + @stack.attr_comparison_2
-          # @diff_text = ""
-        else
-          @diff_amt = number_to_currency(@diff_amt, :strip_insignificant_zeros => true)
-          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @percent_diff + @diff_text + "</span> " + @stack.attr_comparison_2
-          # @diff_text = "With four 5 hours sits per month, you spend <span class='em'>" + @diff_amt.to_s + @diff_text + " per year</span> than your lowest spending neighbors."
-        end
+        # if @diff_amt == 0
+        #   @comparison_text = @stack.attr_comparison_1 + " <span class='em'>the same as</span> " + @stack.attr_comparison_2
+        #   # @diff_text = ""
+        # else
+        #   @diff_amt = number_to_currency(@diff_amt, :strip_insignificant_zeros => true)
+        #   @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @percent_diff + @diff_text + "</span> " + @stack.attr_comparison_2
+        #   # @diff_text = "With four 5 hours sits per month, you spend <span class='em'>" + @diff_amt.to_s + @diff_text + " per year</span> than your lowest spending neighbors."
+        # end
         @lowest_desc = "Least"
         @highest_desc = "Highest"
 
@@ -161,13 +161,13 @@ class StacksController < ApplicationController
           @diff_amt = ( session[:you] - @lowest_amt ).round
           @diff_text = "about " + help.pluralize(@diff_amt, 'year') + " later"
         end
-        if @diff_amt == 0
-          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>at the same age</span> " + @stack.attr_comparison_2
-          # @diff_text = ""
-        else
-          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @diff_text + "</span> " + @stack.attr_comparison_2
-          # @diff_text = "Based on an average child's cell phone use, your child may spend up to <span class='em'>" + "6 hours per week" + "</span> on their cell phone."
-        end
+        # if @diff_amt == 0
+        #   @comparison_text = @stack.attr_comparison_1 + " <span class='em'>at the same age</span> " + @stack.attr_comparison_2
+        #   # @diff_text = ""
+        # else
+        #   @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @diff_text + "</span> " + @stack.attr_comparison_2
+        #   # @diff_text = "Based on an average child's cell phone use, your child may spend up to <span class='em'>" + "6 hours per week" + "</span> on their cell phone."
+        # end
         @lowest_desc = "Youngest"
         @highest_desc = "Oldest"
 
@@ -179,13 +179,13 @@ class StacksController < ApplicationController
           @diff_amt = (( session[:you] - @lowest_amt ) * 21).round
           @diff_text = "&nbsp;more"
         end
-        if @diff_amt == 0
-          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>the same as</span> " + @stack.attr_comparison_2
-          # @diff_text = ""
-        else
-          @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @mult_diff + @diff_text + "</span> " + @stack.attr_comparison_2
-          # @diff_text = "In a typical month, your child may spend up to <span class='em'>" + @diff_amt.to_s + @diff_text + "</span> hours on homework than their least loaded peers."
-        end
+        # if @diff_amt == 0
+        #   @comparison_text = @stack.attr_comparison_1 + " <span class='em'>the same as</span> " + @stack.attr_comparison_2
+        #   # @diff_text = ""
+        # else
+        #   @comparison_text = @stack.attr_comparison_1 + " <span class='em'>" + @mult_diff + @diff_text + "</span> " + @stack.attr_comparison_2
+        #   # @diff_text = "In a typical month, your child may spend up to <span class='em'>" + @diff_amt.to_s + @diff_text + "</span> hours on homework than their least loaded peers."
+        # end
         @lowest_desc = "Lowest"
         @highest_desc = "Highest"
 
@@ -223,7 +223,12 @@ class StacksController < ApplicationController
       render 'edit'
     end
   end
-
+  
+  def index
+    @title = "All Stacks"
+    @stacks = Stack.find(:all, :order => "community_id ASC")
+  end
+  
   def create_stack
     @title = "Create New Stack (Work In Progress)"
   end

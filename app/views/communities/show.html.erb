@@ -9,11 +9,11 @@
   <tr><td span=2>No Stacks.</td></tr>
 <% else %>
   <tr><td>
-	<div class="community_show_logo"><%= image_tag @community.logo, :height => "50" %></div>
-  </td><td><%= @community.desc %></td><tr>
+	<div class="community_show_logo"><%= image_tag @community.icon, :height => "50" %></div>
+  </td><td><%= image_tag @community.logo %><br/><%= @community.desc %></td><tr>
   <tr><td></td><td>
   <ul class="stack_list">
-	<%= render @stacks, :omit_stack => "" %>
+	<%= render @stacks, :omit_stack => "", :stack_detail => false %>
   </ul>
   </td></tr>
 <% end %>

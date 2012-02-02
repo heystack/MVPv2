@@ -10,7 +10,7 @@
 </div>
 <div class="field">
 <%= fields_for(:user_community) do |u| %>
-<% @current_community = UserCommunity.find_by_user_id(@user) %>
+<% @current_community = @user.most_recent_community %>
 <%= u.label :community %> <%= u.text_field :community, :value => @current_community.nil? ? "" : @current_community.community_id %>
 <% end %>
 </div>

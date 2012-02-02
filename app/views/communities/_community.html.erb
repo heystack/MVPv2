@@ -1,4 +1,4 @@
-<div class="community_list_logo"><%= image_tag community.logo, :height => 50 %></div>
+<div class="community_list_logo"><%= image_tag community.icon, :height => 50 %></div>
 <div class="community_list_header">
 	<div class="community_list_desc" style="font-size:150%;"><%= link_to community.name, community %></div>
 	<span class="de-em text-75">Created <%= time_ago_in_words(community.created_at) %> ago.</span>

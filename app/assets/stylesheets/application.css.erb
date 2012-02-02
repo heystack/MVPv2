@@ -67,11 +67,11 @@ html {
 body {
 /*  background-image:url('bluebg.png');*/
 /*  background-image:url('bg_hayfield.jpg');*/
-  background: url(bg_hayfield_washed.jpg) no-repeat center center fixed;
+/*  background: url(bg_hayfield_washed.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
   background-color: #ffc;
 }
 
@@ -680,13 +680,18 @@ div.comment {
   margin-bottom: 10px;
 }
 
+div.comment_name {
+  font-size: 100%;
+  font-weight: bold;
+}
+
 div.comment_callout {
   line-height: 14px;
   vertical-align: top;
 }
 
 div.comment_content {
-  font-size: 80%;
+  font-size: 100%;
 }
 
 textarea.comment_content {
@@ -697,7 +702,7 @@ textarea.comment_content {
 
 div.comment_timestamp {
   width: 100%;
-  text-align: right;
+  text-align: left;
   vertical-align: top;
 }
 
@@ -716,6 +721,15 @@ div.reply {
   margin-bottom: 5px;
   margin-left: 20px;
   font-size: 80%;
+}
+
+div.reply_name {
+  font-weight: bold;
+}
+
+div.reply_content {
+  background: #f0f0f0;
+  padding: 5px;
 }
 
 /* Suggestion Form */

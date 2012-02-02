@@ -14,15 +14,24 @@ class SessionsController < ApplicationController
       if @user.save
         sign_in @user
         if UserCommunity.count > 0
-          @user.member_of!(UserCommunity.first.community_id)
+          # First community must be the default, public community
+          session[:community] = UserCommunity.first.community_id
+          @user.member_of!(session[:community])
         end
       end
     else
       sign_in user
+      if user.member_of_any_community?
+        session[:community] = user.most_recent_community.community_id
+      elsif UserCommunity.count > 0
+        session[:community] = UserCommunity.first.community_id
+        @user.member_of!(session[:community])
+      end
     end
-    if Stack.count > 0
-      @stack ||= Stack.find_by_sotd("1")
-      @stack ||= Stack.first
+    @community = Community.find_by_id(session[:community])
+    if @community.stacks.count > 0
+      @stack ||= @community.stacks.find_by_sotd("1")
+      @stack ||= @community.stacks.first
       session[:stack] = @stack.id
       if @stack.answered?(current_user)
         redirect_to stack_path(@stack)

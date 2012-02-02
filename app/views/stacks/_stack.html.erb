@@ -1,3 +1,32 @@
+<% if stack_detail %>
+
+<% @community = Community.find_by_id(stack.community_id) %>
+<div class="community_list_header">
+	<div class="community_list_desc" style="font-size:100%;"><%= link_to @community.nil? ? "None" : @community.name, @community %> > <%= link_to stack.name, stack %>
+	<% if stack.sotd %>
+		<%= link_to image_tag("red_star.png"), stack, :html => { :title => "Stack of the Day" } %>
+	<% end %>
+	</div>
+	<div class="community_list_desc"><%= stack.question %></div>
+	<span class="de-em text-75">Created <%= time_ago_in_words(stack.created_at) %> ago. 
+		Most recent response <%= time_ago_in_words(stack.responses.last.created_at) %> ago.
+	</span>
+</div>
+<div class="edit_delete">
+  <% if current_user.admin? %>
+    <%= link_to "edit", edit_stack_path(stack) %> | 
+    <%= link_to "delete", stack, :method => :delete, :confirm => "You sure?",
+                                	 :title => "Delete #{stack.name}" %>
+  <% end %>
+</div>
+<div class="community_list_item">
+<span class="community_list_item_count"><%= stack.responses.count %></span>
+<span class="community_list_item_desc">responses</span>
+</div>
+<hr>
+
+<% else %>
+
 <% if stack != omit_stack %>
 <li>
 <% if stack.answered?(current_user) %>
@@ -7,4 +36,6 @@
 <% end %>
 <%= link_to stack.question, stack_path(stack.id), :class => css_class %>
 </li>
+<% end %>
+
 <% end %>

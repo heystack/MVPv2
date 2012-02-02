@@ -3,7 +3,7 @@ Mvpv2::Application.routes.draw do
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
-
+  
   resources :users
   resources :users do
     resources :responses

@@ -1,8 +1,14 @@
+<% if session[:community] %>
+	<% @community = Community.find_by_id(session[:community]) %>
+	<% @logo = @community.logo %>
+<% else %>
+	<% @logo = "heystack_logo_alexandria.png" %>
+<% end %>
 <div class="header">
 <table>
   <tr>
 	<td class="header_logo">
-	  <%= link_to image_tag("heystack_logo_alexandria.png",
+	  <%= link_to image_tag(@logo,
 								:alt => "Heystack | Local Comparisons",
 								:height => "60"),
 								root_path %>

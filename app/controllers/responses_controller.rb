@@ -2,10 +2,17 @@ class ResponsesController < ApplicationController
 
   def new
     if !session[:stack]
-      @stack = Stack.first
-      session[:stack] = @stack.id
+      if session[:community]
+        @community = Community.find_by_id(session[:community])
+        @stack = @community.first
+      else
+        @stack = Stack.first
+        session[:stack] = @stack.id
+        session[:community] = @stack.community_id
+      end
     else
       @stack = Stack.find_by_id(session[:stack])
+      session[:community] ||= @stack.community_id
     end
     @email = current_user.email ? current_user.email : "feedback@stkup.com"
     @response = @stack.responses.new
@@ -96,18 +103,37 @@ class ResponsesController < ApplicationController
 
   def index
     # Create new response from URL-based GET form submission
-    if !params[:response]
-      redirect_to root_path and return
-    end
+    # if !params[:response]
+    #   redirect_to root_path and return
+    # end
     # Replication of first part of Sessions#Create - probably a better way to do this
     user = current_user
     if user.nil?
       @user = User.new
       if @user.save
         sign_in @user
+        if UserCommunity.count > 0
+          if params[:community]
+            session[:community] = params[:community]
+          else
+            # First community must be the default, public community
+            session[:community] = UserCommunity.first.community_id
+          end
+          @user.member_of!(session[:community])
+        end
       end
     else
       sign_in user
+      if params[:community]
+        session[:community] = params[:community]
+      else
+        if user.member_of_any_community?
+          session[:community] = user.most_recent_community.community_id
+        elsif UserCommunity.count > 0
+          session[:community] = UserCommunity.first.community_id
+          @user.member_of!(session[:community])
+        end
+      end
     end
     # end Sessions#Create snippet
     if params[:email]
@@ -116,7 +142,7 @@ class ResponsesController < ApplicationController
     @stack = Stack.find_by_id(params[:stack_id])
     # Session vars must be set since we might be coming from an email form submission
     session[:stack] = @stack.id
-    if @stack.answered?(current_user)
+    if @stack.answered?(current_user) && params[:response]
       @response = @stack.responses.find_by_user_id(current_user.id)
       @save_response = @response.update_attributes(params[:response])
     else

@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     self.user_communities.count > 0
   end
 
+  def most_recent_community
+    self.user_communities.last
+  end
+
   def member_of?(community)
     self.user_communities.find_by_community_id(community)
   end

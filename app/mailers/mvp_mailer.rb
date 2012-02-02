@@ -5,12 +5,13 @@ class MvpMailer < ActionMailer::Base
     @stack = stack
     @response = @stack.responses.new
     @contact = contact
+    @community = @stack.community_id
     @from_name = from_name
-    @from_email = @from_name + " via StkUp <feedback@stkup.com>"
+    @from_email = @from_name + " via Heystack <feedback@stkup.com>"
     @email = @contact[:email]
     @user_email = user_email
     @form_capable = false
-    @host_url = "http://stkup.com"
+    @host_url = "http://heystack.com"
     # @host_url = "http://localhost:3000"
     @base_url = @host_url + "/stacks/" + @stack.id.to_s + "/responses"
     # Validate reply-to email address

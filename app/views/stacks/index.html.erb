@@ -1,0 +1,20 @@
+<div class="padding_30px">
+<div class="stk_section_header"><%= @title %></div>
+
+<div class="add_community text-75">
+    <%= link_to "Add Stack", new_stack_path %><br />
+</div>
+
+<table class="communities" summary="Community Stacks">
+  <tr>
+    <td span=2>
+      <% unless @stacks.empty? %>
+		<div class="community_list">
+		  <%= render @stacks, :stack_detail => true %>
+		</div>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+</div>

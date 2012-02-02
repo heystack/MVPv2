@@ -1,5 +1,5 @@
 class Community < ActiveRecord::Base
-  attr_accessible :name, :desc, :logo, :type
+  attr_accessible :name, :desc, :logo, :icon, :type
 
   has_many :reverse_user_communities,
             :foreign_key => "community_id",

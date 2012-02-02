@@ -73,6 +73,8 @@ GEM
       activesupport (= 3.1.1)
       bundler (~> 1.0)
       railties (= 3.1.1)
+    rails_autolink (1.0.5)
+      rails (~> 3.1)
     railties (3.1.1)
       actionpack (= 3.1.1)
       activesupport (= 3.1.1)
@@ -115,6 +117,7 @@ DEPENDENCIES
   json
   pg
   rails (= 3.1.1)
+  rails_autolink
   rake (= 0.8.7)
   sass-rails (~> 3.1.4)
   sqlite3

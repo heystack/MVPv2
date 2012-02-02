@@ -1,9 +1,10 @@
 <% @user = User.find_by_id(comment.user_id) %>
 <div class="comment">
+<div class="comment_name"><%= @user.name.blank? ? "" : @user.name %></div>
 <div class="comment_content">
-<%= comment.content %><br/>
+<%= auto_link( comment.content ) %><br/>
 <div class="comment_timestamp">
-<span class="de-em text-75">Added <%= time_ago_in_words(comment.created_at) %> ago<%= @user.name.blank? ? "" : " by <strong>".html_safe + @user.name + "</strong>".html_safe -%>.&nbsp;
+<span class="de-em text-75">Added <%= time_ago_in_words(comment.created_at) %> ago · 
   <%= form_for @reply,
 		:url => new_reply_path,
 		:html => { :style => "display:inline;" },

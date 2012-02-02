@@ -45,6 +45,10 @@ module SessionsHelper
     redirect_to(root_path) unless current_user.admin?
   end
 
+  def community_stacks(community)
+    Stack.where("community_id = ?", community)
+  end
+
   private
 
     def user_from_remember_token
