@@ -10,10 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120202032515) do
+ActiveRecord::Schema.define(:version => 20120203212018) do
 
   create_table "comments", :force => true do |t|
-    t.string   "content"
+    t.string   "content",    :limit => 5000
     t.integer  "stack_id"
     t.integer  "user_id"
     t.integer  "votes"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20120202032515) do
   end
 
   create_table "replies", :force => true do |t|
-    t.string   "content"
+    t.string   "content",    :limit => 5000
     t.integer  "comment_id"
     t.integer  "user_id"
     t.datetime "created_at"
