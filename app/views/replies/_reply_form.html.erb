@@ -11,7 +11,9 @@
 	:style => "color:lightgray;",
 	:value => "Type your reply...",
 	:onfocus => "if (this.value.substring(0,4) == 'Type')
-					{this.value='';this.style.color = 'black';this.style.height = '50px';};"
+					{this.value='';this.style.color = 'black';this.style.height = '50px';};",
+	:onKeyPress => "return imposeMaxLength(this,2000);",
+	:onblur => "return imposeMaxLengthPaste(this,2000);"
   %>
   <div class="actions">
 	<div id="submit_reply_div">

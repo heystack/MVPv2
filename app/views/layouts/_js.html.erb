@@ -79,6 +79,26 @@ function unhide(divID) {
 </script>
 
 <script type="text/javascript">
+function imposeMaxLength(field,maxChars)
+{
+	if(field.value.length >= maxChars) {
+      alert("As a friend once told me, \"Brevity equals Clarity\"...we're going to have to limit you to " + maxChars + " characters.");
+	  return false;
+	}
+}  
+
+function imposeMaxLengthPaste(field,maxChars)
+{
+    if(field.value.length > maxChars) {
+	  chopped = field.value.substr(0, maxChars-1);
+	  field.value = chopped;
+      alert("As a friend once told me, \"Brevity equals Clarity\"...we're going to have to limit you to " + maxChars + " characters.");
+      return false;
+    }
+}
+</script>
+
+<script type="text/javascript">
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-26915737-1']);

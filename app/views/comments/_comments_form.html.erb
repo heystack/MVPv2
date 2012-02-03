@@ -7,7 +7,9 @@
 	:style => "color:lightgray;",
 	:value => "Join the discussion...",
 	:onfocus => "if (this.value.substring(0,4) == 'Join')
-					{this.value='';this.style.color = 'black';this.style.height = '50px';}; unhide('submit_comment_div')"
+					{this.value='';this.style.color = 'black';this.style.height = '50px';}; unhide('submit_comment_div');",
+	:onKeyPress => "return imposeMaxLength(this,2000);",
+	:onblur => "return imposeMaxLengthPaste(this,2000);"
   %>
   <div class="actions">
 	<div id="submit_comment_div" class="hidden">

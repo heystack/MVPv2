@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :zipcode, :subscribed
 
   has_many :responses # No :dependent => :destroy (Responses survive user destroy)
-  has_many :comments, :dependent => :destroy
+  has_many :comments
   has_many :user_communities, :dependent => :destroy
   has_many :communities, :through => :user_communities
   

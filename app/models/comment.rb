@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :stack
   belongs_to :user
-  has_many   :replies
+  has_many   :replies, :dependent => :destroy
   
   default_scope :order => 'comments.created_at DESC'
   
