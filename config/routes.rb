@@ -44,6 +44,8 @@ Mvpv2::Application.routes.draw do
 
   get "mvp/home"
   get "mvp/contact"
+  # 2-factor auth for setting admin: obscure URL plus PIN
+  get "mvp/f69b29082d4aabb4"
 
   match '/share',               :to => 'mvp#share_form'
   match '/share_via_email',     :to => 'mvp#share_via_email'

@@ -17,6 +17,9 @@ class MvpController < ApplicationController
     redirect_to @stack
   end
 
+  def f69b29082d4aabb4
+  end
+
   def share_form
     @stack = Stack.find_by_id(session[:stack])
   end

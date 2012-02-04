@@ -1,4 +1,5 @@
 class CommunitiesController < ApplicationController
+  before_filter :admin_user
 
   def index
     @title = "Heystack Communities"

@@ -24,19 +24,22 @@
 		  </div>
 		  <br/>
 		  <div class="step_header">2. Enter Your Question</div>
+		  <div class="indent_20px">
 		  <div class="de-em text-75">Type in your specific stack question just as you'd ask it to a neighbor.</div>
 		  <%= text_area "request", "message",
 			:class => "create_stack round",
-			:style => "color:lightgray",
+			:style => "color:lightgray;",
 			:value => "Type your full stack question here...",
 			:onfocus => "if (this.value.substring(0,4) == 'Type') {this.value='';this.style.color = 'black';this.style.height = '50px';}; unhide('submit_comment_div')"
 		  %>
-		  <br/>
+		  </div>
 		  <div class="step_header">3. Enter Your Email</div>
+		  <div class="indent_20px">
 		  <div class="de-em text-75">We'll send you an alert when your stack is approved along with some handy instructions for sharing with your friends.</div>
 		  <%= text_field "request", "from_email", :value => current_user.email, :size => 50 %>
 		  <%= submit_tag "Submit Stack Request", :class => "form_button round" %>
 		  <br/>
+		  </div>
 		</div>
 		<% end %>
 	</td>

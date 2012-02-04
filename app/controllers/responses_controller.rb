@@ -1,4 +1,5 @@
 class ResponsesController < ApplicationController
+  before_filter :admin_user, :only => :stkresponses
 
   def new
     if !session[:stack]

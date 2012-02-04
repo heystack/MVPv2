@@ -1,4 +1,5 @@
 class StacksController < ApplicationController
+  before_filter :admin_user, :except => [:show, :create_stack]
   include ActionView::Helpers::NumberHelper
 
   # Required to prevent session from resetting, due to use of 'def protect_from_forgery? false' in mvp_mailer_helper 

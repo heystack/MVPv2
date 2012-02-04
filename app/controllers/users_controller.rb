@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :except => [:show, :new, :create]
   before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => :destroy
+  before_filter :admin_user, :except => [:toggle_admin, :signup]
 
   def new
   end
@@ -52,8 +52,17 @@ class UsersController < ApplicationController
    
   def toggle_admin
     @user = User.find(params[:id])
-    @user.toggle!(:admin)
-    flash[:success] = "Admin toggled."
+    if params[:pin]
+      if params[:pin] == '3822'
+        @user.toggle!(:admin)
+        flash[:success] = "Admin toggled."
+      else
+        flash[:success] = "Permission denied."
+      end
+    else
+      @user.toggle!(:admin)
+      flash[:success] = "Admin toggled."
+    end
     redirect_to users_path
     # Ajax version not working
     # respond_to do |format|
