@@ -1,7 +1,7 @@
 <tr <% if user == current_user %>style="background-color:#ffc;"<% end %>>
   <td><%= user.id %></td>
   <!-- This next line is really horrible... -->
-  <td><%= user.member_of_any_community? ? Community.find_by_id(user.most_recent_community.community_id).name : "" %></td>
+  <td><%= user.member_of_any_community? ? user.user_communities.map { |uc| Community.find_by_id(uc.community_id).name + " " } : "" %></td>
   <td><%= user.name.blank? ? "" : link_to( user.name, user ) %></td>
   <td><%= user.email %></td>
   <td><%= user.zipcode %></td>

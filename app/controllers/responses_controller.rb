@@ -14,7 +14,7 @@ class ResponsesController < ApplicationController
       @stack = Stack.find_by_id(session[:stack])
       session[:community] ||= @stack.community_id
     end
-    @email = current_user.email ? current_user.email : "feedback@stkup.com"
+    @email = current_user.email ? current_user.email : "feedback@heystack.com"
     @response = @stack.responses.new
     @title = "New Response"
     @form_capable = true

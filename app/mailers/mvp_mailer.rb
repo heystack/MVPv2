@@ -1,5 +1,5 @@
 class MvpMailer < ActionMailer::Base
-  default :from => "'StkUp Feedback' <feedback@stkup.com>"
+  default :from => "'Heystack Feedback' <feedback@heystack.com>"
 
   def email_neighbor(stack, contact, from_name, user_email)
     @stack = stack
@@ -7,7 +7,7 @@ class MvpMailer < ActionMailer::Base
     @contact = contact
     @community = @stack.community_id
     @from_name = from_name
-    @from_email = @from_name + " via Heystack <feedback@stkup.com>"
+    @from_email = @from_name + " via Heystack <feedback@heystack.com>"
     @email = @contact[:email]
     @user_email = user_email
     @form_capable = false
@@ -16,33 +16,33 @@ class MvpMailer < ActionMailer::Base
     @base_url = @host_url + "/stacks/" + @stack.id.to_s + "/responses"
     # Validate reply-to email address
     email_regex = /\A([\w\.\-\+]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-    @reply_to_email = ( @user_email =~ email_regex ) ? @user_email : "feedback@stkup.com"
+    @reply_to_email = ( @user_email =~ email_regex ) ? @user_email : "feedback@heystack.com"
     mail( :to => @email,
           :from => @from_email,
           :reply_to => @reply_to_email,
-          :bcc => "feedback@stkup.com",
+          :bcc => "feedback@heystack.com",
           :subject => @contact[:email_subject])
   end
 
   def comment_email(contact)
     @contact = contact
     @from_email = @contact[:from_email]
-    mail(:to => "feedback@stkup.com", :cc => "nycbrown@gmail.com", :from => @from_email, :subject => "User Comment!")
+    mail(:to => "feedback@heystack.com", :cc => "nycbrown@gmail.com", :from => @from_email, :subject => "User Comment!")
   end
 
   def feedback_email(contact)
     @contact = contact
     @from_email = @contact[:from_email]
-    mail(:to => "feedback@stkup.com", :cc => "nycbrown@gmail.com", :from => @from_email, :subject => "User Feedback!")
+    mail(:to => "feedback@heystack.com", :cc => "nycbrown@gmail.com", :from => @from_email, :subject => "User Feedback!")
   end
 
   def suggestion_email(suggestion)
     @suggestion = suggestion
-    mail(:to => "feedback@stkup.com", :cc => "nycbrown@gmail.com", :subject => "Stack Suggestion!")
+    mail(:to => "feedback@heystack.com", :cc => "nycbrown@gmail.com", :subject => "Stack Suggestion!")
   end
 
   def stack_request_email(request)
     @request = request
-    mail(:to => "feedback@stkup.com", :cc => "nycbrown@gmail.com", :subject => "Stack Request!")
+    mail(:to => "feedback@heystack.com", :cc => "nycbrown@gmail.com", :subject => "Stack Request!")
   end
 end

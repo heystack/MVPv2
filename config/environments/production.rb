@@ -63,11 +63,11 @@ Mvpv2::Application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :domain               => 'mail.stkup.com',
-    :user_name            => 'feedback@stkup.com',
-    :password             => 'may18stkup',
+    :domain               => 'mail.heystack.com',
+    :user_name            => 'feedback@heystack.com',
+    :password             => 'may18heystack',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
-  config.action_mailer.asset_host = "stkup.com"
+  config.action_mailer.asset_host = "heystack.com"
 
 end

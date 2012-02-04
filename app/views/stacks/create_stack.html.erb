@@ -11,7 +11,7 @@
 		<div class="field">
 		  <%= hidden_field "request", "from_id", :value => current_user.id %>
 		  <div class="step_header">1. Choose Your Stack Type</div>
-		  <div class="de-em text-75">We're all about numbers-based comparison here at StkUp, so tell us which kind of number question you want to ask.</div>
+		  <div>
 		  <%= select_tag "request[stem]", options_for_select([
 			['How much...'],
 			['How many...'],
@@ -19,7 +19,9 @@
 			['When...'],
 			['At what age...'],
 			['Other']
-			]) %><br/>
+			]),
+			{ :style => "font-size:2em; margin-left:20px;"} %>
+		  </div>
 		  <br/>
 		  <div class="step_header">2. Enter Your Question</div>
 		  <div class="de-em text-75">Type in your specific stack question just as you'd ask it to a neighbor.</div>

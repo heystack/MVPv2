@@ -1,3 +1,4 @@
+<% @communities = Community.all %>
 <%= render 'shared/error_messages', :object => f.object %>
 <div class="field">
   <%= f.label :name %> <%= f.text_field :name %>
@@ -10,8 +11,9 @@
 </div>
 <div class="field">
 <%= fields_for(:user_community) do |u| %>
-<% @current_community = @user.most_recent_community %>
-<%= u.label :community %> <%= u.text_field :community, :value => @current_community.nil? ? "" : @current_community.community_id %>
+<%= u.label :community %>
+<%= u.select :community, options_from_collection_for_select(@communities, "id", "name") %>
 <% end %>
+<span class="de-em text-75">Current communities: <%= @user.member_of_any_community? ? @user.user_communities.map { |uc| Community.find_by_id(uc.community_id).name + " " } : "None" %></span>
 </div>
 <br/>

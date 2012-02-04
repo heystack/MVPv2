@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# ogstkup: http://ogp.me/ns/fb/ogstkup#">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# ogheystack: http://ogp.me/ns/fb/ogheystack#">
   <meta property="fb:app_id"      content="240024852744401" /> 
   <meta property="og:type"        content="ogheystack:stack" /> 
   <meta property="og:image"       content="http://parenting-mvp.heroku.com/favicon.png" />
@@ -49,7 +49,7 @@
   <script type="text/javascript">
   function likeStack()
   {
-      FB.api('/me/ogstkup:like' + '?stack=http://samples.ogp.me/370585046290805','post',
+      FB.api('/me/ogheystack:like' + '?stack=http://samples.ogp.me/370585046290805','post',
                   function(response) {
           if (!response || response.error) {
                   alert('Error occured');

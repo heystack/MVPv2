@@ -230,7 +230,8 @@ class StacksController < ApplicationController
   end
   
   def create_stack
-    @title = "Create New Stack (Work In Progress)"
+    @title = "Create New Stack"
+    @communities = Community.all
   end
   
 end

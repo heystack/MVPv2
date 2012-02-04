@@ -1,10 +1,11 @@
+<% @communities = Community.all %>
 <%= render 'shared/error_messages', :object => f.object %>
 <div class="field">
   <%= f.hidden_field :created_by, :value => current_user.id %>
-  <%= f.label "Community" %>: <%= f.text_field :community_id, :size => "100" %><br/>
-  <%= f.label "Name" %>: <%= f.text_field :name, :size => "100" %><br/>
-  <%= f.label "Question" %>: <%= f.text_field :question, :size => "100" %><br/>
-  <%= f.label "Stem" %>: <%= f.select :stem, [["How much"], ["How many"], ["At what age"]] %><br/>
+  <%= f.label :community %>: <%= f.select :community_id, options_from_collection_for_select(@communities, "id", "name", @stack.community_id) %><br/>
+  <%= f.label :name %>: <%= f.text_field :name, :size => "100" %><br/>
+  <%= f.label :question %>: <%= f.text_field :question, :size => "100" %><br/>
+  <%= f.label :stem %>: <%= f.select :stem, [["How much"], ["How many"], ["At what age"]] %><br/>
   <%= f.label "Stack of the Day" %>: <%= f.select :sotd, [[""], ["1"]] %> <span class="de-em">(only one stack should be Stack of the Day)</span><br/>
   <%= f.label "Type" %>: <%= f.select :attr_type, [["Dollars"], ["Age"], ["Hours"]] %><br/>
   <%= f.label "Tooltip Prefix" %>: <%= f.select :attr_tooltip_prefix, [[""], ["$"]] %> <span class="de-em">(tooltips appear on the highchart on hover-over)</span><br/>
