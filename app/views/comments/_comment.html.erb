@@ -2,7 +2,7 @@
 <div class="comment">
 <div class="comment_name"><%= @user.name.blank? ? "" : @user.name %></div>
 <div class="comment_content">
-<%= auto_link( comment.content ) %><br/>
+<%= auto_link( comment.content, :html => { :target => '_blank' } ) %><br/>
 <div class="comment_timestamp">
 <span class="de-em text-75">Added <%= time_ago_in_words(comment.created_at) %> ago · 
   <%= form_for @reply,

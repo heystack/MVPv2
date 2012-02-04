@@ -27,7 +27,9 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       flash[:notice] = "Great, " + (@user.name? ? (@user.name + ", ") : (" ")) + "you're all set to receive a new stack question each week sent to #{params[:user][:email]}!"
       @stack = Stack.find_by_id(session[:stack])
-      @updated_community = params[:user_community][:community]
+      if params[:user_community]
+        @updated_community = params[:user_community][:community]
+      end
       unless @updated_community.nil?
         if @user.member_of?(@updated_community)
           flash[:notice] = (@user.name? ? @user.name : "") + " is already a member of the " + Community.find(@updated_community).name + " community."
