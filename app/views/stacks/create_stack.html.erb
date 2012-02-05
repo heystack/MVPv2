@@ -46,9 +46,15 @@
 	<td>
 	  <div class="stk_section_header">Sample Questions</div>
 	  <ul class="stack_list">
+		<% if Community.find_by_id(session[:community]).name == "Parenting" %>
 		<li><span class="de-em">How much do you pay your babysitter?</span></li>
 		<li><span class="de-em">At what age did you or do you plan to give your child a cell phone?</span></li>
 		<li><span class="de-em">How many hours of nightly homework for your child?</span></li>
+		<% elsif Community.find_by_id(session[:community]).name == "DSANV" %>
+		<li><span class="de-em">How much...?</span></li>
+		<li><span class="de-em">At what age...?</span></li>
+		<li><span class="de-em">How many...?</span></li>
+		<% end %>
 	</td>
   </tr>
 </table>
