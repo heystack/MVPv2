@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :except => [:show, :new, :create]
   before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user, :except => [:toggle_admin, :signup]
+  before_filter :admin_user, :except => [:toggle_admin, :update]
 
   def new
   end
@@ -70,11 +70,6 @@ class UsersController < ApplicationController
     #   format.html { redirect_to "www.google.com" }
     #   format.js
     # end
-  end
-  
-  def signup
-    @user = User.find(params[:id])
-    @user.update_attributes(:email => params[:user][:email])
   end
   
   private

@@ -190,6 +190,10 @@ class StacksController < ApplicationController
         @lowest_desc = "Lowest"
         @highest_desc = "Highest"
 
+      elsif @stack.stem == "How often"
+        @lowest_desc = "Least Often"
+        @highest_desc = "Most Often"
+
       end
 
       if @stack.attr_rounding == ".0"
