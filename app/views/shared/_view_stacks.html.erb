@@ -3,8 +3,10 @@
 <% if Stack.count > 1 %>
 <ul class="stack_list">
 <%= render community_stacks(session[:community]), :omit_stack => @stack, :stack_detail => false %>
+or <%= link_to "Create Your Own Stack", create_stack_path %>
 </ul>
 <% end %>
+
 <% if current_user.admin? %>
 <div style="width:100%; text-align:right;"><%= link_to "+", new_stack_path, :class => "subtle_link" %></div>
 <% end %>

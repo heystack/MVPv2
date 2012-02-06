@@ -8,8 +8,13 @@
     <%=raw @stack.madlibs_1 %>
 	<% if @stack.madlibs_1_type == "Numeric" %>
 	  <label>
-		<%= f.text_field :value, :size => 2, :value => "#{@response_value}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
-		<span><%= @stack.madlibs_1_label %></span>
+		<% if session[:you] %>
+		  <%= f.text_field :value, :size => 2, :value => "#{@response_value}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
+		  <span><%= @stack.madlibs_1_label %></span>
+		<% else %>
+		  <%= f.text_field :value, :size => 2, :class => "fill_in_the_blank", :style => "background:white;", :onfocus => "this.style.background = 'white';",  :onblur => "this.style.background = 'none';" %>
+		  <span>enter <%= @stack.madlibs_1_label %></span>
+		<% end %>
 	  </label>
 	<% else %>
 	  <%= f.select :qualifier1, [[@stack.madlibs_1_option_1], [@stack.madlibs_1_option_2], [@stack.madlibs_1_option_3], [@stack.madlibs_1_option_4], [@stack.madlibs_1_option_5], [@stack.madlibs_1_option_6], [@stack.madlibs_1_option_7], [@stack.madlibs_1_option_8], [@stack.madlibs_1_option_9], [@stack.madlibs_1_option_10], [@stack.madlibs_1_option_11], [@stack.madlibs_1_option_12], ], { }, { :style => 'display:inline; background:#ffdd55;' } %>
@@ -27,9 +32,14 @@
 	  <label>
 		<%= fields_for(:user) do |u| %>
 		<%= u.hidden_field :email, :value => @email %>
-		<%= u.text_field :zipcode, :size => 5, :value => "#{@zipcode}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
+		<% if session[:you] %>
+		  <%= u.text_field :zipcode, :size => 5, :value => "#{@zipcode}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
+		  <span>zipcode</span>
+		<% else %>
+		  <%= u.text_field :zipcode, :size => 5, :class => "fill_in_the_blank", :style => "background:white;", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
+		  <span>enter zipcode</span>
 		<% end %>
-		<span>zip code</span>
+		<% end %>
 	  </label>
 	<% else %>
 	  <%= fields_for(:user) do |u| %>
@@ -42,7 +52,7 @@
     <td style="vertical-align:bottom"><div class="end-quote">&#8221;</div></td>
   </tr>
 </table>
-<%= f.submit "Hey, Stack Me Up!", :class => "submit_button round" %>
+<%= f.submit "Stack Me Up!", :class => "submit_button round" %>
 <br/>
 <% if @ask_location %>
 <div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is Heystack available for my community?</a></div>
