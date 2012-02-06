@@ -1,5 +1,5 @@
 class StacksController < ApplicationController
-  before_filter :admin_user, :except => [:show, :create_stack]
+  before_filter :admin_user, :except => [:show, :create_stack, :filter_qualifier]
   include ActionView::Helpers::NumberHelper
 
   # Required to prevent session from resetting, due to use of 'def protect_from_forgery? false' in mvp_mailer_helper 
@@ -51,10 +51,10 @@ class StacksController < ApplicationController
       redirect_to new_stack_response_path(@stack) and return
     end
 
-    # Not sure what would cause a zero, but seems to be happening, so check for it
-    if session[:you] < 0.0001
-      redirect_to new_stack_response_path(@stack)
-    end
+    # Zero entry OK
+    # if session[:you] < 0.0001
+    #   redirect_to new_stack_response_path(@stack)
+    # end
     
     @user = current_user
 
@@ -63,27 +63,48 @@ class StacksController < ApplicationController
     @you_color = YOU_COLOR
     @biggest_color = BIGGEST_COLOR
 
-    @count = @stack.responses.count
-
+    @apply_filter_qualifier = @response.qualifier1 && session[:apply_filter_qualifier]
+    if @apply_filter_qualifier
+      @count = @stack.responses.count(:conditions => [ 'qualifier1 = ?', @response.qualifier1 ])
+    else
+      @count = @stack.responses.count
+    end
+    
+    session[:qualifier] = @response.qualifier1
+    session[:count] = @count
+  
     # @tipping_point_progress = ("%.0f" % ((@count.to_f / TIPPING_POINT) * 100)).to_s + "%"
     
     if @count > 0
       # Calculate all_neighbors
-      @all_neighbors = @stack.responses.average(:value)
-      # Used for debug purposes only
-      @responses = @stack.responses.all(:order => 'value')
+      if @apply_filter_qualifier
+        @all_neighbors = @stack.responses.average(:value, :conditions => [ 'responses.qualifier1 = ?', session[:qualifier] ])
+        # Used for debug purposes only
+        @responses = @stack.responses.all(:order => 'value')
+      else
+        # Calculate all_neighbors
+        @all_neighbors = @stack.responses.average(:value)
+      end
 
       # TODO: There must be an easier way to calculate the top and bottom 20%!!
       @count_20_percent = (0.20 * @count).ceil
 
       # Calculate lowest_spenders
-      @lowest_amounts = @stack.responses.order('value ASC').limit(@count_20_percent)
+      if @apply_filter_qualifier
+        @lowest_amounts = @stack.responses.where('qualifier1 = ?', session[:qualifier]).order('value ASC').limit(@count_20_percent)
+      else
+        @lowest_amounts = @stack.responses.order('value ASC').limit(@count_20_percent)
+      end
       @lowest_total = 0
       @lowest_amounts.each { |a| @lowest_total += a.value }
       @lowest_amt = @lowest_total / @count_20_percent
 
       # Calculate biggest_spenders
-      @biggest_amounts = @stack.responses.order('value DESC').limit(@count_20_percent)
+      if @apply_filter_qualifier
+        @biggest_amounts = @stack.responses.where('qualifier1 = ?', session[:qualifier]).order('value DESC').limit(@count_20_percent)
+      else
+        @biggest_amounts = @stack.responses.order('value DESC').limit(@count_20_percent)
+      end
       @biggest_total = 0
       @biggest_amounts.each { |a| @biggest_total += a.value }
       @biggest_amt = @biggest_total / @count_20_percent
@@ -238,5 +259,13 @@ class StacksController < ApplicationController
     @title = "Create New Stack"
     @communities = Community.all
   end
-  
+
+  def filter_qualifier
+    @stack = Stack.find(session[:stack])
+    session[:apply_filter_qualifier] = !session[:apply_filter_qualifier]
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end  
 end

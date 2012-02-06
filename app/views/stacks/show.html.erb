@@ -10,7 +10,20 @@
 <table>
   <tr>
 	<td class="atf_left hey">
-	  <div id="hc" class="hc round medshadow"></div>
+	  <div class="round medshadow">
+		<div id="hc" class="hc"></div>
+		<div class="chart_filter">
+		  <% if session[:qualifier] %>
+			<%= form_for :stack,
+						 :url => { :controller => "stacks", :action => :filter_qualifier },
+						 :html => {:style => "display:inline;"},
+						 :remote => true do |s| %>
+		      <%= s.check_box :filter_qualifier, { :checked => session[:apply_filter_qualifier], :class => 'checkable' } %>
+		    <% end %> <%= session[:qualifier] %> · 
+			<%= check_box_tag("filter", session[:qualifer], false, :disabled => true ) %> <%= @user.zipcode %> <span class="de-em text-75">showing all zipcodes</span>
+		  <% end %>
+		</div>
+	  </div>
 	  <%= render 'layouts/chart_footer' %>
 	</td>
 	<td class="atf_right hey">

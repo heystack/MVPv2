@@ -146,6 +146,7 @@ class ResponsesController < ApplicationController
     @stack = Stack.find_by_id(params[:stack_id])
     # Session vars must be set since we might be coming from an email form submission
     session[:stack] = @stack.id
+    session[:apply_filter_qualifier] = true
     if @stack.answered?(current_user) && params[:response]
       @response = @stack.responses.find_by_user_id(current_user.id)
       @save_response = @response.update_attributes(params[:response])

@@ -38,6 +38,11 @@ $(document).ready(
                     });
             });
     });
+
+	$('.checkable').live('change', 
+	function() {
+	    $(this).parents('form:first').submit();
+	});
 </script>
 
 <script type="text/javascript">
