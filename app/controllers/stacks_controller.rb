@@ -133,7 +133,6 @@ class StacksController < ApplicationController
       if @user_rank == "lowest"
         # Not sure what would cause a zero, but seems to be happening, so check for it
         if session[:you] < 0.0001
-          flash[:error] = "Response must be greater than zero."
           @mult = 0.0
         else
           @mult = ( @lowest_amt / session[:you] ).round

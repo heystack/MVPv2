@@ -43,6 +43,14 @@ $(document).ready(
 	function() {
 	    $(this).parents('form:first').submit();
 	});
+	
+	// Cool tooltip effect not working from http://flowplayer.org/tools/demos/tooltip/form.html
+	$(":input").tooltip({
+		position: "center right",
+		offset: [-2, 10],
+		effect: "fade",
+		opacity: 0.7
+	});
 </script>
 
 <script type="text/javascript">
@@ -73,6 +81,14 @@ function validateNameInComments(form) {
     }
 	alert("Please provide your name along with your comment.");
     return false;
+}
+
+function validateQualifier(form) {
+    if (form.response_qualifier1.value == "Choose..." || form.response_qualifier1.value == "") {
+		alert("Please choose an option from the dropdown.");
+	    return false;
+    }
+    return true;
 }
 
 function unhide(divID) {

@@ -9,7 +9,7 @@
   <%= f.label "Stack of the Day" %>: <%= f.select :sotd, [[""], ["1"]] %> <span class="de-em">(only one stack should be Stack of the Day)</span><br/>
   <%= f.label "Type" %>: <%= f.select :attr_type, [["Dollars"], ["Age"], ["Hours"]] %><br/>
   <%= f.label "Tooltip Prefix" %>: <%= f.select :attr_tooltip_prefix, [[""], ["$"]] %> <span class="de-em">(tooltips appear on the highchart on hover-over)</span><br/>
-  <%= f.label "Tooltip Units" %>: <%= f.select :attr_tooltip_units, [[""], [" /hr"], [" yrs old"], [" times"], [" hours"]] %><br/>
+  <%= f.label "Tooltip Units" %>: <%= f.select :attr_tooltip_units, [[""], [" /hr"], [" yrs old"], [" per week"], [" per month"], [" hours"]] %><br/>
   <%= f.label "Rounding" %>: <%= f.select :attr_rounding, [["."], [".0"], [".00"]] %><br/>
   <%= image_tag("madlibs_help.png") %><br/>
   <%= f.label "Madlibs 1" %>: <%= f.text_field :madlibs_1, :size => "100" %><br/>
