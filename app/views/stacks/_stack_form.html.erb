@@ -7,16 +7,16 @@
   <%= f.label :question %>: <%= f.text_field :question, :size => "100" %><br/>
   <%= f.label :stem %>: <%= f.select :stem, [["How much"], ["How many"], ["How often"], ["At what age"]] %><br/>
   <%= f.label "Stack of the Day" %>: <%= f.select :sotd, [[""], ["1"]] %> <span class="de-em">(only one stack should be Stack of the Day)</span><br/>
-  <%= f.label "Type" %>: <%= f.select :attr_type, [["Dollars"], ["Age"], ["Hours"]] %><br/>
+  <%= f.label "Type" %>: <%= f.select :attr_type, [["Dollars"], ["Age"], ["Hours"], ["Frequency"]] %><br/>
   <%= f.label "Tooltip Prefix" %>: <%= f.select :attr_tooltip_prefix, [[""], ["$"]] %> <span class="de-em">(tooltips appear on the highchart on hover-over)</span><br/>
   <%= f.label "Tooltip Units" %>: <%= f.select :attr_tooltip_units, [[""], [" /hr"], [" yrs old"], [" per week"], [" per month"], [" hours"]] %><br/>
   <%= f.label "Rounding" %>: <%= f.select :attr_rounding, [["."], [".0"], [".00"]] %><br/>
   <%= image_tag("madlibs_help.png") %><br/>
   <%= f.label "Madlibs 1" %>: <%= f.text_field :madlibs_1, :size => "100" %><br/>
   <%= f.label "Madlibs 1 Type" %>: <%= f.select :madlibs_1_type, [["Numeric"], ["Picklist"]] %><br/>
-  <%= f.label "Madlibs 1 Label" %>: <%= f.select :madlibs_1_label, [[""], ["age"], ["hourly rate"], ["hours"], ["nights"]] %> <span class="de-em">(only if type is "Numeric", ignored if "Picklist")</span><br/>
+  <%= f.label "Madlibs 1 Label" %>: <%= f.select :madlibs_1_label, [[""], ["age"], ["hourly rate"], ["dollars"], ["hours"], ["nights"], ["days"], ["weekends"], ["times/day"], ["times/week"], ["times/month"]] %> <span class="de-em">(only if type is "Numeric", ignored if "Picklist")</span><br/>
   <%= f.label "Madlibs 2" %>: <%= f.text_field :madlibs_2, :size => "100" %><br/>
-  <%= f.label "Madlibs 2 Label" %>: <%= f.select :madlibs_2_label, [[""], ["age"], ["hourly rate"], ["hours"], ["nights"]] %><br/>
+  <%= f.label "Madlibs 2 Label" %>: <%= f.select :madlibs_2_label, [[""], ["age"], ["hourly rate"], ["dollars"], ["hours"], ["nights"], ["days"], ["weekends"], ["times/day"], ["times/week"], ["times/month"]] %><br/>
   <%= f.label "Madlibs 3" %>: <%= f.text_field :madlibs_3, :size => "100" %><br/>
   <!-- <%= image_tag("help_hc.png") %><br/> -->
   <!-- <%= f.label "Biggest Description" %>: <%= f.text_field :attr_biggest_desc, :size => "100" %><br/>
