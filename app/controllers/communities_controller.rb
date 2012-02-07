@@ -10,6 +10,7 @@ class CommunitiesController < ApplicationController
     @community = Community.find(params[:id])
     @title = @community.name
     @stacks = @community.stacks
+    @users = @community.members.all.paginate(:page => params[:page], :per_page => 100, :order => 'id DESC')
   end
 
   def edit
