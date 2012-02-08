@@ -1,0 +1,10 @@
+ <%= form_for @reply,
+	:url => new_reply_path,
+	:html => { :style => "display:inline;" },
+	:remote => true  do |f| %>
+<%= f.hidden_field :user_id, :value => @user.id %>
+<%= f.hidden_field :comment_id, :value => comment.id %>
+<%= image_submit_tag("reply.png",
+					 :onmouseover => "this.src='" + image_path('reply_hover.png') + "';",						
+					 :onmouseout => "this.src='" + image_path('reply.png') + "';") %>
+ <% end %>

@@ -1,0 +1,21 @@
+<div id="vote_div_<%= comment.id %>" class="vote_tally round"><%= comment.votes.count %></div>
+<div id="vote_button_div_<%= comment.id %>" class="inline">
+<% if current_user.voted_for( comment.id ) %>
+
+<%= image_tag( "agreed_on.png" ) %>
+
+<% else %>
+
+<%= form_for @vote,
+		:html => { :style => "display:inline;" },
+		:remote => true do |f| %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.hidden_field :comment_id, :value => comment.id %>
+	<%= image_submit_tag("agreed.png",
+						 :onmouseover => "this.src='" + image_path('agreed_hover.png') + "';",						
+						 :onmouseout => "this.src='" + image_path('agreed.png') + "';") %>
+<% end %>
+
+<% end %>
+
+</div>

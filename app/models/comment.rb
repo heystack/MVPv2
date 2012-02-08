@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   belongs_to :stack
   belongs_to :user
   has_many   :replies, :dependent => :destroy
+  has_many   :votes, :dependent => :destroy
   
   default_scope :order => 'comments.created_at DESC'
   

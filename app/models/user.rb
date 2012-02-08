@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :user_communities, :dependent => :destroy
   has_many :communities, :through => :user_communities
+  has_many :votes
   
   before_save :make_salt
 
@@ -42,6 +43,10 @@ class User < ActiveRecord::Base
   
   def not_member_of!(community)
     self.user_communities.find_by_community_id(community).destroy
+  end
+
+  def voted_for(comment)
+    self.votes.find_by_comment_id(comment)
   end
 
   private

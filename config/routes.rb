@@ -8,6 +8,7 @@ Mvpv2::Application.routes.draw do
   resources :users do
     resources :responses
     resources :comments
+    resources :votes
   end
   match 'users/:id' => 'users#toggle_admin'
   
@@ -18,6 +19,7 @@ Mvpv2::Application.routes.draw do
   end
   resources :comments do
     resources :replies
+    resources :votes
   end
   resources :communities do
     resources :stacks
@@ -27,11 +29,13 @@ Mvpv2::Application.routes.draw do
 
   match '/create_stack', :to => 'stacks#create_stack'
   match '/new_reply',    :to => 'replies#new'
+  match '/new_vote',    :to => 'votes#new'
 
   resources :responses
   resources :comments, :only => [:new, :create, :destroy]
   resources :replies,  :only => [:new, :create, :destroy]
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :votes,  :only => [:new, :create, :destroy]
 
   match '/response',     :to => 'responses#new'
   match '/stkresponses', :to => 'responses#stkresponses'
