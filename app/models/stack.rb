@@ -31,4 +31,8 @@ class Stack < ActiveRecord::Base
     self.comments.count > 0
   end
 
+  def outlier?(val)
+    ( val > self.responses.maximum('value') * 2 ) || ( val < self.responses.minimum('value') * 0.5 )
+  end
+
 end
