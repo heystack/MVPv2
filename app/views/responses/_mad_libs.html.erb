@@ -2,6 +2,7 @@
 <%= form_for @response, :html => { :name => "new_reply",
 								   :onsubmit => "return validateQualifier(new_reply)" } do |f| %>
 <%= f.hidden_field :user_id, :value => current_user.id %>
+<%= f.hidden_field :stack_id, :value => @stack.id %>
 <table class="mad_libs_table">
   <tr>
     <td style="vertical-align:top"><div class="begin-quote">&#8220;</div></td>

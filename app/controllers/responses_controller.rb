@@ -42,8 +42,12 @@ class ResponsesController < ApplicationController
   end
 
   def create
-    session[:debug] = session[:stack]
-    @stack = Stack.find_by_id(session[:stack])
+    # Session issues with IE caused strange behavior
+    # @stack = Stack.find_by_id(session[:stack])
+    session[:debug1] = session[:stack]
+    @stack = Stack.find_by_id(params[:response][:stack_id])
+    session[:stack] = @stack.id
+    session[:debug2] = session[:stack]
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
     if @response.save
