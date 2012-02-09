@@ -139,7 +139,11 @@ class StacksController < ApplicationController
           @mult = ( @lowest_amt / session[:you] ).round
         end
       else
-        @mult = ( session[:you] / @lowest_amt ).round
+        if session[:you] < 0.0001
+          @mult = 0.0
+        else
+          @mult = ( session[:you] / @lowest_amt ).round
+        end
       end
       if @mult == 0.5
         @mult_diff = "half as much"
