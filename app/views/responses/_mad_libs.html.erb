@@ -14,7 +14,7 @@
 		  <%= f.text_field :value, :size => 2, :value => "#{@response_value}", :class => "fill_in_the_blank", :onfocus => "this.style.background = 'white';", :onblur => "this.style.background = 'none';" %>
 		  <span><%= @stack.madlibs_1_label %></span>
 		<% else %>
-		  <%= f.text_field :value, :size => 2, :title => "Enter decimals too, like 13.5.", :class => "fill_in_the_blank", :style => "background:white;", :onfocus => "this.style.background = 'white';",  :onblur => "this.style.background = 'none';" %>
+		  <%= f.text_field :value, :size => 2, :title => "You can enter decimals too,\nlike 11.25 or 13.5.", :class => "fill_in_the_blank", :style => "background:white;", :onfocus => "this.style.background = 'white';",  :onblur => "this.style.background = 'none';" %>
 		  <span>enter <%= @stack.madlibs_1_label %></span>
 		<% end %>
 	  </label>

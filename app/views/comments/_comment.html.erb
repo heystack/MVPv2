@@ -5,8 +5,8 @@
 <%= auto_link( comment.content, :html => { :target => '_blank' } ) %><br/>
 <div class="comment_timestamp">
 
-<%= render 'comments/comment_vote', :comment => comment %> ·
 <%= render 'comments/comment_reply', :comment => comment %> ·
+<%= render 'comments/comment_vote', :comment => comment %>
 <%= render 'comments/comment_timestamp', :comment => comment %>
 
   <% if current_user.admin? || comment.created_by?(current_user) %>

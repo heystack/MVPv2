@@ -103,6 +103,7 @@ class ResponsesController < ApplicationController
   def update
     @response = Response.find(params[:id])
     @stack = Stack.find(@response.stack_id)
+    session[:stack] = @stack.id
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     @maximum = @stack.responses.maximum('value')

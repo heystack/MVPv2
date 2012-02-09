@@ -249,12 +249,12 @@ span.em {
 }
 
 span.de-em {
-  color: #555;
+  color: #999;
 /*  font-style: italic;*/
 }
 
 div.de-em {
-  color: #555;
+  color: #999;
 /*  font-style: italic;*/
 }
 
@@ -732,10 +732,19 @@ div.submit_comment_div {
 }
 
 div.vote_tally {
-  background: #999;
-  color: white;
   display: inline;
-  padding: 2px;
+/*  background: #999;
+  color: white;
+  padding: 2px;*/
+}
+
+a.comment_link {
+  color: #0088ce;
+  text-decoration: none;
+}
+
+a.comment_link:hover {
+  text-decoration: underline;
 }
 
 /* Replies */
@@ -993,6 +1002,16 @@ a.subtle_link:hover {
   text-decoration: underline;
 }
 
+a.undecorated {
+  color: black;
+  text-decoration: none;
+}
+
+a.undecorated:hover {
+  color: black;
+  text-decoration: none;
+}
+
 table.action_steps a {
   color: #fff;
   text-decoration: underline;
@@ -1113,7 +1132,7 @@ div.footer {
 	width:200px;
 	display:none;
 	color:#fff;
-	text-align:left;
+	text-align:center;
 	font-size:12px;
 
 	/* outline radius for mozilla/firefox only */

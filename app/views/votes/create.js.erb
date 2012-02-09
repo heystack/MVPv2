@@ -1,2 +1,2 @@
-$('#vote_div_<%= @comment.id %>').html('<%= @comment.votes.count %>');
-$('#vote_button_div_<%= @comment.id %>').html('<img alt="" src="/assets/agreed_on.png"/> ');
+$('#vote_div_<%= @comment.id %>').html('<%= pluralize @comment.votes.count, "nod" %>');
+//$('#vote_button_div_<%= @comment.id %>').html('<img alt="" src="/assets/agreed_on.png"/> ');

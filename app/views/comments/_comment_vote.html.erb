@@ -1,21 +1,29 @@
-<div id="vote_div_<%= comment.id %>" class="vote_tally round"><%= comment.votes.count %></div>
 <div id="vote_button_div_<%= comment.id %>" class="inline">
+<%= image_tag "thumbsup.png" %>
 <% if current_user.voted_for( comment.id ) %>
 
-<%= image_tag( "agreed_on.png" ) %>
+<%= pluralize comment.votes.count, "nod" %>
 
 <% else %>
 
+<div id="vote_div_<%= comment.id %>" class="vote_tally round"><%= pluralize comment.votes.count, "nod" %>
+·
 <%= form_for @vote,
 		:html => { :style => "display:inline;" },
 		:remote => true do |f| %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.hidden_field :comment_id, :value => comment.id %>
-	<%= image_submit_tag("agreed.png",
-						 :onmouseover => "this.src='" + image_path('agreed_hover.png') + "';",						
-						 :onmouseout => "this.src='" + image_path('agreed.png') + "';") %>
+	<%= link_to '^ Nod Up'.html_safe, "#", :onclick=>"$(this).submit()", :class => "comment_link", :remote => true %>
 <% end %>
 
-<% end %>
+</div>
 
+<% end %>
+<% if current_user.admin? %>
+  <% @user_vote = comment.votes.find_by_user_id(current_user.id) %>
+  <%= link_to "·", @user_vote, :class => "undecorated", :method => :delete,
+								   :confirm => "Remove vote?", :title => "Confirm" %>
+<% else %>
+·
+<% end %>
 </div>
