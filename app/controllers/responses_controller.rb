@@ -52,10 +52,14 @@ class ResponsesController < ApplicationController
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     @maximum = @stack.responses.maximum('value')
-    if @response.value > (2 * @maximum) && @stack.responses.count > 5
-      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed."
-      @response.outlier = true
-      MvpMailer.outlier_email(@stack, @response, @user).deliver
+    if @response.value > (2 * @maximum)
+      if @stack.responses.count > 5
+        flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to refine your answer."
+        MvpMailer.outlier_email(@stack, @response.value, @user).deliver
+        @response.outlier = true
+      end
+    else
+      @response.outlier = false
     end
     if @response.save
       if (params[:user][:zipcode]).nil?
@@ -107,10 +111,14 @@ class ResponsesController < ApplicationController
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     @maximum = @stack.responses.maximum('value')
-    if params[:response][:value].to_f > (2 * @maximum) && @stack.responses.count > 5
-      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
+    if params[:response][:value].to_f > (2 * @maximum)
+      if @stack.responses.count > 5
+        flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
+        MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
+        @response.outlier = true
+      end
+    else
       @response.outlier = true
-      MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
     end
     if @response.update_attributes(params[:response])
       @zipcode = params[:user][:zipcode]
