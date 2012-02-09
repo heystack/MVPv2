@@ -2,12 +2,18 @@
 <% user = User.find_by_id(response.user_id) %>
 <tr>
   <td><%= response.id %></td>
+  <% if user.nil? %>
+  <td></td>
+  <td></td>
+  <td></td>
+  <% else %>
   <td><%= user.id %></td>
   <td><%= user.name.blank? ? "" : link_to( user.name, user ) %></td>
   <td><%= user.email %></td>
+  <% end %>
   <td><%= stack.nil? ? "" : link_to( stack.name, stack_path(stack.id) ) %></td>
   <td><%= response.value %></td>
-  <td><%= user.zipcode %></td>
+  <td><%= user.nil? ? "" : user.zipcode %></td>
   <td><%= response.qualifier1 %></td>
   <td><%= time_ago_in_words(response.created_at) %> ago</td>
   <td><%= time_ago_in_words(response.updated_at) %> ago</td>
