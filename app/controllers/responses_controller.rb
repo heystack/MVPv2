@@ -113,10 +113,10 @@ class ResponsesController < ApplicationController
       if @stack.responses.count > 5
         flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
         MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
-        @response.outlier = true
+        params[:response][:outlier] = true
       end
     else
-      @response.outlier = false
+      params[:response][:outlier] = false
     end
     if @response.update_attributes(params[:response])
       @zipcode = params[:user][:zipcode]
