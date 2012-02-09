@@ -12,7 +12,11 @@
   <td><%= user.email %></td>
   <% end %>
   <td><%= stack.nil? ? "" : link_to( stack.name, stack_path(stack.id) ) %></td>
-  <td><%= response.value %></td>
+  <td><% if response.outlier %>
+	<span style="color:red;font-weight:bold;font-size:1.5em"><%= response.value %></span>
+	<% else %>
+		<%= response.value %>
+	<% end %></td>
   <td><%= user.nil? ? "" : user.zipcode %></td>
   <td><%= response.qualifier1 %></td>
   <td><%= time_ago_in_words(response.created_at) %> ago</td>
