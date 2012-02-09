@@ -8,7 +8,7 @@
 <% @stacks.map do |stk| %>
 <tr>
   <td><%= stk.name + " " %></td>
-  <td style="text-align:right"><%= Response.count('stack_id', :conditions => "stack_id = #{stk.id}").to_s %></td>
+  <td style="text-align:right"><%= link_to stk.responses.count.to_s, "/stkresponses?stack_id=" + stk.id.to_s %></td>
   <td><span class="de-em text-75"><%= time_ago_in_words(stk.responses.last.updated_at) %> ago</span></td>
 </tr>
 <% end %>
@@ -19,6 +19,8 @@
 </tr>
 </table>
 
+<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @users %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @users, :container => false %></div>
 <table>
   <tr>
 	<td class="response_header">Rid</td>
@@ -34,4 +36,6 @@
 	<td class="response_header"></td>
   <%= render @responses %>
 </table>
+<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @users %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @users, :container => false %></div>
 </div>

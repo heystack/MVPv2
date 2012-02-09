@@ -179,9 +179,15 @@ class ResponsesController < ApplicationController
 
   def stkresponses
     if current_user.admin?
-      @responses = Response.all(:order => 'id DESC')
-      @count = Response.count
       @stacks = Stack.select("id, name").group('id', 'name')
+      if params[:stack_id]
+        @stack = Stack.find_by_id( params[:stack_id] )
+        @responses = @stack.responses.paginate(:page => params[:page], :per_page => 100, :order => 'id DESC')
+        @count = @responses.count
+      else
+        @responses = Response.paginate(:page => params[:page], :per_page => 100, :order => 'id DESC')
+        @count = Response.count
+      end
     else
       flash[:error] = "You do not have permission."
       redirect_to root_path
