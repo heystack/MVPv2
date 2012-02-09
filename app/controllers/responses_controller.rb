@@ -52,7 +52,7 @@ class ResponsesController < ApplicationController
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     @maximum = @stack.responses.maximum('value')
-    if @response.value > (10 * @maximum)
+    if @response.value > (2 * @maximum) && @stack.responses.count > 5
       flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed."
       @response.outlier = true
       MvpMailer.outlier_email(@stack, @response, @user).deliver
@@ -107,7 +107,7 @@ class ResponsesController < ApplicationController
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     @maximum = @stack.responses.maximum('value')
-    if params[:response][:value].to_f > (10 * @maximum)
+    if params[:response][:value].to_f > (2 * @maximum) && @stack.responses.count > 5
       flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
       @response.outlier = true
       MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
