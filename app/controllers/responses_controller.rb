@@ -107,7 +107,7 @@ class ResponsesController < ApplicationController
     # Check for outliers and alert
     @maximum = @stack.responses.maximum('value')
     if params[:response][:value].to_f > (10 * @maximum)
-      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed."
+      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
       @response.outlier = true
       MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
     end

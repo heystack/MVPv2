@@ -6,9 +6,9 @@
   <body>
     <h1>Outlier!</h1>
     <p>
-      Stack: <%= @stack.name %> (#<%= @stack.id %>)<br/>
+      Stack: <%= link_to @stack.name, stack_url(@stack.id) %> (<%= link_to "#" + @stack.id.to_s, stack_url(@stack.id) %>)<br/>
       Response: <%= @value %><br/>
-	  User: <%= link_to @user.name, user_url(@user.id) %> (#<%= link_to @user.id.to_s, user_url(@user.id) %>)<br/>
+	  User: <%= link_to @user.name, user_url(@user.id) %> (<%= link_to "#" + @user.id.to_s, user_url(@user.id) %>)<br/>
     </p>
     <p><%= Time.now %></p>
   </body>
