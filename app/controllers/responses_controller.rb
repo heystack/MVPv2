@@ -116,7 +116,7 @@ class ResponsesController < ApplicationController
         @response.outlier = true
       end
     else
-      @response.outlier = true
+      @response.outlier = false
     end
     if @response.update_attributes(params[:response])
       @zipcode = params[:user][:zipcode]
