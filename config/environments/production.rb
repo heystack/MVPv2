@@ -69,5 +69,6 @@ Mvpv2::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
   config.action_mailer.asset_host = "heystack.com"
+  config.action_mailer.default_url_options = { :host => "heystack.com" }
 
 end

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Outlier!</h1>
+    <p>
+      Stack: <%= @stack.name %> (#<%= @stack.id %>)<br/>
+      Response: <%= @value %><br/>
+	  User: <%= link_to @user.name, user_url(@user.id) %> (#<%= link_to @user.id.to_s, user_url(@user.id) %>)<br/>
+    </p>
+    <p><%= Time.now %></p>
+  </body>
+</html>

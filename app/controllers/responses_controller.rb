@@ -42,14 +42,21 @@ class ResponsesController < ApplicationController
   end
 
   def create
-    # Session issues with IE caused strange behavior
+    # Session issues with IE caused strange behavior, session[:debug1] often differs from session[:debug2]
     # @stack = Stack.find_by_id(session[:stack])
-    session[:debug1] = session[:stack]
+    # session[:debug1] = session[:stack]
     @stack = Stack.find_by_id(params[:response][:stack_id])
     session[:stack] = @stack.id
-    session[:debug2] = session[:stack]
+    # session[:debug2] = session[:stack]
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
+    # Check for outliers and alert
+    @maximum = @stack.responses.maximum('value')
+    if @response.value > (10 * @maximum)
+      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed."
+      @response.outlier = true
+      MvpMailer.outlier_email(@stack, @response, @user).deliver
+    end
     if @response.save
       if (params[:user][:zipcode]).nil?
         @zipcode = @user.zipcode
@@ -96,6 +103,14 @@ class ResponsesController < ApplicationController
   def update
     @response = Response.find(params[:id])
     @stack = Stack.find(@response.stack_id)
+    @user = User.find_by_id(@response.user_id)
+    # Check for outliers and alert
+    @maximum = @stack.responses.maximum('value')
+    if params[:response][:value].to_f > (10 * @maximum)
+      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed."
+      @response.outlier = true
+      MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
+    end
     if @response.update_attributes(params[:response])
       @zipcode = params[:user][:zipcode]
       current_user.update_attributes(:zipcode => @zipcode)

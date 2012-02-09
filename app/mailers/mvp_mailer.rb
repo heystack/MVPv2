@@ -45,4 +45,11 @@ class MvpMailer < ActionMailer::Base
     @request = request
     mail(:to => "feedback@heystack.com", :cc => "nycbrown@gmail.com", :subject => "Stack Request!")
   end
+
+  def outlier_email(stack, value, user)
+    @stack = stack
+    @value = value
+    @user = user
+    mail(:to => "feedback@heystack.com", :cc => "nycbrown@gmail.com", :subject => "Outlier on " + @stack.name + ": " + @value.to_s)
+  end
 end
