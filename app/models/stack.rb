@@ -31,8 +31,21 @@ class Stack < ActiveRecord::Base
     self.comments.count > 0
   end
 
-  def outlier?(val)
-    ( val > self.responses.maximum('value') * 2 ) || ( val < self.responses.minimum('value') * 0.5 )
+  def outlier?(val, qual)
+    if val < 0
+      return true
+    end
+    if qual.nil?
+      if self.responses.count > 5
+        ( val > self.responses.maximum('value') * 2 ) ||
+        ( val < self.responses.minimum('value') * 0.5 )
+      end
+    else
+      if self.responses.where('qualifier1 = ?', qual).count > 5
+        ( val > self.responses.where('qualifier1 = ?', qual).maximum('value') * 2 ) ||
+        ( val < self.responses.where('qualifier1 = ?', qual).minimum('value') * 0.5 )
+      end
+    end
   end
 
 end

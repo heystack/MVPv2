@@ -51,12 +51,10 @@ class ResponsesController < ApplicationController
     @response = @stack.responses.build(params[:response])
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
-    if @stack.outlier?(@response.value)
-      if @stack.responses.count > 5
-        flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to refine your answer."
-        MvpMailer.outlier_email(@stack, @response.value, @user).deliver
-        @response.outlier = true
-      end
+    if @stack.outlier?(@response.value, @response.qualifier1)
+      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to refine your answer."
+      MvpMailer.outlier_email(@stack, @response.value, @user).deliver
+      @response.outlier = true
     else
       @response.outlier = false
     end
@@ -109,12 +107,10 @@ class ResponsesController < ApplicationController
     session[:stack] = @stack.id
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
-    if @stack.outlier?(params[:response][:value].to_f)
-      if @stack.responses.count > 5
-        flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
-        MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
-        params[:response][:outlier] = true
-      end
+    if @stack.outlier?(params[:response][:value].to_f, params[:response][:qualifier1])
+      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
+      MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
+      params[:response][:outlier] = true
     else
       params[:response][:outlier] = false
     end
