@@ -3,8 +3,18 @@
 				 :url => { :controller => "stacks", :action => :filter_qualifier },
 				 :html => {:style => "display:inline;"},
 				 :remote => true do |s| %>
-    <%= s.check_box :filter_qualifier, { :checked => session[:apply_filter_qualifier], :class => 'checkable' } %>
-  <% end %> <%= session[:qualifier] %> · 
-	<%= check_box_tag("filter", session[:qualifer], false, :disabled => true ) %> <%= @user.zipcode %>
-	<span class="de-em text-75">showing all zipcodes</span>
+	<% if session[:apply_filter_qualifier] %>
+	  <span class="current_filter"><%= session[:qualifier] %></span> ·
+	  <%= link_to "show all", "#", :onclick=>"$(this).submit()", :class => "filter_link", :remote => true %>
+	<% else %>
+	  <%= link_to "show " + session[:qualifier] + " only", "#", :onclick=>"$(this).submit()", :class => "filter_link", :remote => true %>
+	<% end %>
+  <% end %>
+	<% if @user.zipcode %>
+    · <%= link_to "show " + @user.zipcode.to_s + " only", "#",
+		:id => "hc_filter", :title => "Coming Soon",
+		:class => "filter_link_inactive",
+		:disabled => true,
+		:remote => true %>
+	<% end %>
 <% end %>
