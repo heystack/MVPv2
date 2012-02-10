@@ -19,8 +19,8 @@
 </tr>
 </table>
 
-<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @users %></div>
-<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @users, :container => false %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @responses %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @responses, :container => false %></div>
 <table>
   <tr>
 	<td class="response_header">Rid</td>
@@ -36,6 +36,6 @@
 	<td class="response_header"></td>
   <%= render @responses %>
 </table>
-<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @users %></div>
-<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @users, :container => false %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @responses %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @responses, :container => false %></div>
 </div>

@@ -11,5 +11,5 @@
 </div>
 <!-- <div class="comment_callout"><%= image_tag "comment_callout.png" %></div> -->
 <% if @stack.comments? %>
-	<%= render @comments %>
+	<%= render @comments, :stkcomments => false %>
 <% end %>

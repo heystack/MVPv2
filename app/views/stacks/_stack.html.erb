@@ -24,6 +24,10 @@
 <span class="community_list_item_desc">outliers</span>
 </div>
 <div class="community_list_item">
+<span class="community_list_item_count"><%= link_to stack.comments.count, "/stkcomments?stack_id=" + stack.id.to_s, :class => "undecorated" %></span>
+<span class="community_list_item_desc">comments</span>
+</div>
+<div class="community_list_item">
 <span class="community_list_item_count"><%= link_to stack.responses.count, "/stkresponses?stack_id=" + stack.id.to_s, :class => "undecorated" %></span>
 <span class="community_list_item_desc">responses</span>
 </div>

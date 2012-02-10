@@ -1,3 +1,9 @@
+<% if stkcomments %>
+
+<%= render 'comments_list_item', :comment => comment %>
+
+<% else %>
+
 <% @user = User.find_by_id(comment.user_id) %>
 <div class="comment">
 <div class="comment_name"><%= @user.name.blank? ? "" : @user.name %></div>
@@ -20,3 +26,5 @@
 <div id="reply_div_<%= comment.id %>"></div>
 <%= render comment.replies %>
 </div>
+
+<% end %>
