@@ -1,0 +1,39 @@
+<div class="comments">
+<table style="width:250px">
+<tr>
+  <td class="response_header">Stack</td>
+  <td class="response_header" style="text-align:right">Comments</td>
+  <td class="response_header">Last Comment</td>
+</tr>
+<% @stacks.map do |stk| %>
+<tr>
+  <td><%= stk.name + " " %></td>
+  <td style="text-align:right"><%= link_to stk.comments.count.to_s, "/stkcomments?stack_id=" + stk.id.to_s %></td>
+  <td><span class="de-em text-75">
+	<%= stk.comments.count > 0 ? time_ago_in_words(stk.comments.last.updated_at) + " ago": "" %></span></td>
+</tr>
+<% end %>
+<tr>
+  <td class="response_header">Total</td>
+  <td class="response_header" style="text-align:right"><%= @count %></td>
+  <td></td>
+</tr>
+</table>
+
+<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @commentss %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @commentss, :container => false %></div>
+<table>
+  <tr>
+	<td class="response_header">Cid</td>
+	<td class="response_header">Uid</td>
+	<td class="response_header">Name</td>
+	<td class="response_header">Topic</td>
+	<td class="response_header">Comment</td>
+	<td class="response_header">Created At</td>
+	<td class="response_header">Modified At</td>
+	<td class="response_header"></td>
+  <%= render @comments, :stkcomments => true %>
+</table>
+<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @commentss %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @commentss, :container => false %></div>
+</div>

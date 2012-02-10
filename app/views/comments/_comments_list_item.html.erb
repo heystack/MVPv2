@@ -1,0 +1,20 @@
+<% stack = Stack.find_by_id(comment.stack_id) %>
+<% user = User.find_by_id(comment.user_id) %>
+<tr>
+  <td><%= comment.id %></td>
+  <% if user.nil? %>
+  <td></td>
+  <td></td>
+  <td></td>
+  <% else %>
+  <td><%= user.id %></td>
+  <td><%= user.name.blank? ? "" : link_to( user.name, user ) %></td>
+  <% end %>
+  <td><%= stack.nil? ? "" : link_to( stack.name, stack_path(stack.id) ) %></td>
+  <td><%= comment.content %></td>
+  <td><%= time_ago_in_words(comment.created_at) %> ago</td>
+  <td><%= time_ago_in_words(comment.updated_at) %> ago</td>
+  <td>
+	<%= button_to "Delete", comment_path(comment), :method => :delete, :confirm => "You sure?", :title => "Delete comment \##{comment.id}" %>
+  </td>
+</tr>
