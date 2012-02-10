@@ -12,15 +12,16 @@
 </div>
 <div class="community_list_item">
 <span class="community_list_item_count">
-<%= Response.count(:conditions => ['stack_id in (select id from stacks where community_id=?)', community.id]) %></span>
-<span class="community_list_item_desc">responses</span>
+<% @response_count = Response.count(:conditions => ['stack_id in (select id from stacks where community_id=?)', community.id]) %>
+<%= @response_count %></span>
+<span class="community_list_item_desc"><%= pluralize( @response_count, "response" ).split(" ")[1] %></span>
 </div>
 <div class="community_list_item">
 <span class="community_list_item_count"><%= community.stacks.count %></span>
-<span class="community_list_item_desc">stacks</span>
+<span class="community_list_item_desc"><%= pluralize( community.stacks.count, "stack" ).split(" ")[1] %></span>
 </div>
 <div class="community_list_item">
 <span class="community_list_item_count"><%= community.members.count %></span>
-<span class="community_list_item_desc">members</span>
+<span class="community_list_item_desc"><%= pluralize( community.members.count, "member" ).split(" ")[1] %></span>
 </div>
 <hr>
