@@ -82,6 +82,14 @@ function validateNameInComments(form) {
     return false;
 }
 
+function validateEmailInSignup(form) {
+    if (form.user_email.value == "Your Email Address" || form.user_email.value == "") {
+		alert("Please provide your email address.");
+		return false;
+    }
+    return true;
+}
+
 function validateQualifier(form) {
     if (form.response_qualifier1.value == "Choose..." || form.response_qualifier1.value == "") {
 		alert("Please choose an option from the dropdown.");
@@ -139,23 +147,22 @@ function imposeMaxLengthPaste(field,maxChars)
 </script>
 
 <script>
+// tooltips
 $(function() {
 
-// select all desired input fields and attach tooltips to them
-$("#hc_filter").tooltip({
+	$("#hc_filter").tooltip({
+		position: "center right",
+		offset: [0, 10],
+		effect: "fade",
+		opacity: 0.6
+	});
 
-	// place tooltip on the right edge
-	position: "center right",
+	$("#user_email").tooltip({
+		position: "center right",
+		offset: [0, 10],
+		effect: "fade",
+		opacity: 0.6
+	});
 
-	// a little tweaking of the position
-	offset: [0, 10],
-
-	// use the built-in fadeIn/fadeOut effect
-	effect: "fade",
-
-	// custom opacity setting
-	opacity: 0.6
-
-});
 });
 </script>

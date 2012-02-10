@@ -1,10 +1,13 @@
 <% if !current_user.subscribed? %>
 <div class="signup_form">
-<%= form_for @user do |u| %>
+<%= form_for @user,
+	:html => { :name => "signup",
+		   	   :onsubmit => "return validateEmailInSignup(signup)" } do |u| %>
 <%= u.hidden_field :subscribed, :value => "true" %>
 <%= u.text_field :email, 
 				 :value => current_user.email.blank? ? "Your Email Address" : current_user.email,
 				 :class => "signup_text round",
+				 :title => "Your email is only for receiving the Weekly Stack Email. We don't like spam either.",
 				 :onfocus => "this.style.color = 'black'; this.style.borderColor = 'black'; if (this.value == 'Your Email Address') {this.value='';}; unhide('submit_div')" %>
 <%= image_submit_tag("signup.png", :name => "signup") %>
 <% end %>
