@@ -7,17 +7,18 @@
 <table class="stacks" summary="Stacks">
 <% if @community.stacks.empty? %>
   <tr><td span=2>No Stacks.</td></tr>
+</table>
 <% else %>
   <tr><td>
 	<div class="community_show_logo"><%= image_tag @community.icon, :height => "50" %></div>
   </td><td><%= image_tag @community.logo %><br/><%= @community.desc %></td><tr>
   <tr><td></td><td>
   <ul class="stack_list">
-	<%= render @stacks, :omit_stack => "", :stack_detail => true %>
   </ul>
   </td></tr>
-<% end %>
 </table>
+<%= render @stacks, :omit_stack => "", :stack_detail => true %>
+<% end %>
 <% if @users.nil? %>
 No users in this Community.
 <% else %>
