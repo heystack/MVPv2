@@ -72,9 +72,8 @@
 	<!--[if IE]></div><![endif]-->
   </div>
   <div class="footer de-em text-75">
-	<%= debug(params) %>
-	<%= session.inspect %>
-	 <!-- if Rails.env.development? -->
+	<%= debug(params) if Rails.env.development? %>
+	<%= session.inspect if Rails.env.development? %>
   </div>
 </body>
 </html>
