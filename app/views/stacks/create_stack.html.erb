@@ -4,10 +4,12 @@
 <%= link_to "Stacks", "#stacks", :rel => "facebox" %> > Create Your Own Stack
 </div>
 
+<div id="loading"><div id="loading_gif"><%= image_tag "ajax-loader.gif" %></div></div>
+
 <table>
   <tr>
 	<td class="create_stack_left">
-		<%= form_tag "/stack_request", :name => "create_stack", :onsubmit => "return validateStackType(create_stack)" do %>
+		<%= form_tag "/stack_request", :name => "create_stack", :onsubmit => "return validateStackType(create_stack); unhide('loading');" do %>
 		<div class="field">
 		  <%= hidden_field "request", "from_id", :value => current_user.id %>
 		  <div class="step_header">1. Choose Your Stack Type</div>

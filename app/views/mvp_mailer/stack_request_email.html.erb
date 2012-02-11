@@ -4,12 +4,18 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Stack Request!</h1>
-    <p>
-      From: <%= @request[:from_email] %> (<%= @request[:from_id] %>)<br/>
-      Stem: <%= @request[:stem] %><br/>
-	  Request: <%=raw @request[:message].gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %><br/>
-    </p>
-    <p><%= Time.now %></p>
-  </body>
+<p>
+Your stack request is in.  Expect confirmation and sharing tips shortly.  Comments on the submission process?  Just reply and tell us.
+</p>
+<p>
+Your Stack Request:<br/>
+
+<%= @request[:stem] %><br/>
+<%=raw @request[:message].gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %><br/>
+</p>
+<p>
+Thanks,<br/>
+Steve and Robert
+</p>
+</body>
 </html>

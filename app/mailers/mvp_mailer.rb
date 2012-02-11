@@ -43,7 +43,7 @@ class MvpMailer < ActionMailer::Base
 
   def stack_request_email(request)
     @request = request
-    mail(:to => "communityshare@heystack.com", :cc => "nycbrown@gmail.com", :subject => "Stack Request!")
+    mail(:to => @request[:from_email], :bcc => "communityshare@heystack.com", :subject => "Thanks for your Stack Request!")
   end
 
   def outlier_email(stack, value, user)
@@ -55,6 +55,6 @@ class MvpMailer < ActionMailer::Base
 
   def subscribe_email(user)
     @user = user
-    mail(:to => @user.email, :cc => "nycbrown@gmail.com", :subject => "Welcome to the Heystack community!")
+    mail(:to => @user.email, :bcc => "communityshare@heystack.com", :subject => "Welcome to the Heystack community!")
   end
 end
