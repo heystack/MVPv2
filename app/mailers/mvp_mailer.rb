@@ -55,6 +55,6 @@ class MvpMailer < ActionMailer::Base
 
   def subscribe_email(user)
     @user = user
-    mail(:to => "communityshare@heystack.com", :cc => "nycbrown@gmail.com", :subject => "Welcome to the Heystack community!")
+    mail(:to => @user.email, :cc => "nycbrown@gmail.com", :subject => "Welcome to the Heystack community!")
   end
 end
