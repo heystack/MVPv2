@@ -8,7 +8,7 @@
 
 .container {
   width: 900px;
-  margin-top: 20px;
+/*  margin-top: 20px;*/
   margin-bottom: 30px;
 }
 
@@ -76,7 +76,8 @@ body {
 }
 
 section {
-  margin-top: 1em;
+  margin-top: 2em;
+  padding-top: 1.5em;
   font-size: 120%;
   background: #fff;
 }
@@ -128,11 +129,23 @@ div.flash_container {
 
 /* Header */
 
+div.header_container {
+  width: 100%;
+  background: #666;
+  margin-bottom: -5px;
+/*  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 10;*/
+}
+
 div.header {
-  padding-top:   10px;
+  width: 900px;
+  background: #666;
+  margin-left: auto;
+  margin-right: auto;
   padding-right: 20px;
   padding-left:  20px;
-  margin-bottom: -15px;
 }
 
 td.header_logo {
@@ -156,9 +169,11 @@ div.breadcrumbs {
 
 nav {
   float: right;
-  background-color: white;
-  padding: 0 0.7em;
+  padding: 0 0.5em;
   white-space: nowrap;
+  font-family: "Gill Sans",Verdana,Helvetica,Sans-serif;
+  font-size: 1em;
+  color: #ccc;
 }
 
 nav ul {
@@ -172,17 +187,18 @@ nav ul li {
   padding: 0.2em 0;
 }
 
-nav ul li a {
+a.nav_link {
   padding: 0 10px;
-  color: black;
+  color: #ccc;
+  text-decoration: none;
 }
 
-nav ul li a:visited {
-  color: black;
+a.nav_link:visited {
+  color: #ccc;
 }
 
-nav ul li a:hover {
-  color: black;
+a.nav_link:hover {
+  color: #ffe95f;
   text-decoration: underline;
 }
 
@@ -1038,7 +1054,7 @@ a.undecorated {
 
 a.undecorated:hover {
   color: black;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 table.action_steps a {

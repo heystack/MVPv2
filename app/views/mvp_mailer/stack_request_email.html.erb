@@ -5,17 +5,19 @@
   </head>
   <body>
 <p>
-Your stack request is in.  Expect confirmation and sharing tips shortly.  Comments on the submission process?  Just reply and tell us.
+Thanks for creating a new stack question.  We've got your submission in our hot little hands and will shoot you confirmation and sharing tips shortly. Meantime, if you have comments on the submission process, we're all ears.  Just reply to this email.  
 </p>
 <p>
-Your Stack Request:<br/>
+Yours in info sharing,
+</p>
+<p>
+Steve and Robert - Founders and Fellow Life Jugglers
+</p>
+<p>
+P.S. - Here's the info we got...<br/>
 
 <%= @request[:stem] %><br/>
 <%=raw @request[:message].gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %><br/>
-</p>
-<p>
-Thanks,<br/>
-Steve and Robert
 </p>
 </body>
 </html>

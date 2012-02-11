@@ -60,10 +60,12 @@
   }
   </script>
 
-  <div class="container round shadow">
+  <div class="header_container shadow">
+	<%= render 'shared/header' %>
+  </div>
+  <div class="container">
 	<!--[if IE]><div class="content round"><![endif]-->
 	<section class="round">
-      <%= render 'shared/header' %>
 	  <% flash.each do |key, value| %>
 	    <div class="flash <%= key %>"><%= value %></div>
 	  <% end %>
