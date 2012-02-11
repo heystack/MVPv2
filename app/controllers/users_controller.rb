@@ -24,7 +24,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:notice] = "You're in.  We'll dispatch a fresh new stack question each week to #{params[:user][:email]}!"
+      # params[:user][:subscribed] true if coming from weekly stack signup
+      if params[:user][:subscribed]
+        flash[:notice] = "You're in.  We'll dispatch a fresh new stack question each week to #{params[:user][:email]}!"
+        MvpMailer.subscribe_email(@user).deliver
+      end
       @stack = Stack.find_by_id(session[:stack])
       if params[:user_community]
         @updated_community = params[:user_community][:community]
