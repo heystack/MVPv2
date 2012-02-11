@@ -1,12 +1,7 @@
-<div class="stk_buttons">
-<ul>
-  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
-	<%=raw link_to '<img alt="See how you stack up." src="http://heystack.com/assets/email_submit.png">'.html_safe,
-		(@base_url + "?email=" + @email + "&response[value]=&community=" + @community.to_s).html_safe %></li>
-
-	  <li style="list-style-type: none; display: inline-block; padding: 0.2em 10px;">
-	  (or go directly to the <%=raw link_to "heystack.com website",
-			(@base_url + "?email=" + @email + "&response[value]=&community=" + @community.to_s).html_safe %>)</li>
-</ul>
-</div>
+<br/>
+<%=raw link_to '<img alt="See how you stack up." src="http://heystack.com/assets/email_submit.png">'.html_safe,
+		(@base_url + "?email=" + @email + "&response[value]=&community=" + @community.to_s).html_safe %>
+<br/>
+(or go directly to the <%=raw link_to "heystack.com website",
+			(@base_url + "?email=" + @email + "&response[value]=&community=" + @community.to_s).html_safe %>)
 <br/>
