@@ -64,7 +64,7 @@ Mvpv2::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'mail.heystack.com',
-    :user_name            => 'feedback@heystack.com',
+    :user_name            => 'communityshare@heystack.com',
     :password             => 'may18heystack',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }

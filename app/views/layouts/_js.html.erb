@@ -98,6 +98,23 @@ function validateQualifier(form) {
     return true;
 }
 
+function validateStackType(form) {
+    invalid_stem = (form.request_stem.value == "Select type..." || form.request_stem.value == "")
+	var x=form.request_from_email.value;
+	var atpos=x.indexOf("@");
+	var dotpos=x.lastIndexOf(".");
+	invalid_email = atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length
+	if (invalid_stem) {
+	  alert("Please choose a Stack Type.");
+	  return false;
+	} else if (invalid_email) {
+	  alert("Please enter a valid e-mail address.");		
+	  return false;
+	} else {
+	  return true;
+    }
+}
+
 function unhide(divID) {
 	var item = document.getElementById(divID);
 	if (item) {
