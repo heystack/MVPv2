@@ -85,7 +85,10 @@ jQuery(document).ready(function() {
 	   plotOptions: {
 	      bar: {
 	         dataLabels: {
-	            enabled: true
+	            enabled: true,
+		        formatter: function() {
+		          return <%=raw @hc_dataLabel %>;
+		        }
 	         },
 	         pointPadding: 0,
 			 groupPadding: 0.15
