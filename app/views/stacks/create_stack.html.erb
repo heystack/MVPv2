@@ -1,7 +1,7 @@
 <div class="create_stack medshadow round grey">
 
 <div class="breadcrumbs">
-<%= link_to "Stacks", "#stacks", :rel => "facebox" %> > Create Your Own Stack
+<%= link_to "Home", stack_path(session[:stack]) %> > Create Your Own Stack
 </div>
 
 <div id="loading"><div id="loading_gif"><%= image_tag "ajax-loader.gif" %></div></div>
@@ -28,7 +28,7 @@
 		  <br/>
 		  <div class="step_header">2. Enter Your Question</div>
 		  <div class="indent_20px">
-		  <div class="de-em text-75">Type in your specific stack question just as you'd ask it to a neighbor.</div>
+		  <div class="text-75">Type in your specific stack question just as you'd ask it (or wish you could ask it) of a friend or neighbor.</div>
 		  <%= text_area "request", "message",
 			:class => "create_stack round",
 			:style => "color:lightgray;",
@@ -38,7 +38,7 @@
 		  </div>
 		  <div class="step_header">3. Enter Your Email</div>
 		  <div class="indent_20px">
-		  <div class="de-em text-75">We'll send you an alert when your stack is approved along with some handy instructions for sharing with your friends.</div>
+		  <div class="text-75">We'll send you an alert when your stack is approved along with some easy tips for quick sharing with your friends.</div>
 		  <%= text_field "request", "from_email", :value => current_user.email, :size => 50 %>
 		  <%= submit_tag "Submit Stack Request", :class => "form_button round" %>
 		  <br/>
@@ -51,13 +51,13 @@
 	  <ul class="stack_list">
 		<% if Community.find_by_id(session[:community]).name == "Public" || 
 			  Community.find_by_id(session[:community]).name == "Parenting" %>
-		<li><span class="de-em">How much do you pay your babysitter?</span></li>
-		<li><span class="de-em">At what age did you or do you plan to give your child a cell phone?</span></li>
-		<li><span class="de-em">How many hours of nightly homework for your child?</span></li>
+		<li><span class="">How much do you pay your babysitter?</span></li>
+		<li><span class="">At what age did you or do you plan to give your child a cell phone?</span></li>
+		<li><span class="">How many hours of nightly homework for your child?</span></li>
 		<% elsif Community.find_by_id(session[:community]).name == "DSANV" %>
-		<li><span class="de-em">How much...?</span></li>
-		<li><span class="de-em">At what age...?</span></li>
-		<li><span class="de-em">How many...?</span></li>
+		<li><span class="">How much...?</span></li>
+		<li><span class="">At what age...?</span></li>
+		<li><span class="">How many...?</span></li>
 		<% end %>
 	</td>
   </tr>
