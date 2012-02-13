@@ -128,113 +128,70 @@ jQuery(document).ready(function() {
 
 <script type="text/javascript">
 var chart;
-$(document).ready(function() {
-	chart = new Highcharts.Chart({
-	   chart: {
-	      renderTo: 'hcdebug',
-	      defaultSeriesType: 'bar',
-		  marginRight: 20
-	   },
-	   title: {
-	      text: null
-	   },
-	   subtitle: {
-	      text: null
-	   },
-	   xAxis: {
-		  <% if @user_rank == "lowest" %>
-	      categories: ['YOU', '<%= @lowest_desc %>', 'All Neighbors', '<%= @highest_desc %>'],
-		  <% elsif @user_rank == "average" %>
-		  <%   @point1_color = @lowest_color %>
-		  <%   @point2_color = @you_color %>
-		  <%   @point1_value = @lowest_amt %>
-		  <%   @point2_value = session[:you] %>
-		  <%   @point1_name  = " 20% Avg" %>
-		  <%   @point2_name  = "" %>
-	      categories: ['<%= @lowest_desc %>', 'YOU', 'All Neighbors', '<%= @highest_desc %>'],
-		  <% elsif @user_rank == "more than most"  %>
-		  <%   @point1_color = @lowest_color %>
-		  <%   @point2_color = @all_neighbors_color %>
-		  <%   @point3_color = @you_color %>
-		  <%   @point1_value = @lowest_amt %>
-		  <%   @point2_value = @all_neighbors %>
-		  <%   @point3_value = session[:you] %>
-		  <%   @point1_name  = " 20% Avg" %>
-		  <%   @point2_name  = "" %>
-	      categories: ['<%= @lowest_desc %>', 'All Neighbors', 'YOU', '<%= @highest_desc %>'],
-		  <% elsif @user_rank == "biggest"  %>
-		  <%   @point1_color = @lowest_color %>
-		  <%   @point2_color = @all_neighbors_color %>
-		  <%   @point3_color = @biggest_color %>
-		  <%   @point4_color = @you_color %>
-		  <%   @point1_value = @lowest_amt %>
-		  <%   @point2_value = @all_neighbors %>
-		  <%   @point3_value = @biggest_amt %>
-		  <%   @point4_value = session[:you] %>
-		  <%   @point1_name  = " 20% Avg" %>
-		  <%   @point2_name  = "" %>
-		  <%   @point3_name  = " 20% Avg" %>
-		  <%   @point4_name  = "" %>
-	      categories: ['<%= @lowest_desc %>', 'All Neighbors', '<%= @highest_desc %>', 'YOU'],
-		  <% end %>
-	      title: {
-	         text: null
+jQuery(document).ready(function() {
+	   chart = new Highcharts.Chart({
+	      chart: {
+	         renderTo: 'hcdebug',
+	         defaultSeriesType: 'bar'
 	      },
-		  tickLength: 0
-	   },
-	   yAxis: {
-	      min: 0,
-	      title: null,
-          labels: {
-            enabled: false
-          },
-		  gridLineColor: '#fff'
-	   },
-	   tooltip: {
-	      formatter: function() {
-	         return <%=raw @hc_tooltip %>;
-	      }
-	   },
-	   plotOptions: {
-	      bar: {
-	         dataLabels: {
-	            enabled: true,
-		        formatter: function() {
-		          return <%=raw @hc_dataLabel %>;
-		        }
-	         },
-	         pointPadding: 0,
-			 groupPadding: 0.15
-	      }
-	   },
-       legend: {
-	      enabled: false
-       },
-	   credits: {
-	      enabled: false
-	   },
-	   colors: [
-		  '#999'
-	   ],
-	   series: [{
-	      data: [{
-			name: '<%= @point1_name %>',
-			color: '<%= @point1_color %>',
-			y: <%= @point1_value %>
-		  }, {
-			name: '<%= @point2_name %>',
-			color: '<%= @point2_color %>',
-			y: <%= @point2_value %>
-		  }, {
-			name: '<%= @point3_name %>',
-			color: '<%= @point3_color %>',
-			y: <%= @point3_value %>
-		  }, {
-			name: '<%= @point4_name %>',
-			color: '<%= @point4_color %>',
-			y: <%= @point4_value %>
-		  }]
-	   }]
+	      title: {
+	         text: 'Historic World Population by Region'
+	      },
+	      subtitle: {
+	         text: 'Source: Wikipedia.org'
+	      },
+	      xAxis: {
+	         categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+	         title: {
+	            text: null
+	         }
+	      },
+	      yAxis: {
+	         min: 0,
+	         title: {
+	            text: 'Population (millions)',
+	            align: 'high'
+	         }
+	      },
+	      tooltip: {
+	         formatter: function() {
+	            return ''+
+	                this.series.name +': '+ this.y +' millions';
+	         }
+	      },
+	      plotOptions: {
+	         bar: {
+	            dataLabels: {
+	               enabled: true
+	            }
+	         }
+	      },
+	      legend: {
+	         layout: 'vertical',
+	         align: 'right',
+	         verticalAlign: 'top',
+	         x: -100,
+	         y: 100,
+	         floating: true,
+	         borderWidth: 1,
+	         backgroundColor: Highcharts.theme.legendBackgroundColor || '#FFFFFF',
+	         shadow: true
+	      },
+	      credits: {
+	         enabled: false
+	      },
+	           series: [{
+	         name: 'Year 1800',
+	         data: [107, 31, 635, 203, 2]
+	      }, {
+	         name: 'Year 1900',
+	         data: [133, 156, 947, 408, 6]
+	      }, {
+	         name: 'Year 2008',
+	         data: [973, 914, 4054, 732, 34]
+	      }]
+	   });
+
+
 	});
-});
  </script>
