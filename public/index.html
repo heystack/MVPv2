@@ -1239,7 +1239,7 @@ var $reporting = $('#reporting');
 
 var chart = new Highcharts.Chart({
       chart: {
-         renderTo: 'container',
+         renderTo: 'hc',
          defaultSeriesType: 'bar'
       },
       title: {
@@ -1291,9 +1291,11 @@ var chart = new Highcharts.Chart({
 
 </head>
 <body>
-  <div id="container" style="height: 300px; min-width: 300px"></div>
-
-<div id="reporting"></div>
+<div class="container shadow">
+<div class="content">
+  <div id="hc" style="height: 300px; min-width: 300px"></div>
+</div>
+</div>
 
   
 </body>
