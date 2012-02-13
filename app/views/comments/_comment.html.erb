@@ -8,8 +8,7 @@
 <div class="comment">
 <div class="comment_name"><%= @user.name.blank? ? "" : @user.name %></div>
 <div class="comment_content">
-<%= auto_link( comment.content, :html => { :target => '_blank' } ) %>
-</div>
+<%= auto_link( comment.content, :html => { :target => '_blank' } ) %><br/>
 <div class="comment_timestamp">
 
 <%= render 'comments/comment_reply', :comment => comment %> ·
