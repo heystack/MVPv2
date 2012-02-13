@@ -127,9 +127,10 @@ jQuery(document).ready(function() {
  </script>
 
 <script type="text/javascript">
-var chart;
-jQuery(document).ready(function() {
-   chart = new Highcharts.Chart({
+$(function(){
+var $reporting = $('#reporting');
+
+var chart = new Highcharts.Chart({
       chart: {
          renderTo: 'hcdebug',
          defaultSeriesType: 'bar'
@@ -171,11 +172,10 @@ jQuery(document).ready(function() {
       },
       series: [{
          name: 'Year 1800',
-		 color: 'red',
+         color: 'red',
          data: [107, 31, 635, 203, 2]
       }]
    });
-   
-   
+
 });
 </script>
