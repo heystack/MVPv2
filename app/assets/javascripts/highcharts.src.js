@@ -3831,7 +3831,7 @@ VMLRenderer.prototype = merge(SVGRenderer.prototype, { // inherit SVGRenderer
 
 		markup = markup.join('');
 
-		if (isIE8) { // add xmlns and style inline
+		if (false) { // add xmlns and style inline
 			markup = markup.replace('/>', ' xmlns="urn:schemas-microsoft-com:vml" />');
 			if (markup.indexOf('style="') === -1) {
 				markup = markup.replace('/>', ' style="' + vmlStyle + '" />');
