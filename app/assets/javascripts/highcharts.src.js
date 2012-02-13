@@ -6933,7 +6933,7 @@ function Chart(options, callback) {
 				};
 
 			if (legendItem) {
-				legendItem.css({ fill: textColor, color: textColor });
+				legendItem.css({ fill: textColor });
 			}
 			if (legendLine) {
 				legendLine.attr({ stroke: lineColor });
