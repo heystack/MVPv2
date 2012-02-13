@@ -3326,7 +3326,7 @@ var VMLElement = extendClass(SVGElement, {
 
 				if (!skipAttr) {
 					if (docMode8) { // IE8 setAttribute bug
-						element[key] = value;
+						attr(element, key, value);
 					} else {
 						attr(element, key, value);
 					}
