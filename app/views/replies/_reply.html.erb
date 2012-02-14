@@ -2,7 +2,7 @@
 <div class="reply">
 <div class="reply_name"><%= @reply_user.name.blank? ? "" : @reply_user.name %></div>
 <div class="reply_content round">
-<%= auto_link( reply.content, :html => { :target => '_blank' } ) %>
+<%= auto_link( reply.content.content.gsub(/\n/, '<br/>'), :html => { :target => '_blank' } ) %>
 </div>
 <div class="comment_timestamp">
 <span class="de-em text-75">Added <%= time_ago_in_words(reply.created_at) %> ago.</span>
