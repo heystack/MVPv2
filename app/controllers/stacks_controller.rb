@@ -297,7 +297,7 @@ class StacksController < ApplicationController
   end
 
   def filter_qualifier
-    @stack = Stack.find(session[:stack])
+    @stack = Stack.find(params[:stack][:stack_id])
     session[:apply_filter_qualifier] = !session[:apply_filter_qualifier]
     respond_to do |format|
       format.html { redirect_to @stack }

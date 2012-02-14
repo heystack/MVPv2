@@ -21,8 +21,8 @@
 -moz-box-shadow: 5px 5px 15px #222;
 -webkit-box-shadow: 5px 5px 15px #222;
 box-shadow: 5px 5px 15px #222;
-filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,ShadowOpacity=0.10);
-        -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,ShadowOpacity=0.10)";
+filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=5,MakeShadow=true,ShadowOpacity=0.40);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=5,MakeShadow=true,ShadowOpacity=0.40)";
         zoom: 1;
 }
 .shadow .content {
@@ -35,8 +35,8 @@ filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,Sha
 -moz-box-shadow: 5px 5px 15px #ccc;
 -webkit-box-shadow: 5px 5px 15px #ccc;
 box-shadow: 5px 5px 15px #ccc;
-filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,ShadowOpacity=0.10);
-        -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=7,MakeShadow=true,ShadowOpacity=0.10)";
+filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=5,MakeShadow=true,ShadowOpacity=0.40);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=5,MakeShadow=true,ShadowOpacity=0.40)";
         zoom: 1;
 }
 .shadowlight .content {
@@ -1205,6 +1205,6 @@ div.footer {
 	-webkit-box-shadow:0 0 10px #000;
 }
 
-#loading { display:none; position:fixed; left:0; top:0; width:100%; height:100%;
+#loading { display:none; position:fixed; left:0; top:0; width:100%; height:100%; z-index: 5000;
            background-image:url("transparentbg.png"); }
 #loading_gif { position:fixed; left:50%; top:50%; }
