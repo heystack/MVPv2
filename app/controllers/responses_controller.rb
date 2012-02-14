@@ -52,7 +52,7 @@ class ResponsesController < ApplicationController
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     if @stack.outlier?(@response.value, @response.qualifier1)
-      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to refine your answer."
+      flash[:error] = "Really?!? We'll review your response to make sure it's legit. If needed, you can refine your answer."
       MvpMailer.outlier_email(@stack, @response.value, @user).deliver
       @response.outlier = true
     else
@@ -108,7 +108,7 @@ class ResponsesController < ApplicationController
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     if @stack.outlier?(params[:response][:value].to_f, params[:response][:qualifier1])
-      flash[:error] = "Really?!? Response has been flagged as an outlier and may be removed. You may want to <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
+      flash[:error] = "Really?!? We'll review your response to make sure it's legit. If needed, you can <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
       MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
       params[:response][:outlier] = true
     else
