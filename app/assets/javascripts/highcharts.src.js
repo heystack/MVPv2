@@ -3831,6 +3831,7 @@ VMLRenderer.prototype = merge(SVGRenderer.prototype, { // inherit SVGRenderer
 
 		markup = markup.join('');
 
+		// SRB 2/12/2012 - Changed following line from if (isIE8) to if (false) to get colored bars to show in IE8
 		if (false) { // add xmlns and style inline
 			markup = markup.replace('/>', ' xmlns="urn:schemas-microsoft-com:vml" />');
 			if (markup.indexOf('style="') === -1) {
