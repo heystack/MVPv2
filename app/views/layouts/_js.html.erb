@@ -3,11 +3,17 @@
 
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-    $('a[rel*=facebox]').facebox({
-      loadingImage : '<%= image_path("loading.gif") %>',
-      closeImage   : '<%= image_path("closelabel.png") %>'
-    })
-  })
+	$('a[rel*=facebox]').facebox({
+	  loadingImage : '<%= image_path("loading.gif") %>',
+	  closeImage   : '<%= image_path("closelabel.png") %>'
+	})
+
+	 // create a convenient toggleLoading function
+	 var toggleLoading = function() { $("#loading").toggle() };
+	 $("#filter_link")
+	   .bind("ajax:send",  toggleLoading)
+	   .bind("ajax:complete", toggleLoading)
+	 })
 </script>
 
 <script type="text/javascript">
@@ -46,17 +52,26 @@ $(document).ready(
 	});
 	
 	// Why don't these work???
-	$("#loading").ajaxStart(function(){
-	    $(this).show();
-	 }).ajaxStop(function(){
-	    $(this).hide();
-	 });
-	
-    $("#loading").bind("ajaxSend", function(){
-   		$(this).show();
- 	}).bind("ajaxComplete", function(){
-   		$(this).hide();
- 	});
+	// $("#loading").ajaxStart(function(){
+	//     $(this).show();
+	//  }).ajaxStop(function(){
+	//     $(this).hide();
+	//  });
+	// 
+	//     $("#loading").bind("ajaxSend", function(){
+	//    		$(this).show();
+	//  	}).bind("ajaxComplete", function(){
+	//    		$(this).hide();
+	//  	});
+
+    // Event.observe('#filter_link', 'ajax:before', function(event) {
+    //     $('loading').show();
+    // });
+    // Event.observe('#filter_link', 'ajax:complete', function(event) {
+    //     $('loading').hide();
+    // });
+
+  });
 </script>
 
 <script type="text/javascript">
