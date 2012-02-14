@@ -17,14 +17,13 @@
 }
 
 .shadow {
-    background-color: #fff; /* Needed for IEs */
--moz-box-shadow: 5px 5px 15px #222;
--webkit-box-shadow: 5px 5px 15px #222;
-box-shadow: 5px 5px 15px #222;
-/* For IE 8 */
--ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222')";
-/* For IE 5.5 - 7 */
-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222');
+    background-color: #222; /* Needed for IEs */
+	-moz-box-shadow: 5px 5px 15px #222;
+	-webkit-box-shadow: 5px 5px 15px #222;
+	box-shadow: 5px 5px 15px #222;
+	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=5,MakeShadow=true,ShadowOpacity=0.10);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=5,MakeShadow=true,ShadowOpacity=0.10)";
+	zoom: 1;
 }
 .shadow .content {
   position: relative; /* This protects the inner element from being blurred */
