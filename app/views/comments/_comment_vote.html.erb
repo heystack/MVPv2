@@ -1,5 +1,12 @@
 <div id="vote_button_div_<%= comment.id %>" class="inline">
+<% if comment.votes.count > 0 %>
+  <%= image_tag "thumbsup.png",
+		:id => "reply_count",
+		:title => pluralize( comment.votes.count.to_s, "person" ) + " voted this up." %>
+<% else %>
 <%= image_tag "thumbsup.png" %>
+<% end %>
+
 <% if current_user.voted_for( comment.id ) %>
 
 <%= pluralize comment.votes.count, "nod" %>
