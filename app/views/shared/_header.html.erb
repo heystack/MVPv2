@@ -8,7 +8,11 @@
 <table>
   <tr>
 	<td class="header_logo">
-	  <%= link_to image_tag(@logo, :alt => "Heystack | Local Comparisons"), root_path %>
+	  <!-- <%= link_to image_tag(@logo, :alt => "Heystack | Local Comparisons"), root_path %> -->
+	  <div class="logo_div">
+	  <div class="logo_heystack"><%= link_to "heystack", root_path, :class => "logo_link" %></div>
+	  <div class="logo_community"><%= link_to @community.name, root_path, :class => "logo_community_link" %></div>
+	  </div>
 	</td>
 	<td class="header_tagline">
 	  Local info for seeing how you stack up<br/>
