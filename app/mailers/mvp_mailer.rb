@@ -1,5 +1,5 @@
 class MvpMailer < ActionMailer::Base
-  default :from => "'Heystack Share' <communityshare@heystack.com>"
+  default :from => "'heystack' <communityshare@heystack.com>"
 
   def email_neighbor(stack, contact, from_name, user_email)
     @stack = stack
@@ -7,7 +7,7 @@ class MvpMailer < ActionMailer::Base
     @contact = contact
     @community = @stack.community_id
     @from_name = from_name
-    @from_email = @from_name + " via Heystack <communityshare@heystack.com>"
+    @from_email = @from_name + " via heystack <communityshare@heystack.com>"
     @email = @contact[:email]
     @user_email = user_email
     @form_capable = false

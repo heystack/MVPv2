@@ -2,17 +2,17 @@
 	<% @community = Community.find_by_id(session[:community]) %>
 	<% @logo = @community.logo %>
 <% else %>
-	<% @logo = "heystack_logo_preview.png" %>
+	<% @logo = "heystack_logo_preview.gif" %>
 <% end %>
 <div class="header">
 <table>
   <tr>
 	<td class="header_logo">
-	  <!-- <%= link_to image_tag(@logo, :alt => "Heystack | Local Comparisons"), root_path %> -->
-	  <div class="logo_div">
+	  <%= link_to image_tag(@logo, :alt => "Heystack | Local Comparisons"), root_path %>
+	  <!-- <div class="logo_div">
 	  <div class="logo_heystack"><%= link_to "heystack", root_path, :class => "logo_link" %></div>
 	  <div class="logo_community"><%= link_to @community.name, root_path, :class => "logo_community_link" %></div>
-	  </div>
+	  </div> -->
 	</td>
 	<td class="header_tagline">
 	  Local info for seeing how you stack up<br/>
