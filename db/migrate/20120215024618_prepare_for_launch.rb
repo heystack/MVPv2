@@ -5,7 +5,6 @@ class PrepareForLaunch < ActiveRecord::Migration
     drop_table :comments
     drop_table :replies
     drop_table :user_communities
-    drop_table :communities
     drop_table :votes
   end
 
@@ -17,17 +16,6 @@ class PrepareForLaunch < ActiveRecord::Migration
       t.integer  "votes"
       t.datetime "created_at"
       t.datetime "updated_at"
-    end
-
-    create_table "communities", :force => true do |t|
-      t.integer  "community_id"
-      t.string   "name"
-      t.string   "desc"
-      t.string   "type"
-      t.string   "logo"
-      t.datetime "created_at"
-      t.datetime "updated_at"
-      t.string   "icon"
     end
 
     create_table "replies", :force => true do |t|
@@ -47,16 +35,6 @@ class PrepareForLaunch < ActiveRecord::Migration
       t.datetime "updated_at"
       t.boolean  "outlier"
     end
-
-    create_table "sessions", :force => true do |t|
-      t.string   "session_id", :null => false
-      t.text     "data"
-      t.datetime "created_at"
-      t.datetime "updated_at"
-    end
-
-    add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-    add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
     create_table "user_communities", :force => true do |t|
       t.integer  "community_id"

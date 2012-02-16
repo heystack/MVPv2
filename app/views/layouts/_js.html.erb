@@ -100,13 +100,13 @@ function validateNameInComments(form) {
     if (isNotEmpty(form.user_name)) {
 		return true;
     }
-	alert("Please provide your name along with your comment.");
+	alert("Hang on there neighbor, need a username for your purposeful post.");
     return false;
 }
 
 function validateEmailInSignup(form) {
     if (form.user_email.value == "Your Email Address" || form.user_email.value == "") {
-		alert("Please provide your email address.");
+		alert("Thanks, but we need an email address to send the Weekly Stack to.");
 		return false;
     }
     return true;
@@ -127,10 +127,10 @@ function validateStackType(form) {
 	var dotpos=x.lastIndexOf(".");
 	invalid_email = atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length
 	if (invalid_stem) {
-	  alert("Please choose a Stack Type.");
+	  alert("One second friend, please pick a Stack type.");
 	  return false;
 	} else if (invalid_email) {
-	  alert("Please enter a valid e-mail address.");		
+	  alert("Hold on a second, please enter a valid e-mail.");		
 	  return false;
 	} else {
 	  return true;
@@ -196,12 +196,12 @@ $(function() {
 		opacity: 0.6
 	});
 
-	$("#user_email").tooltip({
-		position: "top left",
-		offset: [10, -20],
-		effect: "fade",
-		opacity: 0.6
-	});
+	// $("#user_email").tooltip({
+	// 	position: "top left",
+	// 	offset: [10, -20],
+	// 	effect: "fade",
+	// 	opacity: 0.6
+	// });
 
 });
 </script>

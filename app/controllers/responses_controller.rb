@@ -52,7 +52,7 @@ class ResponsesController < ApplicationController
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     if @stack.outlier?(@response.value, @response.qualifier1)
-      flash[:error] = "Really?!? We'll review your response to make sure it's legit. If needed, you can refine your answer."
+      flash[:error] = "Hmmm...seems like an outlier answer. Give a 2nd look (we will too) and use <strong>refine my answer</strong> if need be.".html_safe
       MvpMailer.outlier_email(@stack, @response.value, @user).deliver
       @response.outlier = true
     else
@@ -108,7 +108,7 @@ class ResponsesController < ApplicationController
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     if @stack.outlier?(params[:response][:value].to_f, params[:response][:qualifier1])
-      flash[:error] = "Really?!? We'll review your response to make sure it's legit. If needed, you can <a href='#{url_for(edit_response_path(@response))}'>edit your response</a>.".html_safe
+      flash[:error] = "Hmmm...seems like an outlier answer. Give a 2nd look (we will too) and use <a href='#{url_for(edit_response_path(@response))}'>refine my answer</a> if need be.".html_safe
       MvpMailer.outlier_email(@stack, params[:response][:value], @user).deliver
       params[:response][:outlier] = true
     else
@@ -136,12 +136,12 @@ class ResponsesController < ApplicationController
       @user = User.new
       if @user.save
         sign_in @user
-        if UserCommunity.count > 0
+        if Community.count > 0
           if params[:community]
             session[:community] = params[:community]
           else
             # First community must be the default, public community
-            session[:community] = UserCommunity.first.community_id
+            session[:community] = Community.first.id
           end
           @user.member_of!(session[:community])
         end
@@ -155,9 +155,9 @@ class ResponsesController < ApplicationController
         end
       else
         if @user.member_of_any_community?
-          session[:community] = @user.most_recent_community.community_id
-        elsif UserCommunity.count > 0
-          session[:community] = UserCommunity.first.community_id
+          session[:community] = @user.first_community.community_id
+        elsif Community.count > 0
+          session[:community] = Community.first.id
           @user.member_of!(session[:community])
         end
       end

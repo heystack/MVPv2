@@ -38,6 +38,7 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(params[:community])
     if @community.save
+      session[:community] = @community.id
       flash[:success] = "Community Created!"
       redirect_to community_path(@community.id)
     else

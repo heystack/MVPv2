@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     self.user_communities.last
   end
 
+  def first_community
+    self.user_communities.first
+  end
+
   def member_of?(community)
     self.user_communities.find_by_community_id(community)
   end

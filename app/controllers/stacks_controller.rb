@@ -52,7 +52,7 @@ class StacksController < ApplicationController
             session[:community] = params[:community]
           else
             # First community must be the default, public community
-            session[:community] = UserCommunity.first.community_id
+            session[:community] = UserCommunity.first.id
           end
           @user.member_of!(session[:community])
         end
@@ -67,8 +67,8 @@ class StacksController < ApplicationController
       else
         if @user.member_of_any_community?
           session[:community] = @user.most_recent_community.community_id
-        elsif UserCommunity.count > 0
-          session[:community] = UserCommunity.first.community_id
+        elsif Community.count > 0
+          session[:community] = Community.first.id
           @user.member_of!(session[:community])
         end
       end
@@ -209,7 +209,7 @@ class StacksController < ApplicationController
         #   # @diff_text = "With four 5 hours sits per month, you spend <span class='em'>" + @diff_amt.to_s + @diff_text + " per year</span> than your lowest spending neighbors."
         # end
         @lowest_desc = "Least"
-        @highest_desc = "Highest"
+        @highest_desc = "Most"
 
       elsif @stack.stem == "At what age"
         if @user_rank == "lowest"

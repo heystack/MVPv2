@@ -12,7 +12,7 @@ class MvpController < ApplicationController
   def stack_request
     @request = params[:request]
     MvpMailer.stack_request_email(@request).deliver
-    flash[:success] = "Thanks for the stack request! If you provided your email, we'll get back to you shortly."
+    flash[:success] = "Your stack request is in. Expect confirmation and sharing tips shortly. Comments on the submission process? <a href='#comments', rel='facebox'>Tell us</a>.".html_safe
     @stack = Stack.find_by_id(session[:stack])
     redirect_to @stack
   end
@@ -30,7 +30,7 @@ class MvpController < ApplicationController
     @from_name = @contact[:from_name]
     @user_email = @contact[:user_email]
     MvpMailer.email_neighbor(@stack, @contact, @from_name, @user_email).deliver
-    flash[:success] = "Thanks for sharing with #{@contact[:email]}. Feel free to share with as many people as you\'d like!"
+    flash[:success] = "Stack share with #{@contact[:email]} accomplished. More answers \= better info so share on!  Comments on sharing process? <a href='#comments', rel='facebox'>Tell us</a>.".html_safe
     redirect_to @stack
   end
 
