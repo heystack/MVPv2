@@ -5,7 +5,7 @@
   <%= f.text_area :content,
 	:class => "comment_content round",
 	:style => "color:lightgray;",
-	:value => "Join the discussion...",
+	:value => "Got a comment, useful link, referral, some other helpful nugget to share? Join the discussion.",
 	:onfocus => "if (this.value.substring(0,4) == 'Join')
 					{this.value='';this.style.color = 'black';this.style.height = '50px';}; unhide('submit_comment_div');",
 	:onKeyPress => "return imposeMaxLength(this,2000);",
