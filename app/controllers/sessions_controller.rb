@@ -24,9 +24,9 @@ class SessionsController < ApplicationController
     else
       sign_in user
       if user.member_of_any_community?
-        session[:community] = user.most_recent_community.community_id
+        session[:community] = user.first_community.community_id
       elsif Community.count > 0
-        session[:community] = Community.last.id
+        session[:community] = Community.first.id
         @user.member_of!(session[:community])
       end
     end

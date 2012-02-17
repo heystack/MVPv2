@@ -8,8 +8,10 @@
 	<% end %>
 	</div>
 	<div class="community_list_desc"><%= stack.question %></div>
-	<span class="de-em text-75">Created <%= time_ago_in_words(stack.created_at) %> ago. 
+	<span class="de-em text-75">Created <%= time_ago_in_words(stack.created_at) %> ago.
+	<% if stack.responses.count > 0 %>
 	  Most recent response <%= time_ago_in_words(stack.responses.last.created_at) %> ago.
+	<% end %>
 	  <% if current_user.admin? %>
 	    <%= link_to "edit", edit_stack_path(stack) %> | 
 	    <%= link_to "delete", stack, :method => :delete, :confirm => "You sure?",

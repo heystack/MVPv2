@@ -9,7 +9,7 @@
 <tr>
   <td><%= stk.name + " " %></td>
   <td style="text-align:right"><%= link_to stk.responses.count.to_s, "/stkresponses?stack_id=" + stk.id.to_s %></td>
-  <td><span class="de-em text-75"><%= time_ago_in_words(stk.responses.last.updated_at) %> ago</span></td>
+  <td><span class="de-em text-75"><%= stk.responses.count > 0 ? time_ago_in_words(stk.responses.last.updated_at) + " ago" : "" %></span></td>
 </tr>
 <% end %>
 <tr>
