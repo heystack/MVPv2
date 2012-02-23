@@ -80,7 +80,6 @@ function isNotEmpty(elem) {
   var str = elem.value;
     var re = /.+/;
     if(!str.match(re)) {
-        alert(elem.name + " cannot be blank.");
         setTimeout("focusElement('" + elem.form.name + "', '" + elem.name + "')", 0);
         return false;
     } else {
@@ -130,7 +129,7 @@ function validateStackType(form) {
 	  alert("One second friend, please pick a Stack type.");
 	  return false;
 	} else if (invalid_email) {
-	  alert("Hold on a second, please enter a valid e-mail.");		
+	  alert("Whoa there, please enter your email so we can notify you when your stack\'s ready.");		
 	  return false;
 	} else {
 	  return true;

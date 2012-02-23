@@ -19,7 +19,23 @@
 		<% end %>
 	  </label>
 	<% else %>
-	  <%= f.select :qualifier1, [["Choose..."], [@stack.madlibs_1_option_1], [@stack.madlibs_1_option_2], [@stack.madlibs_1_option_3], [@stack.madlibs_1_option_4], [@stack.madlibs_1_option_5], [@stack.madlibs_1_option_6], [@stack.madlibs_1_option_7], [@stack.madlibs_1_option_8], [@stack.madlibs_1_option_9], [@stack.madlibs_1_option_10], [@stack.madlibs_1_option_11], [@stack.madlibs_1_option_12], ], { }, { :style => 'display:inline; background:#ffdd55;' } %>
+	  <% @choices = Array.new %>
+	  <% @choices << @stack.madlibs_1_option_1 unless @stack.madlibs_1_option_1.blank? %>
+	  <% @choices << @stack.madlibs_1_option_2 unless @stack.madlibs_1_option_2.blank? %>
+	  <% @choices << @stack.madlibs_1_option_3 unless @stack.madlibs_1_option_3.blank? %>
+	  <% @choices << @stack.madlibs_1_option_4 unless @stack.madlibs_1_option_4.blank? %>
+	  <% @choices << @stack.madlibs_1_option_5 unless @stack.madlibs_1_option_5.blank? %>
+	  <% @choices << @stack.madlibs_1_option_6 unless @stack.madlibs_1_option_6.blank? %>
+	  <% @choices << @stack.madlibs_1_option_7 unless @stack.madlibs_1_option_7.blank? %>
+	  <% @choices << @stack.madlibs_1_option_8 unless @stack.madlibs_1_option_8.blank? %>
+	  <% @choices << @stack.madlibs_1_option_9 unless @stack.madlibs_1_option_9.blank? %>
+	  <% @choices << @stack.madlibs_1_option_10 unless @stack.madlibs_1_option_10.blank? %>
+	  <% @choices << @stack.madlibs_1_option_11 unless @stack.madlibs_1_option_11.blank? %>
+	  <% @choices << @stack.madlibs_1_option_12 unless @stack.madlibs_1_option_12.blank? %>
+	  <!-- <label> -->
+		<%= f.select :qualifier1, @choices, { :include_blank => "Choose..." } %>
+		<!-- <span>choose option</span>
+	  </label> -->
 	<% end %>
     <%= @stack.madlibs_2 %>
 	<% if !@stack.madlibs_2_label.blank? %>
