@@ -155,7 +155,7 @@ class ResponsesController < ApplicationController
         end
       else
         if @user.member_of_any_community?
-          session[:community] = @user.first_community.community_id
+          session[:community] ||= @user.first_community.community_id
         elsif Community.count > 0
           session[:community] = Community.first.id
           @user.member_of!(session[:community])

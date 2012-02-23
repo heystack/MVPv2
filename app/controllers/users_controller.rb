@@ -32,6 +32,7 @@ class UsersController < ApplicationController
       @stack = Stack.find_by_id(session[:stack])
       if params[:user_community]
         @updated_community = params[:user_community][:community]
+        session[:community] = @updated_community
       end
       unless @updated_community.nil?
         if @user.member_of?(@updated_community)
