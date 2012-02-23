@@ -6,7 +6,7 @@
 
 <table class="stacks" summary="Stacks">
 <% if @community.stacks.empty? %>
-  <tr><td span=2>No Stacks.</td></tr>
+  <tr><td span=2>No Stacks. <%= link_to "Add Stack", new_stack_path %></td></tr>
 </table>
 <% else %>
   <tr><td>
@@ -19,7 +19,7 @@
 </table>
 <%= render @stacks, :omit_stack => "", :stack_detail => true %>
 <% end %>
-<% if @users.nil? %>
+<% if @users.count == 0 %>
 No users in this Community.
 <% else %>
 <div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @users %></div>

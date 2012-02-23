@@ -1,8 +1,9 @@
+<% @empty = community.stacks.empty? %>
 <div class="community_list_logo"><%= image_tag community.icon, :height => 50 %></div>
 <div class="community_list_header">
 	<div class="community_list_desc" style="font-size:150%;"><%= link_to community.name, community %></div>
 	<div class="community_list_desc"><%= community.desc %></div>
-	<span class="de-em text-75">Created <%= time_ago_in_words(community.created_at) %> ago, latest stack added <%= time_ago_in_words(community.stacks.last.created_at) %> ago.
+	<span class="de-em text-75">Created <%= time_ago_in_words(community.created_at) %> ago<%= @empty ? "." : ", latest stack added " + time_ago_in_words(community.stacks.last.created_at) + "ago." %>
 	  <% if current_user.admin? %>
 	    <%= link_to "edit", edit_community_path(community) %> | 
 	    <%= link_to "delete", community, :method => :delete, :confirm => "You sure?",
