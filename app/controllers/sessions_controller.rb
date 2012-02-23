@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
         @user.member_of!(session[:community])
       end
     end
-    session[:apply_filter_qualifier] = true
+    session[:apply_filter_qualifier] = false
     @community = Community.find_by_id(session[:community])
     if @community.stacks.count > 0
       @stack ||= @community.stacks.find_by_sotd("1")
