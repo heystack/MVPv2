@@ -36,11 +36,12 @@ class UsersController < ApplicationController
       end
       unless @updated_community.nil?
         if @user.member_of?(@updated_community)
-          flash[:notice] = (@user.name? ? @user.name : "") + " is already a member of the " + Community.find(@updated_community).name + " community."
+          flash[:notice] = "Session switched to the " + Community.find(@updated_community).name + " community."
         else
           @relationship = @user.member_of!(params[:user_community][:community])
           flash[:notice] = (@user.name? ? @user.name : "") + " is now a member of the " + Community.find(@updated_community).name + " community."
         end
+        redirect_to root_path and return
       end
       redirect_to @stack
     else

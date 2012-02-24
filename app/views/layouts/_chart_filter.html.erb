@@ -12,7 +12,7 @@
 			:id => "filter_link",
 			:remote => true %>
 	<% else %>
-	  <%= link_to "show " + session[:qualifier] + " only", "#",
+	  <%= link_to raw("show <strong>" + session[:qualifier] + "</strong> only"), "#",
 			:onclick=>"$(this).submit();",
 			:class => "filter_link",
 			:id => "filter_link",
@@ -22,8 +22,8 @@
 	• 
 <% end %>
 <% if @user.zipcode %>
-  <%= link_to "show " + @user.zipcode.to_s + " only", "#",
-	  :id => "hc_filter", :title => "Zip filter coming soon.",
+  <%= link_to raw("show <strong>" + @user.zipcode.to_s + "</strong> only"), "#",
+	  :id => "hc_filter", :title => "Zip and other filters coming soon.",
 	  :class => "filter_link_inactive",
 	  :disabled => true,
 	  :remote => true %>

@@ -15,5 +15,6 @@
 <%= u.select :community, options_from_collection_for_select(@communities, "id", "name") %>
 <% end %>
 <span class="de-em text-75">Current communities: <%= @user.member_of_any_community? ? @user.user_communities.map { |uc| Community.find_by_id(uc.community_id).name + " " } : "None" %></span>
+<!-- <span class="de-em text-75"><%= @user.member_of_any_community? ? @user.user_communities.map { |uc| "<a href='#{user_communities_path(uc.community_id)}'>#{uc.community_id}</a>".html_safe } : "None" %></span> -->
 </div>
 <br/>

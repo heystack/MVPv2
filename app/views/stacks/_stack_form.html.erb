@@ -2,7 +2,7 @@
 <%= render 'shared/error_messages', :object => f.object %>
 <div class="field">
   <%= f.hidden_field :created_by, :value => current_user.id %>
-  <%= f.label :community %>: <%= f.select :community_id, options_from_collection_for_select(@communities, "id", "name", @stack.community_id) %><br/>
+  <%= f.label :community %>: <%= f.select :community_id, options_from_collection_for_select(@communities, "id", "name", session[:community]) %><br/>
   <%= f.label :name %>: <%= f.text_field :name, :size => "100" %><br/>
   <%= f.label :question %>: <%= f.text_field :question, :size => "100" %><br/>
   <%= f.label :stem %>: <%= f.select :stem, [["How much"], ["How many"], ["How often"], ["At what age"]] %><br/>
