@@ -3,7 +3,7 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# ogheystack: http://ogp.me/ns/fb/ogheystack#">
   <meta property="fb:app_id"      content="240024852744401" /> 
   <meta property="og:type"        content="ogheystack:stack" /> 
-  <meta property="og:image"       content="http://parenting-mvp.heroku.com/favicon.png" />
+  <meta property="og:image"       content="http://heystack.com/assets/favicon.gif" />
   <!-- The following is one of the ugliest lines of code I've ever written... -->
   <meta property="og:url"         content="<%= @stack.nil? ? "" : (@stack.id.nil? ? "" : stack_url(@stack)) %>" /> 
   <meta property="og:title"       content="<%= @stack.nil? ? "" : @stack.name %>" /> 
@@ -21,7 +21,7 @@
   <script>
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '370570312958945', // App ID
+        appId      : '240024852744401', // App ID
         status     : true, // check login status
         cookie     : true, // enable cookies to allow the server to access the session
         xfbml      : true  // parse XFBML
@@ -42,14 +42,14 @@
 	var js, fjs = d.getElementsByTagName(s)[0];
 	if (d.getElementById(id)) return;
 	js = d.createElement(s); js.id = id;
-	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=370570312958945";
+	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=240024852744401";
 	fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
   <script type="text/javascript">
   function likeStack()
   {
-      FB.api('/me/ogheystack:like' + '?stack=http://samples.ogp.me/370585046290805','post',
+      FB.api('/me/ogheystack:like' + '?stack=http://samples.ogp.me/240026202744266','post',
                   function(response) {
           if (!response || response.error) {
                   alert('Error occured');
