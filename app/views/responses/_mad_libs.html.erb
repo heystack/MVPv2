@@ -73,12 +73,16 @@
 <%= f.submit "Stack Me Up!", :class => "submit_button round" %>
 <br/>
 <% if @ask_location %>
-<div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is Heystack available for my community?</a></div>
+<div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is heystack available for my community?</a></div>
 <% end %>
 
 <div id="not_alexandria" style="display:none;">
-Heystack is currently available for Alexandria, Virginia<br/>
-only. If you'd like us to expand, send us a comment!
+Heystack is all about community info sharing and right<br/>
+now the focus is on communities in Alexandria, Virginia.<br/>
+From somewhere else?  No worries, welcome.  Give the experience a whirl (we'll keep things straight by zip).  If you like it, send us a comment below on bringing heystack to your community, or <%= link_to "create a stack of your own", create_stack_path %> to try in your hood.
+<br/><br/>
+<div id="comments_facebox_div"><%= render 'shared/comments' %></div>
+
 </div>
 
 </div>

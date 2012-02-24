@@ -1,4 +1,5 @@
 <div class="email_preview">
+<br/>
 <%= form_tag "/send_comment" do -%>
 <table>
   <tr>
@@ -11,12 +12,12 @@
   </tr>
   <tr>
 	<td class="top_right"><label for="comment_body">Comment:</label></td>
-	<td><%= text_area "contact", "comment" %>
+	<td><%= text_area "contact", "comment", :style => "height:20px; width:100%;", :onfocus => "this.style.height = '100px';" %>
 	</td>
   </tr>
   <tr>
 	<td></td>
-	<td class="text-1_25"><br/><input type="submit" value="Send Comment" class="form_button round" /></td>
+	<td class="text-1_25"><input type="submit" value="Send Comment" class="form_button round" /></td>
   </tr>
 </table>
 
