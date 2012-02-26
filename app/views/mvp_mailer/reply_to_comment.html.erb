@@ -17,7 +17,7 @@
 <%=raw @comment.content.gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %>
 </p>
 <p>
-On the stack <%= link_to @stack.question, stack_url(@stack) %>.
+On the stack <%= link_to @stack.question, stack_url(@stack) %>
 </p>
   </body>
 </html>
