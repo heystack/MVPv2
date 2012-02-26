@@ -5,7 +5,7 @@
   </head>
   <body>
 <p>
-<%= @replier.name %><%= @replier.email.blank? ? "" : "(" + @replier.email + ")" %> just replied...
+<%= @replier.name %><%= @replier.email.blank? ? "" : " (" + @replier.email + ")" %> just replied...
 </p>
 <p style="background:#eee; padding:5px;">
 <%=raw @reply.content.gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %>
