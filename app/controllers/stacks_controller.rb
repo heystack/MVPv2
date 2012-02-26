@@ -58,7 +58,7 @@ class StacksController < ApplicationController
         end
       end
     else
-      sign_in @user
+      sign_in @user unless signed_in?
       if params[:community]
         session[:community] = params[:community]
         if !@user.member_of?(session[:community])
