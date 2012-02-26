@@ -1,5 +1,6 @@
 class ResponsesController < ApplicationController
   before_filter :admin_user, :only => :stkresponses
+  before_filter :authorized_user, :only => [:edit, :destroy]
 
   def new
     if !session[:stack]
@@ -211,5 +212,13 @@ class ResponsesController < ApplicationController
       redirect_to root_path
     end
   end
+
+  private
+
+    def authorized_user
+      return true if current_user.admin?
+      @response = current_user.responses.find_by_id(params[:id])
+      redirect_to root_path if @response.nil?
+    end
 
 end
