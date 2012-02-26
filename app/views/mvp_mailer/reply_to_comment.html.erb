@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+<p>
+<%= @replier.name %><%= @replier.email.blank? ? "" : "(" + @replier.email + ")" %> just replied...
+</p>
+<p style="background:#eee">
+<%=raw @reply.content.gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %>
+</p>
+<p>
+...to your comment...
+</p>
+<p style="background:#eee">
+<%=raw @comment.content.gsub("\n\r","<br />").gsub("\r", "").gsub("\n", "<br />") %>
+</p>
+<p>
+On the stack <%= link_to @stack.question, stack_url(@stack) %>.
+</p>
+  </body>
+</html>

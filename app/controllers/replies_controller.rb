@@ -18,6 +18,8 @@ class RepliesController < ApplicationController
         @name = params[:user][:name]
         @user.update_attributes(:name => @name)
       end
+      # Notify comment author of reply
+      MvpMailer.reply_to_comment(@comment, @reply).deliver
     else
       flash[:error] = "Reply not saved!"
     end

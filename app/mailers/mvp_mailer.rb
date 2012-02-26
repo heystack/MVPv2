@@ -55,6 +55,16 @@ class MvpMailer < ActionMailer::Base
 
   def subscribe_email(user)
     @user = user
-    mail(:to => @user.email, :bcc => "communityshare@heystack.com", :subject => "Welcome to the Heystack community!")
+    mail(:to => @user.email, :bcc => "communityshare@heystack.com", :subject => "Welcome to the heystack community!")
+  end
+
+  def reply_to_comment(comment, reply)
+    @comment = comment
+    @commenter = User.find_by_id(@comment.user_id)
+    @reply = reply
+    @replier = User.find_by_id(@reply.user_id)
+    @stack = Stack.find_by_id(@comment.stack_id)
+    @subject = @replier.name + " just replied to your heystack comment!"
+    mail(:to => @commenter.email, :bcc => "communityshare@heystack.com", :subject => @subject)
   end
 end
