@@ -32,10 +32,10 @@
 	  <% @choices << @stack.madlibs_1_option_10 unless @stack.madlibs_1_option_10.blank? %>
 	  <% @choices << @stack.madlibs_1_option_11 unless @stack.madlibs_1_option_11.blank? %>
 	  <% @choices << @stack.madlibs_1_option_12 unless @stack.madlibs_1_option_12.blank? %>
-	  <!-- <label> -->
+	  <label>
 		<%= f.select :qualifier1, @choices, { :include_blank => "Choose..." } %>
-		<!-- <span>choose option</span>
-	  </label> -->
+		<span><%= @stack.madlibs_1_label %></span>
+	  </label>
 	<% end %>
     <%= @stack.madlibs_2 %>
 	<% if !@stack.madlibs_2_label.blank? %>

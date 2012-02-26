@@ -43,8 +43,8 @@ td.madlibs-content {
 	vertical-align: middle;
 	display: inline;
 	/* Following 2 lines for displaying label under select box */
-	/*	margin-bottom: -.5em;*/
-	/*	display: block;*/
+	margin-bottom: -.5em;
+	display: block;
 }
 .mad-libs input.fill_in_the_blank {
 	font: inherit;
