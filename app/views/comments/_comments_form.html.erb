@@ -19,6 +19,12 @@
 	<%= f.submit "Add Comment",
 	  :class => "form_button round",
 	  :style => "display:inline; margin-left:20px; width:110px; margin-top:0;" %>
+	<% if current_user.email.blank? %>
+		<br/>
+		<%= fields_for(:user) do |u| %>
+		<%= u.label :email %> <%= u.text_field :email, :value => current_user.email %> <span class="de-em text-75">For sending replies to your comment.
+		<% end %>
+	<% end %>	
 	<div style="line-height:10px;">&nbsp;</div>
 	</div>
   </div>

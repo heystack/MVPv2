@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
       if !params[:user][:name].nil?
         @user = User.find_by_id(params[:comment][:user_id])
         @name = params[:user][:name]
-        @user.update_attributes(:name => @name)
+        @email = params[:user][:email]
+        @user.update_attributes(:name => @name, :email => @email)
       end
       redirect_to @stack
     else
