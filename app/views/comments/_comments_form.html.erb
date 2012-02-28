@@ -14,17 +14,23 @@
   <div class="actions">
 	<div id="submit_comment_div" class="hidden">
 	<%= fields_for(:user) do |u| %>
-	<%= u.label :name %> <%= u.text_field :name, :value => current_user.name %>
-	<% end %>
-	<%= f.submit "Add Comment",
-	  :class => "form_button round",
-	  :style => "display:inline; margin-left:20px; width:110px; margin-top:0;" %>
 	<% if current_user.email.blank? %>
-		<br/>
 		<%= fields_for(:user) do |u| %>
-		<%= u.label :email %> <%= u.text_field :email, :value => current_user.email %> <span class="de-em text-75">For sending replies to your comment.
+		<%= u.label :email %> <%= u.text_field :email, :value => current_user.email %> <span class="de-em text-75">to be notified of replies to your post (optional)</span>
+		<br/>
 		<% end %>
 	<% end %>	
+	<%= u.label :name %>
+	<%= u.text_field :name,
+					 :id => "post_name",
+					 :value => current_user.name.blank? ? "Your Name" : current_user.name,
+					 :class => current_user.name.blank? ? "prefill_form" : "",
+					 :title => "Stack answers are always anonymous but info sharing works best between real folks, so let your neighbors know who's speaking.",
+					 :onfocus => "this.style.color = 'black'; if (this.value == 'Your Name') {this.value='';};" %>
+	<% end %>
+	<%= f.submit "Post",
+	  :class => "form_button round2px",
+	  :style => "display:inline; margin-left:20px; width:50px; margin-top:0;" %>
 	<div style="line-height:10px;">&nbsp;</div>
 	</div>
   </div>

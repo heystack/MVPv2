@@ -88,6 +88,12 @@ div.flash_container {
   border-radius:         5px;
 }
 
+.round2px {
+  -moz-border-radius:    2px;
+  -webkit-border-radius: 2px;
+  border-radius:         2px;
+}
+
 .round15px {
   -moz-border-radius:    15px;
   -webkit-border-radius: 15px;
@@ -295,14 +301,17 @@ div.footer ul li {
 input.form_button {
   display: block;
   text-align: center;
-  width: 180px;
-  height: 24px;
+  width: 150px;
+  height: 20px;
   color: #fff;
 /*  background: #000 url(/images/1x29orangefade.png) top center repeat-x;*/
+  border-style: solid;
+  border-width: 1px;
+  border-color: #3080e5;
   background: #0088ce;
-  font-size: 80%;
+  font-size: 8pt;
   font-weight: normal;
-  padding: 3px;
+  padding: 2px;
   margin-top: 5px;
 }
 
@@ -546,6 +555,10 @@ input.signup_text {
   width: 250px;
   padding: 5px;
   border-color: #ccc;
+  color: #eee;
+}
+
+input.prefill_form {
   color: #eee;
 }
 

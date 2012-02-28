@@ -18,11 +18,16 @@
   <div class="actions">
 	<div id="submit_reply_div">
 	<%= fields_for(:user) do |u| %>
-	<%= u.label :name %> <%= u.text_field :name, :value => current_user.name %>
+	<%= u.label :name %>
+	<%= u.text_field :name, 
+					 :id => "post_name",
+					 :value => current_user.name.blank? ? "Your Name" : current_user.name,
+					 :class => current_user.name.blank? ? "prefill_form" : "",
+					 :onfocus => "this.style.color = 'black'; if (this.value == 'Your Name') {this.value='';};" %>
 	<% end %>
 	<%= f.submit "Reply",
-	  :class => "form_button round",
-	  :style => "display:inline; margin-left:20px; width:75px; margin-top:0;" %>
+	  :class => "form_button round2px",
+	  :style => "display:inline; margin-left:20px; width:50px; margin-top:0;" %>
 	<div style="line-height:10px;">&nbsp;</div>
 	</div>
   </div>
