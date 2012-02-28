@@ -19,7 +19,9 @@ class RepliesController < ApplicationController
         @user.update_attributes(:name => @name)
       end
       # Notify comment author of reply
-      MvpMailer.reply_to_comment(@comment, @reply).deliver
+      if @reply.user_id != @comment.user_id
+        MvpMailer.reply_to_comment(@comment, @reply).deliver
+      end
     else
       flash[:error] = "Reply not saved!"
     end

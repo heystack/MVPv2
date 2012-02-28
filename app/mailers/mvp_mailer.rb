@@ -64,7 +64,7 @@ class MvpMailer < ActionMailer::Base
     @reply = reply
     @replier = User.find_by_id(@reply.user_id)
     @stack = Stack.find_by_id(@comment.stack_id)
-    @subject = @replier.name + " just replied to your heystack comment!"
+    @subject = @replier.name + " just replied to your heystack post!"
     mail(:to => @commenter.email, :bcc => "communityshare@heystack.com", :subject => @subject)
   end
 end
