@@ -121,7 +121,7 @@ class ResponsesController < ApplicationController
       session[:you] = @response.value
       redirect_to @stack
     else
-      flash[:error] = "Please enter a valid response."
+      flash[:error] = "Hmmm...seems like you forgot to fill in some info. We need a valid response to stack you up."
       redirect_to edit_response_path(@response.id)
     end
   end

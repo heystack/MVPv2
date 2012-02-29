@@ -23,15 +23,15 @@
 	<%= u.label :name %>
 	<%= u.text_field :name,
 					 :id => "post_name",
-					 :value => current_user.name.blank? ? "Your Name" : current_user.name,
+					 :value => current_user.name.blank? ? "" : current_user.name,
 					 :class => current_user.name.blank? ? "prefill_form" : "",
 					 :title => "Stack answers are always anonymous but info sharing works best between real folks, so let your neighbors know who's speaking.",
-					 :onfocus => "this.style.color = 'black'; if (this.value == 'Your Name') {this.value='';};" %>
+					 :onfocus => "this.style.color = 'black'; if (this.value == '') {this.value='';};" %> <%= current_user.name.blank? ? "*" : "" %>
 	<% end %>
 	<%= f.submit "Post",
 	  :class => "form_button round2px",
 	  :style => "display:inline; margin-left:20px; width:50px; margin-top:0;",
-	  :onmouseover => "this.style.background = '#2070d5';", :onmouseout => "this.style.background = '#0088ce';" %>
+	  :onmouseover => "this.style.background = '#0070d5';", :onmouseout => "this.style.background = '#0088ce';" %>
 	<div style="line-height:10px;">&nbsp;</div>
 	</div>
   </div>

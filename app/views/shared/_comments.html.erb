@@ -12,12 +12,16 @@
   </tr>
   <tr>
 	<td class="top_right"><label for="comment_body">Comment:</label></td>
-	<td><%= text_area "contact", "comment", :style => "height:20px; width:100%;", :onfocus => "this.style.height = '100px';" %>
+	<td><%= text_area "contact", "comment",
+			:style => "height:20px; width:100%;",
+			:onfocus => "this.style.height = '100px';",
+			:onKeyPress => "return imposeMaxLength(this,2000);",
+			:onblur => "return imposeMaxLengthPaste(this,2000);" %>
 	</td>
   </tr>
   <tr>
 	<td></td>
-	<td class="text-1_25"><input type="submit" value="Send Comment" class="form_button round2px" onmouseover="this.style.background='#2070d5';" onmouseout="this.style.background = '#0088ce';" /></td>
+	<td class="text-1_25"><input type="submit" value="Send Comment" class="form_button round2px" onmouseover="this.style.background='#0070d5';" onmouseout="this.style.background = '#0088ce';" /></td>
   </tr>
 </table>
 

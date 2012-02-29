@@ -95,11 +95,27 @@ function validateForm(form) {
     return false;
 }
 
-function validateNameInComments(form) {
-    if (isNotEmpty(form.user_name)) {
+function validateComment(form) {
+    if (isNotEmpty(form.post_name) && isNotEmpty(form.comment_content)) {
 		return true;
     }
-	alert("Hang on there neighbor, need a username for your purposeful post.");
+    if (isNotEmpty(form.comment_content)) {
+		alert("Hang on there neighbor, need a name for your purposeful post.");
+	} else {
+		alert("Hey neighbor, need content for your purposeful post.");
+	}
+    return false;
+}
+
+function validateReply(form) {
+    if (isNotEmpty(form.post_name) && isNotEmpty(form.reply_content)) {
+		return true;
+    }
+    if (isNotEmpty(form.reply_content)) {
+		alert("Hang on there neighbor, need a name for your purposeful post.");
+	} else {
+		alert("Hey neighbor, need content for your reply.");
+	}
     return false;
 }
 
@@ -153,6 +169,9 @@ function hide(divID) {
 <script type="text/javascript">
 function imposeMaxLength(field,maxChars)
 {
+	if(field.value.length >= 150) {
+	  field.style.height = "250px";
+	}
 	if(field.value.length >= maxChars) {
       alert("As a friend once told me, \"Brevity equals Clarity\"...we're going to have to limit you to " + maxChars + " characters.");
 	  return false;
@@ -195,7 +214,21 @@ $(function() {
 		opacity: 0.6
 	});
 
+	$("#response_count").tooltip({
+		position: "center left",
+		offset: [0, -10],
+		effect: "fade",
+		opacity: 0.6
+	});
+
 	$("#post_name").tooltip({
+		position: "bottom center",
+		offset: [10, 0],
+		effect: "fade",
+		opacity: 0.8
+	});
+
+	$("#reply_name").tooltip({
 		position: "bottom center",
 		offset: [10, 0],
 		effect: "fade",

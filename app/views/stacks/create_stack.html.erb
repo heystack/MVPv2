@@ -41,7 +41,11 @@
 		  <div>We'll send you an alert when your stack is approved along with some easy tips for quick sharing with your friends.</div>
 		  <%= text_field "request", "from_email", :value => current_user.email, :size => 50 %>
 		  <br/><br/>
-		  <%= submit_tag "Send Stack Request", :class => "form_button round2px" %>
+		  <%= submit_tag "Send Stack Request",
+				:class => "form_button round2px",
+				:style => "font-size:12pt; height:28px; width:200px",
+				:onmouseover => "this.style.background = '#0070d5';",
+				:onmouseout => "this.style.background = '#0088ce';" %>
 		  <br/>
 		  </div>
 		</div>

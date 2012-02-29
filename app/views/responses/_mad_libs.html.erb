@@ -70,7 +70,10 @@
     <td style="vertical-align:bottom"><div class="end-quote">&#8221;</div></td>
   </tr>
 </table>
-<%= f.submit "Stack Me Up!", :class => "submit_button round" %>
+<%= f.submit "Stack Me Up!",
+	:class => "submit_button round",
+	:onmouseover => "this.style.background = '#0070d5';",
+	:onmouseout => "this.style.background = '#0088ce';" %>
 <br/>
 <% if @ask_location %>
 <div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is heystack available for my community?</a></div>

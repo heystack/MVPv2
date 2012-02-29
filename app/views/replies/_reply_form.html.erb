@@ -1,6 +1,6 @@
 <div class="reply" style="border-top:none;">
 <%= form_for @reply, :html => { :name => "new_reply",
-								:onsubmit => "return validateNameInComments(new_reply)" } do |f| %>
+								:onsubmit => "return validateReply(new_reply)" } do |f| %>
 
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
@@ -20,15 +20,16 @@
 	<%= fields_for(:user) do |u| %>
 	<%= u.label :name %>
 	<%= u.text_field :name, 
-					 :id => "post_name",
-					 :value => current_user.name.blank? ? "Your Name" : current_user.name,
+					 :id => "reply_name",
+					 :value => current_user.name.blank? ? "" : current_user.name,
 					 :class => current_user.name.blank? ? "prefill_form" : "",
-					 :onfocus => "this.style.color = 'black'; if (this.value == 'Your Name') {this.value='';};" %>
+					 :title => "Stack answers are always anonymous but info sharing works best between real folks, so let your neighbors know who's speaking.",
+					 :onfocus => "this.style.color = 'black'; if (this.value == '') {this.value='';};" %> <%= current_user.name.blank? ? "*" : "" %>
 	<% end %>
 	<%= f.submit "Reply",
 	  :class => "form_button round2px",
 	  :style => "display:inline; margin-left:20px; width:50px; margin-top:0;",
-	  :onmouseover => "this.style.background = '#2070d5';", :onmouseout => "this.style.background = '#0088ce';" %>
+	  :onmouseover => "this.style.background = '#0070d5';", :onmouseout => "this.style.background = '#0088ce';" %>
 	<div style="line-height:10px;">&nbsp;</div>
 	</div>
   </div>
