@@ -102,7 +102,7 @@ function validateComment(form) {
     if (isNotEmpty(form.comment_content)) {
 		alert("Hang on there neighbor, need a name for your purposeful post.");
 	} else {
-		alert("Hey neighbor, need content for your purposeful post.");
+		alert("Sensing wordus interruptus. Please enter content for your post.");
 	}
     return false;
 }
@@ -114,7 +114,7 @@ function validateReply(form) {
     if (isNotEmpty(form.reply_content)) {
 		alert("Hang on there neighbor, need a name for your purposeful post.");
 	} else {
-		alert("Hey neighbor, need content for your reply.");
+		alert("Sensing wordus interruptus. Please enter content for your reply.");
 	}
     return false;
 }
@@ -129,7 +129,7 @@ function validateEmailInSignup(form) {
 
 function validateQualifier(form) {
     if (form.response_qualifier1.value == "Choose..." || form.response_qualifier1.value == "") {
-		alert("Please choose an option from the dropdown.");
+		alert("Answer will be even better if you choose an option from the dropdown.");
 	    return false;
     }
     return true;
@@ -167,10 +167,10 @@ function hide(divID) {
 </script>
 
 <script type="text/javascript">
-function imposeMaxLength(field,maxChars)
+function imposeMaxLength(field,maxChars,autoExpandAt,autoExpandTo)
 {
-	if(field.value.length >= 150) {
-	  field.style.height = "250px";
+	if(field.value.length >= autoExpandAt) {
+	  field.style.height = autoExpandTo;
 	}
 	if(field.value.length >= maxChars) {
       alert("As a friend once told me, \"Brevity equals Clarity\"...we're going to have to limit you to " + maxChars + " characters.");

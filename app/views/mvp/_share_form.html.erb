@@ -33,7 +33,11 @@ Seeing how you stack up is easy. Give your answer at the link below. Then you'll
   </tr>
 	<tr>
 	<td class="top_right"><label for="comment_body">Message:</label></td>
-	<td><%= text_area "contact", "message", :size => "30x8", :class => "share_form_message", :value => @message %>
+	<td><%= text_area "contact", "message",
+			:size => "30x8",
+			:class => "share_form_message",
+			:onKeyPress => "return imposeMaxLength(this,2000,200,'250px');",
+			:value => @message %>
 		<!-- <div class="inactive text-75">followed by the question:</div>
 		<div class="field">
 		<label for="response_value"><%= @stack.question %></label>

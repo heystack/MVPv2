@@ -1,7 +1,9 @@
 <div class="chart_footer">
 <% if @count < 10 %>
   <span id="response_count"
-	title="To maintain the cloak of anonymity for our early answering neighbors, number of responses starts showing after 10 answers are in"	onmouseover="this.style.color='#0088ce';" onmouseout="this.style.color='black';">a few responses</span>
+	title="To maintain the cloak of anonymity for our early answering neighbors, number of responses starts showing after 10 answers are in"
+	onmouseover="this.style.color='#0088ce';" onmouseout="this.style.color='black';"
+	style="border-bottom:dashed;border-bottom-width:1px;">a few responses</span>
 <% else %>
   <%= pluralize(@count, "response") %>
 <% end %>

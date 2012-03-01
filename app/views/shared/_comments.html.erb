@@ -15,7 +15,7 @@
 	<td><%= text_area "contact", "comment",
 			:style => "height:20px; width:100%;",
 			:onfocus => "this.style.height = '100px';",
-			:onKeyPress => "return imposeMaxLength(this,2000);",
+			:onKeyPress => "return imposeMaxLength(this,2000,150,'250px');",
 			:onblur => "return imposeMaxLengthPaste(this,2000);" %>
 	</td>
   </tr>

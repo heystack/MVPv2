@@ -8,7 +8,7 @@
 	:value => "Got a  helpful nugget to share? Join the discussion.",
 	:onfocus => "if (this.value.substring(0,3) == 'Got')
 					{this.value='';this.style.color = 'black';this.style.height = '50px';}; unhide('submit_comment_div');",
-	:onKeyPress => "return imposeMaxLength(this,2000);",
+	:onKeyPress => "return imposeMaxLength(this,2000,150,'250px');",
 	:onblur => "return imposeMaxLengthPaste(this,2000);"
   %>
   <div class="actions">
@@ -26,7 +26,7 @@
 					 :value => current_user.name.blank? ? "" : current_user.name,
 					 :class => current_user.name.blank? ? "prefill_form" : "",
 					 :title => "Stack answers are always anonymous but info sharing works best between real folks, so let your neighbors know who's speaking.",
-					 :onfocus => "this.style.color = 'black'; if (this.value == '') {this.value='';};" %> <%= current_user.name.blank? ? "*" : "" %>
+					 :onfocus => "this.style.color = 'black'; if (this.value == '') {this.value='';};" %>
 	<% end %>
 	<%= f.submit "Post",
 	  :class => "form_button round2px",

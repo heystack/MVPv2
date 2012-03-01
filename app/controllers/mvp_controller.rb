@@ -30,7 +30,7 @@ class MvpController < ApplicationController
     @from_name = @contact[:from_name]
     @user_email = @contact[:user_email]
     MvpMailer.email_neighbor(@stack, @contact, @from_name, @user_email).deliver
-    flash[:success] = "Stack share with #{@contact[:email]} accomplished. More answers \= better info so share on!  Comments on sharing process? <a href='#comments', rel='facebox'>Tell us</a>.".html_safe
+    flash[:success] = "Stack shared with #{@contact[:email]}. More answers \= better info so share on! Comments on sharing process? <a href='#comments', rel='facebox'>Tell us</a>.".html_safe
     redirect_to @stack
   end
 

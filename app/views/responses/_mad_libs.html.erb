@@ -74,7 +74,7 @@
 	:class => "submit_button round",
 	:onmouseover => "this.style.background = '#0070d5';",
 	:onmouseout => "this.style.background = '#0088ce';" %>
-<br/>
+<div class="centered text-75 padding_20px">Like a different question? <%= link_to "View other stacks.", "#stacks", :rel => "facebox" %></div>
 <% if @ask_location %>
 <div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is heystack available for my community?</a></div>
 <% end %>
