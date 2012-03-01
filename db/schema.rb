@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120209032822) do
+ActiveRecord::Schema.define(:version => 20120301050217) do
 
   create_table "comments", :force => true do |t|
     t.string   "content",    :limit => 5000
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(:version => 20120209032822) do
   end
 
   create_table "users", :force => true do |t|
-    t.boolean  "admin",      :default => false
+    t.boolean  "admin",           :default => false
     t.string   "email"
     t.string   "password"
     t.string   "name"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20120209032822) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "subscribed"
+    t.integer  "responses_count", :default => 0
   end
 
   create_table "votes", :force => true do |t|

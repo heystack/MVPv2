@@ -42,6 +42,8 @@ Mvpv2::Application.routes.draw do
   match '/stkcomments',  :to => 'comments#stkcomments'
 
   match '/signup',  :to => 'users#signup'
+  match '/show_ghosts',   :to => 'users#show_ghosts'
+  match '/delete_ghosts', :to => 'users#delete_ghosts'
   match '/signin',  :to => 'sessions#create'
   match '/signout', :to => 'sessions#destroy'
 

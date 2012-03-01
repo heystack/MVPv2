@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :except => [:toggle_admin, :update]
 
+  include ActionView::Helpers::TextHelper
+
   def new
   end
 
@@ -75,6 +77,17 @@ class UsersController < ApplicationController
     #   format.html { redirect_to "www.google.com" }
     #   format.js
     # end
+  end
+  
+  def show_ghosts
+    @ghosts = User.ghosts.older_than_5_mins
+  end
+  
+  def delete_ghosts
+    @count = User.ghosts.older_than_5_mins.count
+    @users = User.ghosts.older_than_5_mins.destroy_all
+    flash[:notice] = "Destroyed " + pluralize(@count, "ghost")
+    redirect_to users_path
   end
   
   private

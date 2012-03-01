@@ -1,5 +1,5 @@
 <div class="padding_20px">
-<h1>All users</h1>
+<h1>All Users <span class="text-75">(<%= link_to "show ghosts", "/show_ghosts" %>)</span></h1>
 
 <div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @users %></div>
 <div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @users, :container => false %></div>

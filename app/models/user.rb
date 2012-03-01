@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :communities, :through => :user_communities
   has_many :votes
   
+  scope :ghosts, where(:responses_count => 0)
+  scope :older_than_5_mins, :conditions => {:created_at => 1.year.ago..5.minutes.ago}
+  
   before_save :make_salt
 
   def self.authenticate(email, submitted_password)

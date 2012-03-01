@@ -6,7 +6,7 @@ class Response < ActiveRecord::Base
   validates :stack_id, :presence => true
 
   belongs_to :stack
-  belongs_to :user
+  belongs_to :user, :counter_cache => true
   
   def all_neighbors
     Response.average(:value)
