@@ -164,6 +164,21 @@ function hide(divID) {
 		item.className='hidden';
 	}
 }
+
+function toggleViewStacks(divID) {
+	var item = document.getElementById(divID);
+	if (item) {
+		$(item).toggle();
+		var visible = $(item).is(':visible');	
+		var arrow = document.getElementById(divID + "_arrow");
+		if (visible) {
+		  $(arrow).text('▼');
+		} else {
+		  $(arrow).text('▶');
+		}		
+	}
+}
+
 </script>
 
 <script type="text/javascript">

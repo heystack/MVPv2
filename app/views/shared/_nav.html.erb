@@ -7,3 +7,9 @@
   <li><%= link_to "Blog", "http://lokalgood.com", :class => "nav_link", :target => "_blank" %></li>
 </ul>
 </nav>
+
+<div id="about" style="display:none;"><%= render 'shared/about' %></div>
+
+<div id="stacks" style="display:none;"><%= render 'shared/view_stacks', :divid => "view_stacks_nav" %></div>
+
+<div id="comments" style="display:none;"><%= render 'shared/comments' %></div>

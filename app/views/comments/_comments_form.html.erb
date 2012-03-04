@@ -11,6 +11,7 @@
 	:onKeyPress => "return imposeMaxLength(this,2000,150,'250px');",
 	:onblur => "return imposeMaxLengthPaste(this,2000);"
   %>
+
   <div class="actions">
 	<div id="submit_comment_div" class="hidden">
 	<%= fields_for(:user) do |u| %>

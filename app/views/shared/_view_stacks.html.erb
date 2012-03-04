@@ -1,10 +1,16 @@
 <div class="stk_section_header">View Other Stacks</div>
 <div class="view_stacks">
 <% if Stack.count > 1 %>
+<span
+	onclick="toggleViewStacks('<%= divid %>');"
+	onmouseover="this.style.color='#0088ce';"
+	onmouseout="this.style.color='black';"><span id="<%= divid %>_arrow" style="color:#ccc;">▼</span> Parenting</span>
+<div id="<%= divid %>">
 <ul class="stack_list">
 <%= render community_stacks(session[:community]), :omit_stack => @stack, :stack_detail => false %>
 <%= image_tag "favicon.gif", :height => "11", :style => "opacity:0.9;" %>&nbsp;<span style="font-size:110%;"><%= link_to "Create Your Own Stack", create_stack_path %></span>
 </ul>
+</div>
 <% end %>
 
 <% if current_user.admin? %>
