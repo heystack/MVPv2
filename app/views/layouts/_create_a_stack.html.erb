@@ -1,5 +1,10 @@
 <div class="create_button">
-<%= link_to image_tag("createstack.gif", :name => "create"), create_stack_path %>
+<div class= "atf_button_create round2px",
+		onmouseover="this.style.background = '#9bcc44'; this.style.border-color = '#88b438';",
+		onmouseout="this.style.background = '#88b438'; this.style.border-color = '#9bcc44';" >
+<%= link_to "Create Your Own Question", create_stack_path, :class => "atf_button_link" %>
+</div>
+<!-- <%= link_to image_tag("createstack.gif", :name => "create"), create_stack_path %> -->
 </div>
 
 <div id="create_a_stack" style="display:none;"><%= render 'layouts/feedback' %></div>

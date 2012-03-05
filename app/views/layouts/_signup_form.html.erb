@@ -8,7 +8,10 @@
 				 :value => current_user.email.blank? ? "Your Email Address" : current_user.email,
 				 :class => "signup_text round",
 				 :onfocus => "this.style.color = 'black'; this.style.borderColor = 'black'; if (this.value == 'Your Email Address') {this.value='';}; unhide('submit_div')" %>
-<%= image_submit_tag("signup.gif", :name => "signup") %>
+<%= submit_tag "Get the Weekly Stack", :class => "atf_button_signup round2px",
+		:onmouseover => "this.style.background = '#e43e42'; this.style.border-color = '#b93033';",
+		:onmouseout => "this.style.background = '#b93033'; this.style.border-color = '#e43e42';" %>
+<!-- <%= image_submit_tag("signup.gif", :name => "signup") %> -->
 <% end %>
 </div>
 <% end %>

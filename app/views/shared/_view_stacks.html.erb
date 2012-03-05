@@ -1,10 +1,12 @@
 <div class="stk_section_header">View Other Stacks</div>
 <div class="view_stacks">
 <% if Stack.count > 1 %>
+<% if session[:community] == 1 %>
 <span
 	onclick="toggleViewStacks('<%= divid %>');"
 	onmouseover="this.style.color='#0088ce';"
 	onmouseout="this.style.color='black';"><span id="<%= divid %>_arrow" style="color:#ccc;">▼</span> Parenting</span>
+<% end %>
 <div id="<%= divid %>">
 <ul class="stack_list">
 <%= render community_stacks(session[:community]), :omit_stack => @stack, :stack_detail => false %>

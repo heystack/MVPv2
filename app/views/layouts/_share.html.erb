@@ -1,6 +1,10 @@
 <div class="share_button">
-<!-- <%= link_to image_tag("share.png", :name => "share"), share_path %> -->
-<%= link_to image_tag("share.gif", :name => "share"), "#share_form", :rel => "facebox" %>
+<div class= "atf_button_share round2px",
+		onmouseover="this.style.background = '#3a96e4'; this.style.border-color = '#0088ce';",
+		onmouseout="this.style.background = '#0088ce'; this.style.border-color = '#3a96e4';">
+<%= link_to "Ask a Friend this Question", "#share_form", :rel => "facebox", :class => "atf_button_link" %>
+</div>
+<!-- <%= link_to image_tag("share.gif", :name => "share"), "#share_form", :rel => "facebox" %> -->
 <!-- <%= render 'layouts/tip_progress'  %> -->
 </div>
 

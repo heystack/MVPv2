@@ -1,7 +1,7 @@
 <div class="create_stack medshadow round grey">
 
 <div class="breadcrumbs">
-<%= link_to "Home", stack_path(session[:stack]) %> > Create Your Own Stack
+<%= link_to "Home", stack_path(session[:stack]) %> > Create Your Own Stack Question
 </div>
 
 <div id="loading"><div id="loading_gif"><%= image_tag "ajax-loader.gif" %></div></div>
@@ -12,7 +12,7 @@
 		<%= form_tag "/stack_request", :name => "create_stack", :onsubmit => "return validateStackType(create_stack); unhide('loading');" do %>
 		<div class="field">
 		  <%= hidden_field "request", "from_id", :value => current_user.id %>
-		  <div class="step_header">1. Choose Your Stack Type</div>
+		  <div class="step_header">1. Choose Your Question Type</div>
 		  <div>
 		  <%= select_tag "request[stem]", options_for_select([
 			['Select type...'],
@@ -38,10 +38,10 @@
 		  </div>
 		  <div class="step_header">3. Enter Your Email</div>
 		  <div class="indent_20px">
-		  <div>We'll send you an alert when your stack is approved along with some easy tips for quick sharing with your friends.</div>
+		  <div>We'll send you an alert when your stack question is approved along with some easy tips for quick sharing with your friends.</div>
 		  <%= text_field "request", "from_email", :value => current_user.email, :size => 50 %>
 		  <br/><br/>
-		  <%= submit_tag "Send Stack Request",
+		  <%= submit_tag "Submit Question",
 				:class => "form_button round2px",
 				:style => "font-size:12pt; height:28px; width:200px",
 				:onmouseover => "this.style.background = '#0070d5';",
