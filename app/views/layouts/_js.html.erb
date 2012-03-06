@@ -179,6 +179,13 @@ function toggleViewStacks(divID) {
 	}
 }
 
+function changeColor(id, color) {
+	element = document.getElementById(id);
+	oldColor = element.style.background;
+	element.style.background = color;
+	element.style.borderColor = oldColor;
+}
+
 </script>
 
 <script type="text/javascript">

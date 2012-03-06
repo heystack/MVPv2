@@ -1,7 +1,7 @@
 <div class="share_button">
-<div class= "atf_button_share round2px",
-		onmouseover="this.style.background = '#3a96e4'; this.style.border-color = '#0088ce';",
-		onmouseout="this.style.background = '#0088ce'; this.style.border-color = '#3a96e4';">
+<div class= "atf_button_share round2px", id="atf_button_share",
+		onmouseover="changeColor(this.id, '#3a96e4');",
+		onmouseout="changeColor(this.id, '#0088ce');">
 <%= link_to "Ask a Friend this Question", "#share_form", :rel => "facebox", :class => "atf_button_link" %>
 </div>
 <!-- <%= link_to image_tag("share.gif", :name => "share"), "#share_form", :rel => "facebox" %> -->

@@ -1,7 +1,7 @@
 <div class="create_button">
-<div class= "atf_button_create round2px",
-		onmouseover="this.style.background = '#9bcc44'; this.style.border-color = '#88b438';",
-		onmouseout="this.style.background = '#88b438'; this.style.border-color = '#9bcc44';" >
+<div class= "atf_button_create round2px", id="atf_button_create",
+		onmouseover="changeColor(this.id, '#9bcc44');",
+		onmouseout="changeColor(this.id, '#88b438');" >
 <%= link_to "Create Your Own Question", create_stack_path, :class => "atf_button_link" %>
 </div>
 <!-- <%= link_to image_tag("createstack.gif", :name => "create"), create_stack_path %> -->
