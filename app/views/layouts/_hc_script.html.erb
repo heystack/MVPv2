@@ -10,7 +10,7 @@
 
 <% @point1_name = "" %>
 <% @point2_name = " 20% Avg" %>
-<% @point3_name = "" %>
+<% @point3_name = " Avg" %>
 <% @point4_name = " 20% Avg" %>
 
 <script type="text/javascript">
@@ -47,7 +47,8 @@ jQuery(document).ready(function() {
 		  <%   @point2_value = @all_neighbors %>
 		  <%   @point3_value = session[:you] %>
 		  <%   @point1_name  = " 20% Avg" %>
-		  <%   @point2_name  = "" %>
+		  <%   @point2_name  = " Avg" %>
+		  <%   @point3_name  = "" %>
 	      categories: ['<%= @lowest_desc %>', 'All Neighbors', 'YOU', '<%= @highest_desc %>'],
 		  <% elsif @user_rank == "biggest"  %>
 		  <%   @point1_color = @lowest_color %>
@@ -59,7 +60,7 @@ jQuery(document).ready(function() {
 		  <%   @point3_value = @biggest_amt %>
 		  <%   @point4_value = session[:you] %>
 		  <%   @point1_name  = " 20% Avg" %>
-		  <%   @point2_name  = "" %>
+		  <%   @point2_name  = " Avg" %>
 		  <%   @point3_name  = " 20% Avg" %>
 		  <%   @point4_name  = "" %>
 	      categories: ['<%= @lowest_desc %>', 'All Neighbors', '<%= @highest_desc %>', 'YOU'],
