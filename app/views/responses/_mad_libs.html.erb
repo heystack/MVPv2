@@ -74,7 +74,12 @@
 	:class => "submit_button round",
 	:onmouseover => "this.style.background = '#0070d5';",
 	:onmouseout => "this.style.background = '#0088ce';" %>
-<div class="centered text-75 padding_20px">Like a different question? <%= link_to "View other stacks", "#stacks", :rel => "facebox" %></div>
+<div class="centered text-75 padding_20px">
+Like a different question? <%= link_to "View other stacks", "#stacks", :rel => "facebox" %><br/><br/>
+See how it works:<br/>
+<iframe src="http://player.vimeo.com/video/38233866" width="500" height="319" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+</div>
+
 <% if @ask_location %>
 <div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is heystack available for my community?</a></div>
 <% end %>
@@ -85,7 +90,6 @@ now the focus is on communities in Alexandria, Virginia.<br/>
 From somewhere else?  No worries, welcome.  Give the experience a whirl (we'll keep things straight by zip).  If you like it, send us a comment below on bringing heystack to your community, or <%= link_to "create a stack of your own", create_stack_path %> to try in your hood.
 <br/><br/>
 <div id="comments_facebox_div"><%= render 'shared/comments' %></div>
-
 </div>
 
 </div>
