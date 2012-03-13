@@ -74,15 +74,19 @@
 	:class => "submit_button round",
 	:onmouseover => "this.style.background = '#0070d5';",
 	:onmouseout => "this.style.background = '#0088ce';" %>
-<div class="centered text-75 padding_20px">
-Like a different question? <%= link_to "View other stacks", "#stacks", :rel => "facebox" %><br/><br/>
-See how it works:<br/>
-<iframe src="http://player.vimeo.com/video/38233866" width="500" height="319" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<div class="centered text-75 padding_20px de-em">
+Like a different question? <%= link_to "View other stacks", "#stacks", :rel => "facebox" %>
+<% if @new_user %>
+or <a href="#intro_video" rel="facebox"><%= image_tag "play_button.jpeg", :height => "16", :style => "vertical-align:middle; padding-bottom:4px;" %> see how it works</a></span><br/>
+<div id="intro_video" style="display:none;">
+<iframe src="http://player.vimeo.com/video/38233866" width="750" height="479" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
-
 <% if @ask_location %>
-<div class="centered text-75"><a href="#not_alexandria" rel="facebox">Is heystack available for my community?</a></div>
+<div class="centered"><br/><a href="#not_alexandria" rel="facebox">Is heystack available for my community?</a></div>
 <% end %>
+<% end %>
+
+</div>
 
 <div id="not_alexandria" style="display:none;">
 Heystack is all about community info sharing and right<br/>

@@ -16,6 +16,7 @@ class ResponsesController < ApplicationController
       @stack = Stack.find_by_id(session[:stack])
       session[:community] ||= @stack.community_id
     end
+    @new_user = !( current_user.responses.count > 0 )
     @email = current_user.email ? current_user.email : "feedback@heystack.com"
     @response = @stack.responses.new
     @title = "New Response"
@@ -85,6 +86,7 @@ class ResponsesController < ApplicationController
       redirect_to root_path
     end
     session[:stack] = @stack.id
+    @new_user = !( current_user.responses.count > 0 )
     @form_capable = true
     @ask_location = true
     @zipcode = current_user.zipcode
@@ -164,6 +166,7 @@ class ResponsesController < ApplicationController
       end
     end
     # end Sessions#Create snippet
+    @new_user = !( current_user.responses.count > 0 )
     if params[:email]
       current_user.update_attributes(:email => params[:email])
     end
