@@ -23,7 +23,7 @@
 <% end %>
 <% if @user.zipcode %>
   <%= link_to raw("show «<strong>" + @user.zipcode.to_s + "</strong>» only"), "#",
-	  :id => "hc_filter", :title => "Zip and other filters coming soon.",
+	  :id => "hc_filter", :title => "Zip filter coming soon.",
 	  :class => "filter_link_inactive",
 	  :disabled => true,
 	  :remote => true %>
