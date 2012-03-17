@@ -24,6 +24,42 @@ class MvpController < ApplicationController
     @stack = Stack.find_by_id(session[:stack])
   end
 
+  def howitworks
+    # Replication of first part of Sessions#Create - probably a better way to do this
+    @user = current_user
+    if @user.nil?
+      @user = User.new
+      if @user.save
+        sign_in @user
+        if Community.count > 0
+          if params[:community]
+            session[:community] = params[:community]
+          else
+            # First community must be the default, public community
+            session[:community] = Community.first.id
+          end
+          @user.member_of!(session[:community])
+        end
+      end
+    else
+      sign_in @user unless signed_in?
+      if params[:community]
+        session[:community] = params[:community]
+        if !@user.member_of?(session[:community])
+          @user.member_of!(session[:community])
+        end
+      else
+        if @user.member_of_any_community?
+          session[:community] ||= @user.first_community.community_id
+        elsif Community.count > 0
+          session[:community] = Community.first.id
+          @user.member_of!(session[:community])
+        end
+      end
+    end
+    # end Sessions#Create snippet
+  end
+
   def share_via_email
     @contact = params[:contact]
     @stack = Stack.find_by_id(session[:stack])
