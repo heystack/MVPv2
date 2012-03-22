@@ -2,6 +2,8 @@
 <h1>Ghost Users</h1>
 <%= link_to "delete all ghosts", "/delete_ghosts" %>
 
+<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @ghosts %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @ghosts, :container => false %></div>
 <table class="users text-75">
   <tr>
 	<td>User ID</td><td>Community</td><td>Name</td><td>Email</td><td>Zipcode</td><td></td><td>Created</td><td>Responses</td><td>Admin</td><td></td>
@@ -9,4 +11,6 @@
   <% @users = @ghosts %>
   <%= render @users %>
 </table>
+<div class="digg_pagination" style="display:inline; font-size:80%; margin-left:10px"><%= page_entries_info @ghosts %></div>
+<div class="digg_pagination" style="display:inline; font-size:80%;"><%= will_paginate @ghosts, :container => false %></div>
 </div>

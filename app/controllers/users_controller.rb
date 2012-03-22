@@ -80,7 +80,7 @@ class UsersController < ApplicationController
   end
   
   def show_ghosts
-    @ghosts = User.ghosts.older_than_5_mins
+    @ghosts = User.ghosts.older_than_5_mins.paginate(:page => params[:page], :per_page => 100, :order => 'id DESC')
   end
   
   def delete_ghosts
