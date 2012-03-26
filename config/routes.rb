@@ -61,7 +61,7 @@ Mvpv2::Application.routes.draw do
   match '/send_comment',        :to => 'mvp#send_comment'
   match '/stack_request',       :to => 'mvp#stack_request'
   match '/howitworks',          :to => 'mvp#howitworks'
-  match '/stacks/5.',          :to => '/stacks/5'
+  match '/stacks/5.',          :to => 'sessions#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
