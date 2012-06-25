@@ -5,7 +5,7 @@
 <%= auto_link( reply.content.gsub(/\n/, '<br/>'), :html => { :target => '_blank' } ) %>
 </div>
 <div class="comment_timestamp">
-<span class="de-em text-75">Added <%= time_ago_in_words(reply.created_at) %> ago.</span>
+<span class="de-em text-75">Added <%= reply.created_at < 30.days.ago ? "awhile" : time_ago_in_words(reply.created_at) %> ago.</span>
 <% if current_user.admin? || reply.created_by?(current_user) %>
   <span class="de-em">
   <%= link_to "delete", reply, :class => "text-75", :method => :delete, :confirm => "You sure?", :title => "Delete reply?" %>

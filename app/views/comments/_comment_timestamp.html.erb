@@ -1,1 +1,1 @@
-<span class="de-em"><%= time_ago_in_words(comment.created_at) %> ago</span>
+<span class="de-em">Added <%= comment.created_at < 30.days.ago ?  "awhile" : time_ago_in_words(comment.created_at) %> ago</span>
