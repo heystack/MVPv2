@@ -9,8 +9,14 @@
 <% end %>
 <div id="<%= divid %>">
 <ul class="stack_list">
-<%= render community_stacks(session[:community]), :omit_stack => @stack, :stack_detail => false %>
-<%= image_tag "favicon.gif", :height => "11", :style => "opacity:0.9;" %>&nbsp;<span style="font-size:110%;"><%= link_to "Create Your Own Stack", create_stack_path %></span>
+<!-- <%= render community_stacks(session[:community]), :omit_stack => @stack, :stack_detail => false %> -->
+<!-- TODO: Following line should display TOP 3, not just ANY 3 as it does currently, and the controller code is messy -->
+<%= render @top_3_unanswered_stacks, :omit_stack => @stack, :stack_detail => false %>
+
+<%= link_to 'More questions...', stacks_path, :class => "comment_link" %><br/><br/>
+
+<%= render 'layouts/create_a_stack' %>
+
 </ul>
 </div>
 <% end %>

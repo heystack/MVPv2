@@ -1,0 +1,56 @@
+<% if stack_detail %>
+
+<% @community = Community.find_by_id(stack.community_id) %>
+<div class="community_list_header">
+	<div class="community_list_desc" style="font-size:100%;"><%= link_to @community.nil? ? "None" : @community.name, @community %> > <%= link_to stack.name, stack %>
+	<% if stack.sotd %>
+		<%= link_to image_tag("red_star.png"), stack, :html => { :title => "Stack of the Day" } %>
+	<% end %>
+	</div>
+	<div class="community_list_desc"><%= stack.question %></div>
+	<span class="de-em text-75">Created <%= time_ago_in_words(stack.created_at) %> ago.
+	<% if stack.responses.count > 0 %>
+	  Most recent response <%= time_ago_in_words(stack.responses.last.created_at) %> ago.
+	<% end %>
+	  <% if current_user.admin? %>
+	    <%= link_to "edit", edit_stack_path(stack) %> | 
+	    <%= link_to "delete", stack, :method => :delete, :confirm => "You sure?",
+	                                	 :title => "Delete #{stack.name}" %>
+	  <% end %>
+	</span>
+</div>
+<% @outlier_count = stack.responses.where('outlier = ?', true).count %>
+<% @comment_count = stack.comments.count %>
+<% @response_count = stack.responses.count %>
+<div class="community_list_item">
+<span class="community_list_item_count"><%= stack.responses.maximum('value') %></span>
+<span class="community_list_item_desc"><%= stack.responses.minimum('value') %></span>
+</div>
+<div class="community_list_item">
+<span class="community_list_item_count"><%= link_to @outlier_count, "/stkresponses?stack_id=" + stack.id.to_s, :class => "undecorated" %></span>
+<span class="community_list_item_desc"><%= pluralize( @outlier_count, "outlier" ).split(" ")[1] %></span>
+</div>
+<div class="community_list_item">
+<span class="community_list_item_count"><%= link_to @comment_count, "/stkcomments?stack_id=" + stack.id.to_s, :class => "undecorated" %></span>
+<span class="community_list_item_desc"><%= pluralize( @comment_count, "comment" ).split(" ")[1] %></span>
+</div>
+<div class="community_list_item">
+<span class="community_list_item_count"><%= link_to @response_count, "/stkresponses?stack_id=" + stack.id.to_s, :class => "undecorated" %></span>
+<span class="community_list_item_desc"><%= pluralize( @response_count, "response" ).split(" ")[1] %></span>
+</div>
+<hr>
+
+<% else %>
+
+<% if stack != omit_stack %>
+<li>
+<% if stack.answered?(current_user) %>
+<% css_class = "answered_topic" %>
+<% else %>
+<% css_class = "unanswered_topic" %>
+<% end %>
+<%= link_to stack.question, stack_path(stack.id), :class => css_class %>
+</li>
+<% end %>
+
+<% end %>

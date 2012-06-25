@@ -9,4 +9,5 @@ class Community < ActiveRecord::Base
             :through => :reverse_user_communities,
             :source => :user
   has_many :stacks, :dependent => :destroy
+  
 end

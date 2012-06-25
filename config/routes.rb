@@ -61,6 +61,7 @@ Mvpv2::Application.routes.draw do
   match '/send_comment',        :to => 'mvp#send_comment'
   match '/stack_request',       :to => 'mvp#stack_request'
   match '/howitworks',          :to => 'mvp#howitworks'
+  # Robert Morton posted full URL to Old Town Moms, and period got included in the link...oops.
   match '/stacks/5.',          :to => 'sessions#create'
 
   # The priority is based upon order of creation:

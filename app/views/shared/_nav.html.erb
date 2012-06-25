@@ -2,7 +2,8 @@
 <span class="header_preview">Preview Version</span>
 <ul>
   <li><%= link_to "About", "#about", :class => "nav_link", :rel => "facebox" %></li>
-  <li><%= link_to "Stacks", "#stacks", :class => "nav_link", :rel => "facebox" %></li>
+  <!-- <li><%= link_to "Stacks", "#stacks", :class => "nav_link", :rel => "facebox" %></li> -->
+  <li><%= link_to "Stacks", stacks_path, :class => "nav_link" %></li>
   <li><%= link_to "Comments", "#comments", :class => "nav_link", :rel => "facebox" %></li>
   <li><%= link_to "Blog", "http://lokalgood.com", :class => "nav_link", :target => "_blank" %></li>
 </ul>
@@ -10,6 +11,6 @@
 
 <div id="about" style="display:none;"><%= render 'shared/about' %></div>
 
-<div id="stacks" style="display:none;"><%= render 'shared/view_stacks', :divid => "view_stacks_nav" %></div>
+<!-- <div id="stacks" style="display:none;">render 'shared/view_stacks', :divid => "view_stacks_nav"</div> -->
 
 <div id="comments" style="display:none;"><%= render 'shared/comments' %></div>

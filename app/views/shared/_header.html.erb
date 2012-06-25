@@ -2,7 +2,7 @@
 	<% @community = Community.find_by_id(session[:community]) %>
 	<% @logo = @community.logo %>
 <% else %>
-	<% @logo = "heystack_logo_preview.gif" %>
+	<% @logo = "heystack_logo.gif" %>
 <% end %>
 <div class="header">
 <table>
@@ -15,8 +15,7 @@
 	  </div> -->
 	</td>
 	<td class="header_tagline">
-	  Local info for seeing how you stack up<br/>
-	  ...and what to do about it.<br/>
+	  <!-- Purposeful Comparisons -->
 	</td>
 	<td class="header_nav">
 	  <%= render 'shared/nav' %>

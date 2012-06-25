@@ -1,5 +1,5 @@
 class StacksController < ApplicationController
-  before_filter :admin_user, :except => [:show, :create_stack, :filter_qualifier]
+  before_filter :admin_user, :except => [:show, :index, :create_stack, :filter_qualifier]
   include ActionView::Helpers::NumberHelper
 
   # Required to prevent session from resetting, due to use of 'def protect_from_forgery? false' in mvp_mailer_helper 
@@ -84,6 +84,16 @@ class StacksController < ApplicationController
       @vote = Vote.new
     else
       redirect_to new_stack_response_path(@stack) and return
+    end
+
+    # To get 3 unanswered stacks. This seems much more difficult than it should be. TODO: Clean this up, and get TOP 3.
+    @answered_stacks = Array.new
+    current_user.responses.each { |r| @answered_stacks << r.stack_id }
+    if @answered_stacks
+      @community = Community.find(session[:community])
+      @top_3_unanswered_stacks = @community.stacks.where("id not in (?)", @answered_stacks).limit(2)
+    else
+      @top_3_unaswered_stacks = Stack.all
     end
 
     # Zero entry OK
@@ -287,8 +297,9 @@ class StacksController < ApplicationController
   end
   
   def index
-    @title = "All Stacks"
-    @stacks = Stack.find(:all, :order => "community_id ASC")
+    @title = "All Questions"
+    @community = Community.find(session[:community])
+    @stacks = @community.stacks.all(:include => :responses).sort_by { |s| s.responses.size }.reverse
   end
   
   def create_stack
