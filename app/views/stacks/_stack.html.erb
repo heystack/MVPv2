@@ -18,7 +18,12 @@
 <% end %>
 </div>
 <div class="community_list_header">
-	<div class="community_list_desc"><%= link_to stack.question, stack %></div>
+	<% if stack.answered?(current_user) %>
+	<% css_class = "answered_topic" %>
+	<% else %>
+	<% css_class = "unanswered_topic" %>
+	<% end %>
+	<div class="community_list_desc"><%= link_to stack.question, stack, :class => css_class %></div>
 	<span class="de-em text-75">Created <%= time_ago_in_words(stack.created_at) %> ago.
 	<% if stack.responses.count > 0 %>
 	  Most recent response <%= stack.responses.last.created_at < 30.days.ago ? "awhile" : time_ago_in_words(stack.responses.last.created_at) %> ago.
