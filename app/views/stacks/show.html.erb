@@ -21,6 +21,9 @@
 	</td>
 	<td class="atf_right hey">
 	  <%= render 'layouts/share' %>
+	  <% if current_user.subscribed? %>
+		<%= render 'layouts/create_a_stack' %>
+	  <% end %>
 	  <%= render 'layouts/signup_form' %>
 	</td>
   </tr>

@@ -15,7 +15,9 @@
 
 <%= link_to 'More questions...', stacks_path, :class => "comment_link" %><br/><br/>
 
-<%= render 'layouts/create_a_stack' %>
+<% if !current_user.subscribed? %>
+  <%= render 'layouts/create_a_stack' %>
+<% end %>
 
 </ul>
 </div>
