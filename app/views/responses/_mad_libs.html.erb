@@ -75,7 +75,7 @@
 	:onmouseover => "this.style.background = '#0070d5';",
 	:onmouseout => "this.style.background = '#0088ce';" %>
 <div class="centered text-75 padding_20px de-em">
-More questions? <%= link_to "View other stacks", "#stacks", :rel => "facebox" %>
+More questions? <%= link_to "View other stacks", stacks_path %>
 <% if @new_user %>
 or <a href="#intro_video" rel="facebox"><%= image_tag "play_button.jpeg", :height => "16", :style => "vertical-align:middle; padding-bottom:4px;" %> see how it works</a></span><br/>
 <div id="intro_video" style="display:none;">

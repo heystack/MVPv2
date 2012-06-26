@@ -7,5 +7,5 @@
 <% else %>
   <%= pluralize(@count, "response") %>
 <% end %>
-• most recent <%= time_ago_in_words(@stack.responses.last.updated_at) %> ago • <%= link_to "refine&nbsp;my&nbsp;answer".html_safe, edit_response_path(@response) %>
+• most recent <%= @stack.responses.last.updated_at < 30.days.ago ? "awhile" : time_ago_in_words(@stack.responses.last.updated_at) %> ago • <%= link_to "refine&nbsp;my&nbsp;answer".html_safe, edit_response_path(@response) %>
 </div>
