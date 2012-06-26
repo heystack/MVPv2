@@ -63,6 +63,10 @@
 		<li><span class="">How much...?</span></li>
 		<li><span class="">At what age...?</span></li>
 		<li><span class="">How many...?</span></li>
+		<% elsif Community.find_by_id(session[:community]).name == "Effectuation.org" %>
+		<li><span class="">How many hours do you spend on your startup every day?</span></li>
+		<li><span class="">How many OpenASK's are you doing every week?</span></li>
+		<li><span class="">What is your Affordable Loss for the next stage of your startup?</span></li>
 		<% end %>
 	</td>
   </tr>
