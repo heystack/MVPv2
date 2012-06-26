@@ -11,7 +11,7 @@
 <ul class="stack_list">
 <!-- <%= render community_stacks(session[:community]), :omit_stack => @stack, :stack_detail => false %> -->
 <!-- TODO: Following line should display TOP 3, not just ANY 3 as it does currently, and the controller code is messy -->
-<%= render @top_3_unanswered_stacks, :omit_stack => @stack, :stack_detail => false %>
+<%= render @view_other_stacks, :omit_stack => @stack, :stack_detail => false %>
 
 <%= link_to 'More questions...', stacks_path, :class => "comment_link" %><br/><br/>
 

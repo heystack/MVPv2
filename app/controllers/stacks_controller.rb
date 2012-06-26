@@ -87,13 +87,17 @@ class StacksController < ApplicationController
     end
 
     # To get 3 unanswered stacks. This seems much more difficult than it should be. TODO: Clean this up, and get TOP 3.
+    # This would be easier if the number of responses was stored in the Stacks table.
+    @community = Community.find(session[:community])
     @answered_stacks = Array.new
     current_user.responses.each { |r| @answered_stacks << r.stack_id }
     if @answered_stacks
-      @community = Community.find(session[:community])
-      @top_3_unanswered_stacks = @community.stacks.where("id not in (?)", @answered_stacks).limit(2)
+      @view_other_stacks = @community.stacks.where("id not in (?)", @answered_stacks).limit(2)
+      if @view_other_stacks.count < 2
+        @view_other_stacks = @community.stacks.all
+      end
     else
-      @top_3_unaswered_stacks = Stack.all
+      @view_other_stacks = @community.stacks.all
     end
 
     # Zero entry OK
