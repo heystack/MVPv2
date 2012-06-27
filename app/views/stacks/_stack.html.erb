@@ -10,7 +10,11 @@
 	<span class="community_list_item_count"><span id="response_count_<%= stack.id %>" title="To maintain the cloak of anonymity for our early answering community members, number of responses starts showing after a few more answers are in"
 		onmouseover="this.style.color='#0088ce';" onmouseout="this.style.color='black';"
 		style="border-bottom:dashed;border-bottom-width:1px;">A few</span></span>
-	<span class="community_list_item_desc">responses</span>
+	<span class="community_list_item_desc">responses
+	<% if current_user.admin? %>
+	  (<%= @response_count %>)
+	<% end %>
+	</span>
   <% else %>
 	<span class="community_list_item_count"><%= link_to @response_count, "/stkresponses?stack_id=" + stack.id.to_s, :class => "undecorated" %></span>
 	<span class="community_list_item_desc"><%= pluralize( @response_count, "response" ).split(" ")[1] %></span>
