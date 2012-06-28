@@ -54,7 +54,7 @@ class ResponsesController < ApplicationController
     @user = User.find_by_id(@response.user_id)
     # Check for outliers and alert
     if @stack.outlier?(@response.value, @response.qualifier1)
-      flash[:error] = "Hmmm...seems like an outlier answer. Give a 2nd look (we will too) and use <strong>refine my answer</strong> if need be.".html_safe
+      flash[:error] = "Hmmm...may be an outlier answer. Give a 2nd look (we will too) and use <strong>refine my answer</strong> if need be.".html_safe
       MvpMailer.outlier_email(@stack, @response.value, @user).deliver
       @response.outlier = true
     else
